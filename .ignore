@@ -1,0 +1,60 @@
+# python binaries
+*.pyc
+bin/
+/*/bin
+.cache/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# vim swap files
+*.swp
+
+# IDEA:
+.idea/
+**.iml
+**.iml
+
+# pyincore setup and build
+**/build/
+**/dist/
+**/pyincore.egg-info/
+
+# VSCODE
+.vscode
+
+# IDEA - generated artifacts
+**/out/
+
+# Apple metadata
+**/.DS_Store
+
+# incore pw file
+tests/pyincore/.incorepw
+
+# incore download data or test data
+cache_data/
+original/
+
+# pytest cache
+.pytest_cache
+
+# jupyter notebook checkpoints folder
+.ipynb_checkpoints
+
+# jupyter notebook
+.user
+
+# possible output file
+*.csv
+# a pair of negation pattern; everything else except below will be ignored by git
+*.json
+!tests/data/*/*.json
+!tests/data/*.json
+
+# Seaside ipopt constants
+pyincore/analyses/seasidecge/solverconstants/ipopt_cons.py
+pyincore/analyses/seasidecge/solverconstants/tmp.py
+
+# credential
+*.incorepw

@@ -1,0 +1,26 @@
+{
+    "n_splits": 5,
+    "condition": "lung_condition_coarse",
+    "donor": "sample",    
+    "organize_params": {
+    },
+    "setup_params": {
+        "rna_indices_end": 2000,
+        "categorical_covariate_keys": [
+            "sample",
+            "lung_condition_coarse"
+      ]
+    },
+    "train_params": {
+        "max_epochs": 200,
+        "save_checkpoint_every_n_epochs": 200
+    },
+    "subset_umap": 20000,
+    "umap_colors": [
+      "lung_condition_coarse",
+      "transf_ann_level_1_label",
+      "transf_ann_level_2_label",
+      "transf_ann_level_3_label",
+      "study"
+    ]
+}

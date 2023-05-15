@@ -1,0 +1,107 @@
+
+from snakemake.utils import Paramspace
+import pandas as pd
+from scripts.utils import get_existing_checkpoints, get_query_checkpoints
+
+paramspace = Paramspace(pd.read_csv("data/params.tsv", sep="\t", index_col=0), filename_params="*")
+paramspace_pattern = paramspace.wildcard_pattern
+
+CHECKPOINTS, SPLITS, PATTERNS  = get_existing_checkpoints("data/multigrate/")
+T_CHECKPOINTS, T_SPLITS, T_PATTERNS, Q_CHECKPOINTS  = get_query_checkpoints("data/multigrate/")
+
+print(len(Q_CHECKPOINTS))
+
+configfile: "config.json"
+
+rule all_train:
+    input:
+        expand("data/multigrate/{params}/{split}/train_umap.png", params=paramspace.instance_patterns, split=list(range(config["n_splits"])))
+    output:
+        "data/logs/all_train.txt"
+    shell:
+        "echo 'All training done!' > {output[0]}"
+
+rule all_query:
+    input:
+        expand("data/multigrate/{pattern}/{split}/query_checkpoints/{checkpoint}/finetune_losses.png", zip, pattern=PATTERNS, split=SPLITS, checkpoint=CHECKPOINTS)
+    output:
+        "data/logs/all_query.txt"
+    shell:
+        "echo 'All querying done!' > {output[0]}"
+
+rule all_predict:
+    input:
+        expand("data/multigrate/{pattern}/{split}/query_checkpoints/{checkpoint}/{query_checkpoint}.csv", zip, pattern=T_PATTERNS, split=T_SPLITS, checkpoint=T_CHECKPOINTS, query_checkpoint=Q_CHECKPOINTS)
+    output:
+        "data/logs/all_predict.txt"
+    shell:
+        "echo 'All predicting done!' > {output[0]}"
+
+rule all_predict_nf:
+    input:
+        expand("data/multigrate/{pattern}/{split}/checkpoints/{checkpoint}.csv", zip, pattern=T_PATTERNS, split=T_SPLITS, checkpoint=T_CHECKPOINTS)
+    output:
+        "data/logs/all_predict_nf.txt"
+    shell:
+        "echo 'All predicting without fine-tuning done!' > {output[0]}"
+
+rule predict_nf:
+    input:
+        "data/pp/hlca_hvg_pearson.h5ad",
+        expand("data/multigrate/{pattern}/{{split}}/checkpoints/{{checkpoint}}.ckpt", pattern=paramspace_pattern)
+    output:
+        expand("data/multigrate/{pattern}/{{split}}/checkpoints/{{checkpoint}}.csv", pattern=paramspace_pattern)
+    params:
+        model_params=paramspace.instance,
+        paramspace_pattern=paramspace_pattern,
+        **config
+    conda:
+       "envs/multigrate.yaml"
+    script:
+        "scripts/predict_nf.py"
+
+rule predict:
+    input:
+        "data/pp/hlca_hvg_pearson.h5ad",
+        expand("data/multigrate/{pattern}/{{split}}/query_checkpoints/{{checkpoint}}/{{query_checkpoint}}.ckpt", pattern=paramspace_pattern)
+    output:
+        expand("data/multigrate/{pattern}/{{split}}/query_checkpoints/{{checkpoint}}/{{query_checkpoint}}.csv", pattern=paramspace_pattern)
+    params:
+        model_params=paramspace.instance,
+        paramspace_pattern=paramspace_pattern,
+        **config
+    conda:
+       "envs/multigrate.yaml"
+    script:
+        "scripts/predict.py"
+
+rule fine_tune_query:
+    input:
+        "data/pp/hlca_hvg_pearson.h5ad",
+        expand("data/multigrate/{pattern}/{{split}}/checkpoints/{{checkpoint}}.ckpt", pattern=paramspace_pattern)
+    output:
+        expand("data/multigrate/{pattern}/{{split}}/query_checkpoints/{{checkpoint}}/finetune_losses.png", pattern=paramspace_pattern)
+    params:
+        model_params=paramspace.instance,
+        paramspace_pattern=paramspace_pattern,
+        **config
+    conda:
+       "envs/multigrate.yaml"
+    script:
+        "scripts/query.py"
+
+rule run_multigrate:
+    input:
+        "data/pp/hlca_hvg_pearson.h5ad"
+    output:
+        expand("data/multigrate/{pattern}/{split}/train_umap.png", pattern=paramspace_pattern, split=list(range(config["n_splits"]))),
+        expand("data/multigrate/{pattern}/{split}/losses.png", pattern=paramspace_pattern, split=list(range(config["n_splits"])))
+    params:
+        model_params=paramspace.instance,
+        paramspace_pattern=paramspace_pattern,
+        **config
+    conda:
+        "envs/multigrate.yaml"
+    script:
+        "scripts/train.py"
+

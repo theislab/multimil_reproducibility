@@ -1,0 +1,12 @@
+name: multigrate
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.10
+  - scanpy
+  - pip
+  - pip:
+      - -e /lustre/groups/ml01/workspace/anastasia.litinetskaya/code/multigrate
+      - -e /lustre/groups/ml01/workspace/anastasia.litinetskaya/code/multimil

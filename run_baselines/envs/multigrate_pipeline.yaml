@@ -1,0 +1,13 @@
+name: multigrate_pipeline
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.10
+  - scanpy
+  - pip
+  - pip:
+      - decoupler
+      - -e /Users/anastasia.litinetska/Documents/code/multigrate
+      - -e /Users/anastasia.litinetska/Documents/code/multimil

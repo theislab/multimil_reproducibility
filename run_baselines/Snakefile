@@ -2,10 +2,12 @@ import pandas as pd
 from snakemake.utils import Paramspace
 from scripts.utils import create_tasks_df
 from pprint import pprint
+import numpy as np
 
 configfile: 'config.yaml'
 tasks_df = create_tasks_df('config.yaml', save='data/tasks.tsv')
 hashes = list(tasks_df['hash'])
+methods = np.unique(tasks_df['method'])
 
 rule run_method:
     #input:
@@ -25,6 +27,13 @@ rule run_method:
     script:
         'scripts/run_method.py'
 
+# rule find_best:
+#     inpit:
+#         expand(
+#             rules.run_method.output.tsv,
+#             hash=hashes,
+#         )
+
 rule merge:
     input:
         expand(
@@ -35,7 +44,7 @@ rule merge:
         tsv='data/reports/methods.tsv'
     run:
         input_files = [input] if isinstance(input, str) else input
-        dfs = [pd.read_table(file) for file in input_files]
+        dfs = [pd.read_table(file) for file in input_files if os.path.exists(file)]
         metrics_df = pd.concat(dfs)
         print(metrics_df)
         metrics_df.to_csv(output.tsv, sep='\t', index=False)

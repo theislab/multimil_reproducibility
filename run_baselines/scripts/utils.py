@@ -8,23 +8,32 @@ def create_hash(string: str, digest_size: int = 5):
     return hashlib.blake2b(string, digest_size=digest_size).hexdigest()
 
 def create_tasks_df(config, save=None):
-    tasks_df = {}
+    tasks_df = []
     with open(config, "r") as stream:
         params = yaml.safe_load(stream)
     for task in params['TASKS']:
         task_dict = params['TASKS'][task]
         params_list = []
+        method_dfs = []
         for method in task_dict['methods']:
             method_params = task_dict['methods'][method]
             df_params = pd.read_csv(method_params, sep='\t', index_col=0)
             params_list = [str(row) for row in df_params.to_dict(orient='records')]
-            tasks_df['params'] = params_list
-            tasks_df['hash'] = [create_hash(row) for row in params_list]
-            tasks_df['method'] = method
+            method_df = {}
+            method_df['params'] = params_list
+            method_df['hash'] = [create_hash(row) for row in params_list]
+            method_df['method'] = method
+            method_dfs.append(pd.DataFrame(method_df))
+        method_dfs = pd.concat(method_dfs)
+        method_dfs['task'] = task
+        
         for key in task_dict:
             if key != 'methods':
-                tasks_df[key] = task_dict[key]
+                method_dfs[key] = task_dict[key] 
+        
+        tasks_df.append(method_dfs)
+    tasks_df = pd.concat(tasks_df)
     if save is not None:
-        pd.DataFrame(tasks_df).to_csv(save, sep='\t')
-    return pd.DataFrame(tasks_df)
-            
+        tasks_df.to_csv(save, sep='\t')
+    return tasks_df
+                

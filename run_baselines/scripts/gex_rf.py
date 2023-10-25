@@ -63,5 +63,4 @@ def run_gex_rf(adata, condition_key, n_splits, params, **kwargs):
     
     print(f"Mean validation accuracy across 5 CV splits for a random forest model = {np.mean(np.array(val_accuracies))}.")
     print(f"Mean validation weighted avg across 5 CV splits for a random forest model = {np.mean(np.array(val_avg))}.")
-
     return df

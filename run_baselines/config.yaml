@@ -1,15 +1,16 @@
 
 TASKS:
   'hlca_small':
-    input: data/hlca_small.h5ad
+    input1: data/hlca_small.h5ad
+    input2: null
     label_key: transf_ann_level_3_label
     batch_key: study
     condition_key: lung_condition_coarse
     sample_key: sample
     n_splits: 2
     methods:
-     # - multigrate
-      pb_rf: data/params/hlca_small/pb_rf.tsv
-      pb_nn: data/params/hlca_small/pb_nn.tsv
-      gex_nn: data/params/hlca_small/gex_nn.tsv
-      gex_rf: data/params/hlca_small/gex_rf.tsv
+      multigrate: data/params/hlca_small/multigrate.tsv
+      #pb_rf: data/params/hlca_small/pb_rf.tsv
+      #pb_nn: data/params/hlca_small/pb_nn.tsv
+      #gex_nn: data/params/hlca_small/gex_nn.tsv
+      #gex_rf: data/params/hlca_small/gex_rf.tsv

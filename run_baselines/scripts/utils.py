@@ -26,7 +26,6 @@ def create_tasks_df(config, save=None):
             method_dfs.append(pd.DataFrame(method_df))
         method_dfs = pd.concat(method_dfs)
         method_dfs['task'] = task
-        
         for key in task_dict:
             if key != 'methods':
                 method_dfs[key] = task_dict[key] 

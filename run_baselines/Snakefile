@@ -1,65 +1,65 @@
 import pandas as pd
 from snakemake.utils import Paramspace
+from scripts.utils import create_tasks_df
+from pprint import pprint
 
 configfile: 'config.yaml'
+tasks_df = create_tasks_df('config.yaml')
+hashes = list(tasks_df['hash'])
 
 rule run_method:
-    input:
-        lambda wildcards: config['TASKS'][wildcards.task]['input']
+    #input:
+     #   lambda wildcards: config['TASKS'][wildcards.task]['input']
     output:
-        tsv='data/reports/{task}/{method}/accuracy.tsv'
+        tsv='data/reports/{hash}/accuracy.tsv'
     params:
-        label_key=lambda wildcards: config['TASKS'][wildcards.task]['label_key'],
-        batch_key=lambda wildcards: config['TASKS'][wildcards.task]['batch_key'],
-        condition_key=lambda wildcards: config['TASKS'][wildcards.task]['condition_key'],
-        sample_key=lambda wildcards: config['TASKS'][wildcards.task]['sample_key'],
-        n_splits=lambda wildcards: config['TASKS'][wildcards.task]['n_splits'],
-        params=lambda wildcards: config['METHOD_PARAMS'][wildcards.method]['params'],
+        # label_key=lambda wildcards: config['TASKS'][wildcards.task]['label_key'],
+        # batch_key=lambda wildcards: config['TASKS'][wildcards.task]['batch_key'],
+        # condition_key=lambda wildcards: config['TASKS'][wildcards.task]['condition_key'],
+        # sample_key=lambda wildcards: config['TASKS'][wildcards.task]['sample_key'],
+        # n_splits=lambda wildcards: config['TASKS'][wildcards.task]['n_splits'],
+        #params=lambda wildcards: config['METHOD_PARAMS'][wildcards.method]['params'],
+        params=lambda wildcards: tasks_df.loc[tasks_df['hash'] == wildcards.hash, :].iloc[0, :].to_dict()
     conda:
         'envs/multigrate_pipeline.yaml'
     script:
         'scripts/run_method.py'
 
-rule merge_methods_per_task:
+rule merge:
     input:
-        lambda wildcards:
-            expand(
-                rules.run_method.output.tsv,
-                method=config['TASKS'][wildcards.task]['methods'],
-                allow_missing=True,
-            )
+        expand(
+            rules.run_method.output.tsv,
+            hash=hashes,
+        )
     output:
-        tsv='data/reports/{task}/methods.tsv'
+        tsv='data/reports/methods.tsv'
     run:
         input_files = [input] if isinstance(input, str) else input
         dfs = [pd.read_table(file) for file in input_files]
-        print(dfs)
-        for df in dfs:
-            df['task'] = wildcards.task
         metrics_df = pd.concat(dfs)
         print(metrics_df)
         metrics_df.to_csv(output.tsv, sep='\t', index=False)
 
-rule merge_methods:
-    input:
-        expand(
-            rules.merge_methods_per_task.output.tsv,
-            task=config['TASKS'].keys()
-        )
-    output:
-        tsv='data/reports/metrics.tsv'
-    run:
-        input_files = [input] if isinstance(input, str) else input
-        metrics_df = pd.concat(
-            [pd.read_table(file) for file in input_files],
-        )
-        print(metrics_df)
-        metrics_df.to_csv(output.tsv, sep='\t', index=False)
+# rule merge_methods:
+#     input:
+#         expand(
+#             rules.merge_methods_per_task.output.tsv,
+#             task=config['TASKS'].keys()
+#         )
+#     output:
+#         tsv='data/reports/metrics.tsv'
+#     run:
+#         input_files = [input] if isinstance(input, str) else input
+#         metrics_df = pd.concat(
+#             [pd.read_table(file) for file in input_files],
+#         )
+#         print(metrics_df)
+#         metrics_df.to_csv(output.tsv, sep='\t', index=False)
 
 
 rule all:
     input:
-        rules.merge_methods.output
+        rules.merge.output
     default_target: True
 
 # rule pb_rf:

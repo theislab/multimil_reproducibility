@@ -6,12 +6,12 @@ from sklearn.metrics import classification_report
 from sklearn.ensemble import RandomForestClassifier
 
 
-def run_gex_rf(adata, condition_key, n_splits, output_file, normalize, **kwargs):
+def run_gex_rf(adata, condition_key, n_splits, params, **kwargs):
 
     adata.obs[condition_key] = adata.obs[condition_key].astype('category')
     rename_dict = {name: number for number, name in enumerate(sorted(list(adata.obs[condition_key].cat.categories)))}
     
-    if normalize is True:
+    if params['norm'] is True:
         sc.pp.normalize_total(adata, target_sum=1e4)
         sc.pp.log1p(adata)
 
@@ -60,6 +60,8 @@ def run_gex_rf(adata, condition_key, n_splits, output_file, normalize, **kwargs)
         print('===========================')
 
     df = pd.concat(dfs)
-    df.to_csv(output_file)
+    
     print(f"Mean validation accuracy across 5 CV splits for a random forest model = {np.mean(np.array(val_accuracies))}.")
     print(f"Mean validation weighted avg across 5 CV splits for a random forest model = {np.mean(np.array(val_avg))}.")
+
+    return df

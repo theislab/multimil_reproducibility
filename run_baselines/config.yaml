@@ -7,21 +7,9 @@ TASKS:
     condition_key: lung_condition_coarse
     sample_key: sample
     n_splits: 5
-    params: data/params/hlca_small/
     methods:
      # - multigrate
-      - pb_rf
+      pb_rf: data/params/hlca_small/pb_rf.tsv
      # - pb_nn
      # - gex_nn
-    #  - gex_rf
-    metrics: null
-
-METHOD_PARAMS:
-#   'pb_nn':
-#     params: data/params/pb_nn.tsv
-#   'gex_nn':
-#     params: data/params/gex_nn.tsv
-  'pb_rf':
-    params: data/params/pb_rf.tsv
-#   'gex_rf':
-#     params: data/params/gex_rf.tsv
+      gex_rf: data/params/hlca_small/gex_rf.tsv

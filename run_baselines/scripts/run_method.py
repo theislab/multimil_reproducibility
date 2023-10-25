@@ -47,4 +47,5 @@ if method_mode == 'rna':
     )
     df['hash'] = hash
     df['method_params'] = params['params']
+    df['task'] = params['task']
     df.to_csv(output_file, sep='\t')

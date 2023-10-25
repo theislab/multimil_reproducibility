@@ -21,7 +21,7 @@ def create_tasks_df(config, save=None):
             params_list = [str(row) for row in df_params.to_dict(orient='records')]
             method_df = {}
             method_df['params'] = params_list
-            method_df['hash'] = [create_hash(row) for row in params_list]
+            method_df['hash'] = [create_hash(row + method) for row in params_list]
             method_df['method'] = method
             method_dfs.append(pd.DataFrame(method_df))
         method_dfs = pd.concat(method_dfs)

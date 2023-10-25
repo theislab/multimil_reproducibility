@@ -11,5 +11,5 @@ TASKS:
      # - multigrate
       pb_rf: data/params/hlca_small/pb_rf.tsv
       pb_nn: data/params/hlca_small/pb_nn.tsv
-      #gex_nn: data/params/hlca_small/gex_nn.tsv
-      #gex_rf: data/params/hlca_small/gex_rf.tsv
+      gex_nn: data/params/hlca_small/gex_nn.tsv
+      gex_rf: data/params/hlca_small/gex_rf.tsv

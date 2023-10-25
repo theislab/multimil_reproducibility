@@ -8,6 +8,7 @@ configfile: 'config.yaml'
 tasks_df = create_tasks_df('config.yaml', save='data/tasks.tsv')
 hashes = list(tasks_df['hash'])
 methods = np.unique(tasks_df['method'])
+tasks = np.unique(tasks_df['task'])
 
 rule run_method:
     #input:
@@ -26,13 +27,6 @@ rule run_method:
         'envs/multigrate_pipeline.yaml'
     script:
         'scripts/run_method.py'
-
-# rule find_best:
-#     inpit:
-#         expand(
-#             rules.run_method.output.tsv,
-#             hash=hashes,
-#         )
 
 rule merge:
     input:
@@ -65,10 +59,20 @@ rule merge:
 #         print(metrics_df)
 #         metrics_df.to_csv(output.tsv, sep='\t', index=False)
 
+rule find_best_per_task:
+    input:
+        tsv='data/reports/methods.tsv'
+    output:
+        tsv='data/reports/best.tsv'
+    params:
+        config=config
+    script:
+        'scripts/find_best.py'
+
 
 rule all:
     input:
-        rules.merge.output
+        rules.find_best_per_task.output
     default_target: True
 
 # rule pb_rf:

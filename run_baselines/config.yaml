@@ -9,7 +9,7 @@ TASKS:
     n_splits: 5
     methods:
      # - multigrate
-      pb_rf: data/params/hlca_small/pb_rf.tsv
-     # - pb_nn
-     # - gex_nn
-      gex_rf: data/params/hlca_small/gex_rf.tsv
+      #pb_rf: data/params/hlca_small/pb_rf.tsv
+      pb_nn: data/params/hlca_small/pb_nn.tsv
+      #gex_nn: data/params/hlca_small/gex_nn.tsv
+      #gex_rf: data/params/hlca_small/gex_rf.tsv

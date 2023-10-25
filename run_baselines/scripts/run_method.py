@@ -7,10 +7,14 @@ import json
 
 from pb_rf import run_pb_rf
 from gex_rf import run_gex_rf
+from pb_nn import run_pb_nn
+from gex_nn import run_gex_nn
 
 METHOD_MAP = dict(
     pb_rf=dict(function=run_pb_rf, mode='rna'),
     gex_rf=dict(function=run_gex_rf, mode='rna'),
+    pb_nn=dict(function=run_pb_nn, mode='rna'),
+    gex_nn=dict(function=run_gex_nn, mode='rna'),
 )
 
 params = snakemake.params.params
@@ -39,6 +43,7 @@ if method_mode == 'rna':
         n_splits=n_splits, 
         output_file=output_file,
         params=method_params,
+        hash=hash,
     )
     df['hash'] = hash
     df['method_params'] = params['params']

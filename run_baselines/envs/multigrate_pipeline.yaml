@@ -9,5 +9,6 @@ dependencies:
   - pip
   - pip:
       - decoupler
+      - ipywidgets
       - -e /Users/anastasia.litinetska/Documents/code/multigrate
       - -e /Users/anastasia.litinetska/Documents/code/multimil

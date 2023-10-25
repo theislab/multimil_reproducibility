@@ -4,7 +4,7 @@ from scripts.utils import create_tasks_df
 from pprint import pprint
 
 configfile: 'config.yaml'
-tasks_df = create_tasks_df('config.yaml')
+tasks_df = create_tasks_df('config.yaml', save='data/tasks.tsv')
 hashes = list(tasks_df['hash'])
 
 rule run_method:

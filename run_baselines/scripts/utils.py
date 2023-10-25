@@ -7,7 +7,7 @@ def create_hash(string: str, digest_size: int = 5):
     string = string.encode('utf-8')
     return hashlib.blake2b(string, digest_size=digest_size).hexdigest()
 
-def create_tasks_df(config):
+def create_tasks_df(config, save=None):
     tasks_df = {}
     with open(config, "r") as stream:
         params = yaml.safe_load(stream)
@@ -24,5 +24,7 @@ def create_tasks_df(config):
         for key in task_dict:
             if key != 'methods':
                 tasks_df[key] = task_dict[key]
+    if save is not None:
+        pd.DataFrame(tasks_df).to_csv(save, sep='\t')
     return pd.DataFrame(tasks_df)
             

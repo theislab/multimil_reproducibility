@@ -10,5 +10,5 @@ dependencies:
   - pip:
       - decoupler
       - ipywidgets
-      - -e /Users/anastasia.litinetska/Documents/code/multigrate
-      - -e /Users/anastasia.litinetska/Documents/code/multimil
+      - -e /lustre/groups/ml01/workspace/anastasia.litinetskaya/code/multigrate
+      - -e /lustre/groups/ml01/workspace/anastasia.litinetskaya/code/multimil

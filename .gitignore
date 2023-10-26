@@ -1,4 +1,5 @@
 *.pyc
+logs/
 __pycache__/
 **/data/
 **/.snakemake

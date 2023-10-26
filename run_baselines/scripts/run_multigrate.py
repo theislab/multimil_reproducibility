@@ -95,7 +95,6 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
                 )
             
             del rna
-            del adata1
         else:
             rna = adata1
             print('Organizing multiome anndatas...')
@@ -105,8 +104,6 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
                 )
             
             del rna
-            del adata1
-            del adata2
 
         query = adata[adata.obs[f"split{i}"] == "val"].copy()
         adata = adata[adata.obs[f"split{i}"] == "train"].copy()
@@ -171,11 +168,12 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
             show=False,
         )
         #print(f'Saving train umap as {output_files[i-2]}...')
-        plt.savefig('data/multigrate/{hash}/{i}/train_umap.png', bbox_inches="tight")
+
+        plt.savefig(f'data/multigrate/{hash}/{i}/train_umap.png', bbox_inches="tight")
         plt.close()
 
         #print('Saving train losses...')
-        mil.plot_losses(save='data/multigrate/{hash}/{i}/train_losses.png')
+        mil.plot_losses(save=f'data/multigrate/{hash}/{i}/train_losses.png')
 
         checkpoints  = get_existing_checkpoints(path_to_train_checkpoints)
 
@@ -285,3 +283,6 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
                 df['epoch'] = ckpt.split('-')[1].split('=')[-1]
                 df['query_epoch'] = query_ckpt.split('-')[0].split('=')[-1]
                 dfs.append(df)
+
+    df = pd.concat(dfs)
+    return df

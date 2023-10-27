@@ -26,7 +26,7 @@ def get_existing_checkpoints(rootdir):
 
     return checkpoints
 
-def run_multigrate_mil(adata1, adata2, sample_key, condition_key, n_splits, params, hash, **kwargs):
+def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash, **kwargs):
 
     print('============ Multigrate training ============')
     torch.set_float32_matmul_precision('medium')
@@ -40,10 +40,8 @@ def run_multigrate_mil(adata1, adata2, sample_key, condition_key, n_splits, para
         "categorical_covariate_keys": params['categorical_covariate_keys'].strip('][').replace('\'', '').replace('\"', '').split(', '),
     }
     model_params = {
-        "z_dim": params['z_dim'],
-        "attn_dim": params['attn_dim'],
         "class_loss_coef": params['class_loss_coef'],
-        "cond_dim": params['cond_dim'],
+        "z_dim": adata1.X.shape[1],
     }
     subset_umap = params['subset_umap']
     umap_colors = params['umap_colors'].strip('][').replace('\'', '').replace('\"', '').split(', ')
@@ -56,7 +54,6 @@ def run_multigrate_mil(adata1, adata2, sample_key, condition_key, n_splits, para
     # train params
     lr = params['lr']
     batch_size = params['batch_size']
-    kl = params['kl']
     seed = params['seed']
 
     scvi.settings.seed = seed
@@ -71,26 +68,15 @@ def run_multigrate_mil(adata1, adata2, sample_key, condition_key, n_splits, para
         ######## TRAIN #########
         ########################
 
-        if adata2 is None:
-            rna = adata1
+        rna = adata1
 
-            print('Organizing multiome anndatas...')
-            adata = mtg.data.organize_multiome_anndatas(
-                adatas = [[rna]],
+        print('Organizing multiome anndatas...')
+        adata = mtg.data.organize_multiome_anndatas(
+            adatas = [[rna]],
                 #layers = layers,
-                )
+        )
             
-            del rna
-        else:
-            rna = adata1
-            print('Organizing multiome anndatas...')
-            adata = mtg.data.organize_multiome_anndatas(
-                adatas = [[rna, adata2]],
-                #layers = layers,
-                )
-            
-            del rna
-
+        del rna
         query = adata[adata.obs[f"split{i}"] == "val"].copy()
         adata = adata[adata.obs[f"split{i}"] == "train"].copy()
 

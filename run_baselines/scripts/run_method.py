@@ -9,8 +9,8 @@ from pb_rf import run_pb_rf
 from gex_rf import run_gex_rf
 from pb_nn import run_pb_nn
 from gex_nn import run_gex_nn
-from scripts.run_multigrate_full import run_multigrate
-from scripts.run_multigrate_mil import run_multigrate_mil
+from run_multigrate_full import run_multigrate
+from run_multigrate_mil import run_multigrate_mil
 
 METHOD_MAP = dict(
     pb_rf=dict(function=run_pb_rf, mode='rna'),

@@ -7,7 +7,7 @@ TASKS:
     batch_key: study
     condition_key: lung_condition_coarse
     sample_key: sample
-    n_splits: 2
+    n_splits: 5
     methods:
       multigrate: data/params/hlca_small/multigrate.tsv
       #pb_rf: data/params/hlca_small/pb_rf.tsv

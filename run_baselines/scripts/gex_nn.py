@@ -188,7 +188,7 @@ def run_gex_nn(adata, sample_key, condition_key, n_splits, params, hash, **kwarg
         # Plot the dataframes
         _, axes = plt.subplots(nrows=1, ncols=2, figsize=(20,7))
 
-        fig_path = f'/Users/anastasia.litinetska/Documents/code/multimil_reproducibility/run_baselines/data/reports/{hash}/figures/'
+        fig_path = f'data/reports/{hash}/figures/'
         os.makedirs(fig_path, exist_ok = True)
         sns.lineplot(data=train_val_acc_df, x = "epochs", y="value", hue="variable",  ax=axes[0]).set_title('Train-Val Accuracy/Epoch')
         sns.lineplot(data=train_val_loss_df, x = "epochs", y="value", hue="variable", ax=axes[1]).set_title('Train-Val Loss/Epoch').get_figure().savefig(fig_path + 'plot_loss.png')

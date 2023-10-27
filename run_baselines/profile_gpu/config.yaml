@@ -18,13 +18,13 @@ default-resources:
   - mem_mb=90000
   - disk_mb=32000
 
-jobs: 10
+jobs: 20
 keep-going: True
 keep-incomplete: True
 printshellcmds: True
 scheduler: greedy
 use-conda: True
-cluster-cancel: scancel
+# cluster-cancel: scancel
 show-failed-logs: True
 # configfile: config.json
 printshellcmds: True

@@ -9,8 +9,8 @@ TASKS:
     sample_key: sample
     n_splits: 5
     methods:
-      multigrate: data/params/hlca_small/multigrate.tsv
-      #pb_rf: data/params/hlca_small/pb_rf.tsv
-      #pb_nn: data/params/hlca_small/pb_nn.tsv
-      #gex_nn: data/params/hlca_small/gex_nn.tsv
-      #gex_rf: data/params/hlca_small/gex_rf.tsv
+      multigrate: params/hlca_small/multigrate.tsv
+      #pb_rf: params/hlca_small/pb_rf.tsv
+      #pb_nn: params/hlca_small/pb_nn.tsv
+      #gex_nn: params/hlca_small/gex_nn.tsv
+      #gex_rf: params/hlca_small/gex_rf.tsv

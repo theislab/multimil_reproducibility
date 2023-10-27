@@ -9,7 +9,8 @@ from pb_rf import run_pb_rf
 from gex_rf import run_gex_rf
 from pb_nn import run_pb_nn
 from gex_nn import run_gex_nn
-from run_multigrate import run_multigrate
+from scripts.run_multigrate_full import run_multigrate
+from scripts.run_multigrate_mil import run_multigrate_mil
 
 METHOD_MAP = dict(
     pb_rf=dict(function=run_pb_rf, mode='rna'),
@@ -17,6 +18,7 @@ METHOD_MAP = dict(
     pb_nn=dict(function=run_pb_nn, mode='rna'),
     gex_nn=dict(function=run_gex_nn, mode='rna'),
     multigrate=dict(function=run_multigrate, mode='paired'),
+    multigrate_mil=dict(function=run_multigrate_mil, mode='embed'),
 )
 
 params = snakemake.params.params
@@ -36,7 +38,7 @@ output_file = snakemake.output.tsv
 method_mode = METHOD_MAP[method]['mode']
 method_function = METHOD_MAP[method]['function']
 
-if method_mode == 'rna':
+if method_mode == 'rna' or method_mode == 'embed':
     adata = sc.read_h5ad(input1)
     df = method_function(
         adata, 
@@ -66,6 +68,7 @@ elif method_mode == 'paired':
         params=method_params,
         hash=h,
     )
+
 df['hash'] = h
 df['method_params'] = params['params']
 df['task'] = params['task']

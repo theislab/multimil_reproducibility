@@ -30,13 +30,6 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
 
     print('============ Multigrate training ============')
 
-    # n_splits = snakemake.params['n_splits']
-    # output_files = snakemake.output
-
-    # for i in range(n_splits):
-    #     with open(output_files[i], 'w') as f:
-    #         f.write(f'split {i} done!')
-
     torch.set_float32_matmul_precision('medium')
 
     donor = sample_key
@@ -71,10 +64,6 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
     seed = params['seed']
 
     scvi.settings.seed = seed
-
-    # clean up
-    # donor = donor[0]
-    # condition = condition[0]
 
     dfs = []
 
@@ -154,7 +143,6 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
 
         if subset_umap is not None:
             print(f'Subsetting to {subset_umap}...')
-            # change to adata?
             idx = random.sample(list(adata.obs_names), subset_umap)
             adata = adata[idx].copy()
 
@@ -265,6 +253,11 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
 
                 new_model.get_model_output(adata, batch_size=batch_size)
                 adata_both = ad.concat([adata, query])
+
+                if subset_umap is not None:
+                    print(f'Subsetting to {subset_umap}...')
+                    idx = random.sample(list(adata_both.obs_names), subset_umap)
+                    adata_both = adata_both[idx].copy()
 
                 sc.pp.neighbors(adata_both, use_rep='latent')
                 sc.tl.umap(adata_both)

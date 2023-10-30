@@ -64,7 +64,7 @@ def multi_acc(y_pred, y_test):
 
 def run_pb_nn(adata, sample_key, condition_key, n_splits, params, hash, **kwargs):
 
-    adata_ = dc.get_pseudobulk(adata, sample_col=sample_key, groups_col=None, min_prop=-1, min_smpls=0, min_cells=0, min_counts=0)
+    adata_ = dc.get_pseudobulk(adata, sample_col=sample_key, groups_col=None, min_prop=-1, min_smpls=0, min_cells=0, min_counts=0, skip_checks=True)
 
     if params['norm'] is True:
         sc.pp.normalize_total(adata_, target_sum=1e4)

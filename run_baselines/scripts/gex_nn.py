@@ -8,6 +8,7 @@ import scanpy as sc
 import decoupler as dc
 import pandas as pd
 import os
+import scipy
 
 import torch
 import torch.nn as nn
@@ -88,14 +89,20 @@ def run_gex_nn(adata, sample_key, condition_key, n_splits, params, hash, **kwarg
         df = adata.obs[[f'split{i}', sample_key]].drop_duplicates()
         train = list(df[df[f'split{i}'] == 'train'][sample_key])
         test = list(df[df[f'split{i}'] == 'val'][sample_key])
-        x = pd.DataFrame(adata[adata.obs[sample_key].isin(train)].X.A).to_numpy()
+        if scipy.sparse.issparse(adata.X):
+            x = pd.DataFrame(adata[adata.obs[sample_key].isin(train)].X.A).to_numpy()
+        else:
+            x = pd.DataFrame(adata[adata.obs[sample_key].isin(train)].X).to_numpy()
         
         
         y = adata[adata.obs[sample_key].isin(train)].obs[condition_key].cat.rename_categories(list(range(num_classes)))
         y = y.to_numpy()
         print(f'Train shape = ({x.shape}, {y.shape}).')
 
-        x_test = pd.DataFrame(adata[adata.obs[sample_key].isin(test)].X.A).to_numpy()
+        if scipy.sparse.issparse(adata.X):
+            x_test = pd.DataFrame(adata[adata.obs[sample_key].isin(test)].X.A).to_numpy()
+        else:
+            x_test = pd.DataFrame(adata[adata.obs[sample_key].isin(test)].X).to_numpy()
         y_test = adata[adata.obs[sample_key].isin(test)].obs[condition_key].cat.rename_categories(list(range(num_classes)))
         y_test = y_test.to_numpy()
         print(f'Val shape = ({x_test.shape}, {y_test.shape}).')

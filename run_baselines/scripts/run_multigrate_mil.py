@@ -181,6 +181,8 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
 
             adata_both = ad.concat([adata, query])
 
+            adata_both.write(path_to_train_checkpoints + f'{ckpt}.h5ad')
+
             if subset_umap is not None:
                 print(f'Subsetting to {subset_umap}...')
                 idx = random.sample(list(adata_both.obs_names), subset_umap)

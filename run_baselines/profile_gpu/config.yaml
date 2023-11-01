@@ -15,10 +15,10 @@ default-resources:
   - partition=gpu_p
   - gpu=1
   - qos=gpu_normal
-  - mem_mb=90000
+  - mem_mb=32000
   - disk_mb=32000
 
-jobs: 20
+jobs: 10
 keep-going: True
 keep-incomplete: True
 printshellcmds: True

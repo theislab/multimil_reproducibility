@@ -1,3 +1,5 @@
+import time 
+start_time = time.time()
 import argparse
 from pprint import pprint
 import numpy as np
@@ -11,6 +13,8 @@ from pb_nn import run_pb_nn
 from gex_nn import run_gex_nn
 from run_multigrate_full import run_multigrate
 from run_multigrate_mil import run_multigrate_mil
+
+print('--- %s seconds ---' % (time.time() - start_time))
 
 METHOD_MAP = dict(
     pb_rf=dict(function=run_pb_rf, mode='rna'),

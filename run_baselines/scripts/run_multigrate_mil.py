@@ -1,3 +1,6 @@
+import time
+start_time = time.time()
+
 import scanpy as sc
 import pandas as pd
 import multigrate as mtg
@@ -14,6 +17,8 @@ import random
 import torch
 import scvi
 from sklearn.metrics import classification_report
+
+print('--- %s seconds ---' % (time.time()-start_time))
 
 def get_existing_checkpoints(rootdir):
 
@@ -124,9 +129,10 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
 
         mil.save(f'data/multigrate_mil/{hash}/{i}/model/', overwrite=True)
 
+        adata.write(path_to_train_checkpoints + 'train_anndata.h5ad')
+
         if subset_umap is not None:
             print(f'Subsetting to {subset_umap}...')
-            # change to adata?
             idx = random.sample(list(adata.obs_names), subset_umap)
             adata = adata[idx].copy()
 
@@ -139,12 +145,10 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
             ncols=1,
             show=False,
         )
-        #print(f'Saving train umap as {output_files[i-2]}...')
 
         plt.savefig(f'data/multigrate_mil/{hash}/{i}/train_umap.png', bbox_inches="tight")
         plt.close()
 
-        #print('Saving train losses...')
         mil.plot_losses(save=f'data/multigrate_mil/{hash}/{i}/train_losses.png')
 
         checkpoints  = get_existing_checkpoints(path_to_train_checkpoints)
@@ -175,13 +179,13 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
 
             df['split'] = i
             df['method'] = 'multigrate_mil'
-            df['epoch'] = ckpt.split('-')[1].split('=')[-1]
+            df['epoch'] = ckpt.split('-')[0].split('=')[-1]
             
             dfs.append(df)
 
-            adata_both = ad.concat([adata, query])
+            query.write(path_to_train_checkpoints + f'{ckpt}_query_anndata.h5ad')
 
-            adata_both.write(path_to_train_checkpoints + f'{ckpt}.h5ad')
+            adata_both = ad.concat([adata, query])
 
             if subset_umap is not None:
                 print(f'Subsetting to {subset_umap}...')

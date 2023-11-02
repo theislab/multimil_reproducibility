@@ -64,7 +64,7 @@ rule plot_accuracy:
     output:
         expand('data/reports/{task}_accuracy.png', task=tasks)
     conda:
-	'envs/multigrate_pipeline.yaml'
+	    'envs/multigrate_pipeline.yaml'
     script:
         'scripts/plot_accuracy.py'
 

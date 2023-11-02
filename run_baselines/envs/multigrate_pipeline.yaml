@@ -6,6 +6,8 @@ channels:
 dependencies:
   - python=3.10
   - scanpy
+  - matplotlib
+  - pandas!=2.1.2
   - pip
   - pip:
       - decoupler

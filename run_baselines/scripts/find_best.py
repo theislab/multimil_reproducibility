@@ -18,6 +18,7 @@ for task in config['TASKS']:
         df_method = df_task[df_task['method'] == method]
         best_accuracy = -1
         best_hash = None
+        best_accuracies = None
 
         # multigrate
         for h in np.unique(df_method['hash']):
@@ -39,6 +40,7 @@ for task in config['TASKS']:
                             best_params = df_tmp_epoch['method_params'].iloc[0]
                             best_epoch = epoch
                             best_query_epoch = np.nan
+                            best_accuracies = accuracies
             elif method == 'multigrate':
                 for epoch in np.unique(df_tmp['epoch']):
                     df_tmp_epoch = df_tmp[df_tmp['epoch'] == epoch]
@@ -58,6 +60,7 @@ for task in config['TASKS']:
                                 best_params = df_tmp_q_epoch['method_params'].iloc[0]
                                 best_epoch = epoch
                                 best_query_epoch = query_epoch
+                                best_accuracies = accuracies
 
             else:
                 if len(np.unique(df_tmp['split'])) != n_splits:
@@ -72,6 +75,7 @@ for task in config['TASKS']:
                     best_params = df_tmp['method_params'].iloc[0]
                     best_epoch = np.nan
                     best_query_epoch = np.nan
+                    best_accuracies = accuracies
 
         best_methods_per_task[method] = {
             'hash': best_hash,
@@ -79,6 +83,7 @@ for task in config['TASKS']:
             'best_params': best_params,
             'best_epoch': best_epoch,
             'best_query_epoch': best_query_epoch,
+            'accuracies': best_accuracies,
         }
     best_df = pd.DataFrame.from_dict(best_methods_per_task).T
     best_df['task'] = task

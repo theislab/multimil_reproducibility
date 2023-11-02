@@ -6,15 +6,17 @@ import numpy as np
 
 configfile: 'config.yaml'
 tasks_df = create_tasks_df('config.yaml', save='data/tasks.tsv')
-hashes = list(tasks_df['hash'])
-methods = np.unique(tasks_df['method'])
+hashes = np.unique(tasks_df['hash'])
+matched_methods = [tasks_df.loc[tasks_df['hash'] == h, 'method'].values[0] for h in hashes]
+matched_tasks = [tasks_df.loc[tasks_df['hash'] == h, 'task'].values[0] for h in hashes]
+#methods = np.unique(tasks_df['method'])
 tasks = np.unique(tasks_df['task'])
 
 rule run_method:
     #input:
      #   lambda wildcards: config['TASKS'][wildcards.task]['input']
     output:
-        tsv='data/reports/{hash}/accuracy.tsv'
+        tsv='data/reports/{task}/{method}/{hash}/accuracy.tsv'
     params:
         # label_key=lambda wildcards: config['TASKS'][wildcards.task]['label_key'],
         # batch_key=lambda wildcards: config['TASKS'][wildcards.task]['batch_key'],
@@ -32,6 +34,9 @@ rule merge:
     input:
         expand(
             rules.run_method.output.tsv,
+            zip,
+            task=matched_tasks,
+            method=matched_methods,
             hash=hashes,
         )
     output:
@@ -43,22 +48,6 @@ rule merge:
         print(metrics_df)
         metrics_df.to_csv(output.tsv, sep='\t', index=False)
 
-# rule merge_methods:
-#     input:
-#         expand(
-#             rules.merge_methods_per_task.output.tsv,
-#             task=config['TASKS'].keys()
-#         )
-#     output:
-#         tsv='data/reports/metrics.tsv'
-#     run:
-#         input_files = [input] if isinstance(input, str) else input
-#         metrics_df = pd.concat(
-#             [pd.read_table(file) for file in input_files],
-#         )
-#         print(metrics_df)
-#         metrics_df.to_csv(output.tsv, sep='\t', index=False)
-
 rule find_best_per_task:
     input:
         tsv='data/reports/methods.tsv'
@@ -69,125 +58,15 @@ rule find_best_per_task:
     script:
         'scripts/find_best.py'
 
+rule plot_accuracy:
+    input:
+        tsv='data/reports/best.tsv'
+    output:
+        expand('data/reports/{task}_accuracy.png', task=tasks)
+    script:
+        'scripts/plot_accuracy.py'
 
 rule all:
     input:
-        rules.find_best_per_task.output
+        expand('data/reports/{task}_accuracy.png', task=tasks)
     default_target: True
-
-# rule pb_rf:
-#     input:
-#         lambda wildcards: config['TASKS'][wildcards.task]['input']
-#     output:
-#         expand('data/reports/{{task}}/pb_rf/{split}/accuracy.csv', split=list(range(5)))
-#     conda:
-#         'envs/multigrate_pipeline.yaml'
-#     script:
-#         'scripts/pb_rf.py'
-
-# rule merge_csv:
-#     input:
-#         expand('data/reports/{{task}}/{{method}}/{split}/accuracy.csv', split=list(range(5)))
-#     output:
-#         'data/reports/{task}/{method}/accuracy.csv'
-#     conda:
-#         'envs/multigrate_pipeline.yaml'
-#     script:
-#         'scripts/merge_csv.py'
-
-
-
-# rule multigrate:
-#     input:
-#         "data/pp/rna_hvg_squished.h5ad",
-#         "data/pp/adt_squished.h5ad"
-#     output:
-#         expand("data/multigrate/{pattern}/train_umap.png", pattern=paramspace_pattern), #list(range(config["n_splits"]))),
-#         expand("data/multigrate/{pattern}/losses.png", pattern=paramspace_pattern) #list(range(config["n_splits"])))
-#     params:
-#         model_params=paramspace.instance,
-#         paramspace_pattern=paramspace_pattern,
-#         **config
-#     conda:
-#         "multigrate_pipeline"
-#     script:
-#         "scripts/multigrate.py"
-
-
-
-# rule pp:
-#     input:
-#         h5mu=lambda wildcards: config['TASKS'][wildcards.task]['input']
-#     output:
-#         h5mu=config['out_dir'] + '/{task}/pp.h5mu'
-#     params:
-#         subset=lambda wildcards: config['TASKS'][wildcards.task]['subset'],
-#         batch_key=lambda wildcards: config['TASKS'][wildcards.task]['batch_key']
-#     conda:
-#         'multigrate_pipeline'
-#     script:
-#         'scripts/pp.py'
-
-# rule run_metric:
-#     input:
-#         h5mu=lambda wildcards: config['TASKS'][wildcards.task]['input']
-#     output:
-#         tsv=config['out_dir'] + '/{task}/metric~{metric}.tsv'
-#     params:
-#         modality_spec=lambda wildcards: dict(
-#             modality1=config['TASKS'][wildcards.task]['modality1'],
-#             modality2=config['TASKS'][wildcards.task]['modality2'],
-#             embedding=config['TASKS'][wildcards.task]['embedding'],
-#         ),
-#         label_key=lambda wildcards: config['TASKS'][wildcards.task]['label_key'],
-#         batch_key=lambda wildcards: config['TASKS'][wildcards.task]['batch_key'],
-#     conda:
-#         'mmmetrics'
-#     script:
-#         'run_metric.py'
-
-
-# rule merge_metrics_per_task:
-#     input:
-#         lambda wildcards:
-#             expand(
-#                 rules.run_metric.output.tsv,
-#                 metric=config['TASKS'][wildcards.task]['metrics'],
-#                 allow_missing=True,
-#             )
-#     output:
-#         tsv=config['out_dir'] + '/{task}/metrics.tsv'
-#     run:
-#         input_files = [input] if isinstance(input, str) else input
-#         dfs = [pd.read_table(file) for file in input_files]
-#         print(dfs)
-#         for df in dfs:
-#             df['task'] = wildcards.task
-#         metrics_df = pd.concat(dfs, ignore_index=True).reset_index(drop=True)
-#         print(metrics_df)
-#         metrics_df.to_csv(output.tsv, sep='\t', index=False)
-
-
-
-# rule merge_metrics:
-#     input:
-#         expand(
-#             rules.merge_metrics_per_task.output.tsv,
-#             task=config['TASKS'].keys()
-#         )
-#     output:
-#         tsv=config['out_dir'] + '/metrics.tsv'
-#     run:
-#         input_files = [input] if isinstance(input, str) else input
-#         metrics_df = pd.concat(
-#             [pd.read_table(file) for file in input_files],
-#             ignore_index=True,
-#         ).reset_index(drop=True)
-#         print(metrics_df)
-#         metrics_df.to_csv(output.tsv, sep='\t', index=False)
-
-
-# rule all:
-#     input:
-#         rules.merge_metrics.output
-#     default_target: True

@@ -26,8 +26,8 @@ TASKS:
     n_splits: 5
     methods:
       #multigrate_mil: params/hlca_small_embed/multigrate_mil_test.tsv
-      #multigrate_mil: params/hlca_small_embed/multigrate_mil.tsv
+      multigrate_mil: params/hlca_small_embed/multigrate_mil.tsv
       pb_rf: params/hlca_small_embed/pb_rf.tsv
       pb_nn: params/hlca_small_embed/pb_nn.tsv
-      #gex_nn: params/hlca_small_embed/gex_nn.tsv
+      gex_nn: params/hlca_small_embed/gex_nn.tsv
       gex_rf: params/hlca_small_embed/gex_rf.tsv

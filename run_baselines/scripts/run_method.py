@@ -1,53 +1,79 @@
+import time 
+start_time = time.time()
 import argparse
 from pprint import pprint
 import numpy as np
 import pandas as pd
 import scanpy as sc
+import ast
 
 from pb_rf import run_pb_rf
 from gex_rf import run_gex_rf
+from pb_nn import run_pb_nn
+from gex_nn import run_gex_nn
+from run_multigrate_full import run_multigrate
+from run_multigrate_mil import run_multigrate_mil
+
+print('--- %s seconds ---' % (time.time() - start_time))
 
 METHOD_MAP = dict(
     pb_rf=dict(function=run_pb_rf, mode='rna'),
     gex_rf=dict(function=run_gex_rf, mode='rna'),
+    pb_nn=dict(function=run_pb_nn, mode='rna'),
+    gex_nn=dict(function=run_gex_nn, mode='rna'),
+    multigrate=dict(function=run_multigrate, mode='paired'),
+    multigrate_mil=dict(function=run_multigrate_mil, mode='embed'),
 )
 
-input_files = snakemake.input
-output_file = snakemake.output.tsv
-method = snakemake.wildcards.method
-label_key = snakemake.params.label_key
-batch_key = snakemake.params.batch_key
-condition_key = snakemake.params.condition_key
-sample_key = snakemake.params.sample_key
-n_splits = snakemake.params.n_splits
 params = snakemake.params.params
+
+method_params = ast.literal_eval(params['params']) # this is dict
+input1 = params['input1']
+input2 = params['input2']
+method = params['method']
+label_key = params['label_key']
+batch_key = params['batch_key']
+condition_key = params['condition_key']
+sample_key = params['sample_key']
+n_splits = params['n_splits']
+h = params['hash']
+output_file = snakemake.output.tsv
 
 method_mode = METHOD_MAP[method]['mode']
 method_function = METHOD_MAP[method]['function']
 
-params_df = pd.read_table(params, index_col=0)
+if method_mode == 'rna' or method_mode == 'embed':
+    adata = sc.read_h5ad(input1)
+    df = method_function(
+        adata, 
+        sample_key=sample_key, 
+        condition_key=condition_key, 
+        label_key=label_key,
+        batch_key=batch_key,
+        n_splits=n_splits, 
+        output_file=output_file,
+        params=method_params,
+        hash=h,
+    )
+elif method_mode == 'paired':
+    adata1 = sc.read_h5ad(input1)
+    adata2 = None
+    if input2 is not None:
+        adata2 = sc.read_h5ad(input2)
+    df = method_function(
+        adata1=adata1,
+        adata2=adata2, 
+        sample_key=sample_key, 
+        condition_key=condition_key, 
+        label_key=label_key,
+        batch_key=batch_key,
+        n_splits=n_splits, 
+        output_file=output_file,
+        params=method_params,
+        hash=h,
+    )
 
-best_df = None
-best_accuracy = -1
-
-for i in range(len(params_df)):
-    params = params_df.iloc[i].to_dict()
-
-    if method_mode == 'rna':
-        adata = sc.read_h5ad(input_files[0])
-        accuracy, df = method_function(
-            adata, 
-            sample_key=sample_key, 
-            condition_key=condition_key, 
-            label_key=label_key,
-            batch_key=batch_key,
-            n_splits=n_splits, 
-            output_file=output_file,
-            params=params,
-        )
-        if accuracy > best_accuracy:
-            best_accuracy = accuracy
-            best_df = df
-            best_df['params'] = str(params)
-
-best_df.to_csv(output_file, sep='\t')
+df['hash'] = h
+df['method_params'] = params['params']
+df['task'] = params['task']
+df.to_csv(output_file, sep='\t')

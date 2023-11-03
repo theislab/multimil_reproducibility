@@ -6,8 +6,11 @@ channels:
 dependencies:
   - python=3.10
   - scanpy
+  - matplotlib
+  - pandas!=2.1.2
   - pip
   - pip:
       - decoupler
-      - -e /Users/anastasia.litinetska/Documents/code/multigrate
-      - -e /Users/anastasia.litinetska/Documents/code/multimil
+      - ipywidgets
+      - -e /lustre/groups/ml01/workspace/anastasia.litinetskaya/code/multigrate
+      - -e /lustre/groups/ml01/workspace/anastasia.litinetskaya/code/multimil

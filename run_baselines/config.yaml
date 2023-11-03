@@ -1,27 +1,33 @@
 
 TASKS:
-  'hlca_small':
-    input: data/hlca_small.h5ad
+  # 'hlca_small':
+  #   input1: data/hlca_small.h5ad
+  #   input2: null
+  #   label_key: transf_ann_level_3_label
+  #   batch_key: study
+  #   condition_key: lung_condition_coarse
+  #   sample_key: sample
+  #   n_splits: 5
+  #   methods:
+  #           #  multigrate: params/hlca_small/multigrate_test.tsv
+  #       multigrate_mil: params/hlca_small/multigrate_mil_test.tsv
+     # multigrate: params/hlca_small/multigrate.tsv
+      #pb_rf: params/hlca_small/pb_rf.tsv
+      #pb_nn: params/hlca_small/pb_nn.tsv
+      #gex_nn: params/hlca_small/gex_nn.tsv
+      #gex_rf: params/hlca_small/gex_rf.tsv
+  'hlca_small_embed':
+    input1: data/hlca_small_embed.h5ad
+    input2: null
     label_key: transf_ann_level_3_label
     batch_key: study
     condition_key: lung_condition_coarse
     sample_key: sample
     n_splits: 5
-    params: data/params/hlca_small/
     methods:
-     # - multigrate
-      - pb_rf
-     # - pb_nn
-     # - gex_nn
-    #  - gex_rf
-    metrics: null
-
-METHOD_PARAMS:
-#   'pb_nn':
-#     params: data/params/pb_nn.tsv
-#   'gex_nn':
-#     params: data/params/gex_nn.tsv
-  'pb_rf':
-    params: data/params/pb_rf.tsv
-#   'gex_rf':
-#     params: data/params/gex_rf.tsv
+      #multigrate_mil: params/hlca_small_embed/multigrate_mil_test.tsv
+      multigrate_mil: params/hlca_small_embed/multigrate_mil.tsv
+      pb_rf: params/hlca_small_embed/pb_rf.tsv
+      pb_nn: params/hlca_small_embed/pb_nn.tsv
+      gex_nn: params/hlca_small_embed/gex_nn.tsv
+      gex_rf: params/hlca_small_embed/gex_rf.tsv

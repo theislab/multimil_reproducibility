@@ -7,6 +7,7 @@ import numpy as np
 import scanpy as sc
 import decoupler as dc
 import pandas as pd
+import os
 
 import torch
 import torch.nn as nn
@@ -42,7 +43,8 @@ class MulticlassClassification(nn.Module):
         
     def forward(self, x):
         x = self.layer_1(x)
-        x = self.batchnorm1(x)
+        if x.shape[0] > 1:
+            x = self.batchnorm1(x)
         x = self.relu(x)
         x = self.dropout(x)
         x = self.layer_out(x)
@@ -60,18 +62,21 @@ def multi_acc(y_pred, y_test):
     
     return acc
 
-def run_pb_nn(adata, sample_key, condition_key, n_splits, output_file, normalize, **kwargs):
+def run_pb_nn(adata, sample_key, condition_key, n_splits, params, hash, **kwargs):
 
-    adata_ = dc.get_pseudobulk(adata, sample_col=sample_key, groups_col=None, min_prop=-1, min_smpls=0, min_cells=0, min_counts=0)
+    adata_ = dc.get_pseudobulk(adata, sample_col=sample_key, groups_col=None, min_prop=-1, min_smpls=0, min_cells=0, min_counts=0, skip_checks=True)
 
-    if normalize is True:
+    if params['norm'] is True:
         sc.pp.normalize_total(adata_, target_sum=1e4)
         sc.pp.log1p(adata_)
     adata_.obs[condition_key] = adata_.obs[condition_key].astype('category')
 
-    NUM_FEATURES = adata_.shape[1]
-    NUM_CLASSES = len(adata_.obs[CONDITION].cat.categories)
-    TRAIN_FRACTION = 0.8
+    num_features = adata_.shape[1]
+    num_classes = len(adata_.obs[condition_key].cat.categories)
+    train_fraction = 0.8
+    batch_size = params['batch_size']
+    learning_rate = params['lr']
+    epochs = params['epochs']
 
     val_accuracies = []
     val_avg = []
@@ -79,20 +84,20 @@ def run_pb_nn(adata, sample_key, condition_key, n_splits, output_file, normalize
 
     for i in range(n_splits):
         print(f'Processing split = {i}...')
-        df = adata.obs[[f'split{i}', DONOR]].drop_duplicates()
-        train = list(df[df[f'split{i}'] == 'train'][DONOR])
-        val = list(df[df[f'split{i}'] == 'val'][DONOR])
+        df = adata.obs[[f'split{i}', sample_key]].drop_duplicates()
+        train = list(df[df[f'split{i}'] == 'train'][sample_key])
+        val = list(df[df[f'split{i}'] == 'val'][sample_key])
         # train data
         x = pd.DataFrame(adata_[adata_.obs_names.isin(train)].X).to_numpy()
-        num_of_classes = len(adata_.obs[CONDITION].cat.categories)
-        y = adata_[adata_.obs_names.isin(train)].obs[CONDITION].cat.rename_categories(list(range(num_of_classes)))
+        num_of_classes = len(adata_.obs[condition_key].cat.categories)
+        y = adata_[adata_.obs_names.isin(train)].obs[condition_key].cat.rename_categories(list(range(num_of_classes)))
         y = y.to_numpy()
         print("Train shapes:")
         print(f"x.shape = {x.shape}")
         print(f"y.shape = {y.shape}")
         # val data, later this is called test data because the val data is subset of train
         x_val = pd.DataFrame(adata_[adata_.obs_names.isin(val)].X).to_numpy()
-        y_val = adata_[adata_.obs_names.isin(val)].obs[CONDITION].cat.rename_categories(list(range(num_of_classes)))
+        y_val = adata_[adata_.obs_names.isin(val)].obs[condition_key].cat.rename_categories(list(range(num_of_classes)))
         y_val = y_val.to_numpy()
         print("Val shapes:")
         print(f"x_val.shape = {x_val.shape}")
@@ -100,7 +105,7 @@ def run_pb_nn(adata, sample_key, condition_key, n_splits, output_file, normalize
         # fit
         X = x
         Y = y
-        n_of_train_samples = int(math.ceil(len(y) * TRAIN_FRACTION))
+        n_of_train_samples = int(math.ceil(len(y) * train_fraction))
         train_samples = sample(range(len(y)), n_of_train_samples)
         val_samples = [i for i in range(len(y)) if i not in train_samples]
         X_test = x_val
@@ -116,16 +121,16 @@ def run_pb_nn(adata, sample_key, condition_key, n_splits, output_file, normalize
         test_dataset = ClassifierDataset(torch.from_numpy(X_test).float(), torch.from_numpy(y_test).long())
         
         # create loaders
-        train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH_SIZE)
+        train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size)
         val_loader = DataLoader(dataset=val_dataset, batch_size=1)
         test_loader = DataLoader(dataset=test_dataset, batch_size=1)
         
         # init model
-        model = MulticlassClassification(num_feature = NUM_FEATURES, num_class=NUM_CLASSES)
+        model = MulticlassClassification(num_feature = num_features, num_class=num_classes)
         # define loss
         criterion = nn.CrossEntropyLoss()
         # define optimizer
-        optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
+        optimizer = optim.Adam(model.parameters(), lr=learning_rate)
         
         # loss recoder
         accuracy_stats = {
@@ -139,7 +144,7 @@ def run_pb_nn(adata, sample_key, condition_key, n_splits, output_file, normalize
         
         # train
         print("Begin training.")
-        for e in tqdm(range(1, EPOCHS+1)):
+        for e in tqdm(range(1, epochs+1)):
 
             # TRAINING
             train_epoch_loss = 0
@@ -192,9 +197,11 @@ def run_pb_nn(adata, sample_key, condition_key, n_splits, output_file, normalize
         train_val_acc_df = pd.DataFrame.from_dict(accuracy_stats).reset_index().melt(id_vars=['index']).rename(columns={"index":"epochs"})
         train_val_loss_df = pd.DataFrame.from_dict(loss_stats).reset_index().melt(id_vars=['index']).rename(columns={"index":"epochs"})
         # Plot the dataframes
-        fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(20,7))
-        sns.lineplot(data=train_val_acc_df, x = "epochs", y="value", hue="variable",  ax=axes[0]).set_title('Train-Val Accuracy/Epoch').get_figure().savefig(output_file.replace('accuracy.tsv', 'plot_acc.png'))
-        sns.lineplot(data=train_val_loss_df, x = "epochs", y="value", hue="variable", ax=axes[1]).set_title('Train-Val Loss/Epoch').get_figure().savefig(output_file.replace('accuracy.tsv', 'plot_loss.png'))
+        _, axes = plt.subplots(nrows=1, ncols=2, figsize=(20,7))
+        fig_path = f'data/reports/{hash}/figures/'
+        os.makedirs(fig_path, exist_ok = True)
+        sns.lineplot(data=train_val_acc_df, x = "epochs", y="value", hue="variable",  ax=axes[0]).set_title('Train-Val Accuracy/Epoch')
+        sns.lineplot(data=train_val_loss_df, x = "epochs", y="value", hue="variable", ax=axes[1]).set_title('Train-Val Loss/Epoch').get_figure().savefig(fig_path + f'plot_loss_split_{i}.png')
         
         # predict
         y_pred_list = []
@@ -220,7 +227,7 @@ def run_pb_nn(adata, sample_key, condition_key, n_splits, output_file, normalize
         print('===========================')
         
     df = pd.concat(dfs)
-    df.to_csv(output_file)
+    
     print(f"Mean validation accuracy across 5 CV splits for a NN model = {np.mean(np.array(val_accuracies))}.")
     print(f"Mean validation weighted avg across 5 CV splits for a NN model = {np.mean(np.array(val_avg))}.")
-
+    return df

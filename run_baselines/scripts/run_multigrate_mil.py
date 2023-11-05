@@ -136,9 +136,10 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
             idx = random.sample(list(adata.obs_names), subset_umap)
             adata = adata[idx].copy()
 
-        print('Calculating neighbors...')
-        sc.pp.neighbors(adata, use_rep="latent")
-        sc.tl.umap(adata)
+        if "X_umap" not in adata.obsm.keys():
+            sc.pp.neighbors(adata, use_rep="latent")
+            sc.tl.umap(adata)
+
         sc.pl.umap(
             adata,
             color=umap_colors+["cell_attn"],
@@ -185,6 +186,8 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
 
             query.write(path_to_train_checkpoints + f'{ckpt}_query_anndata.h5ad')
 
+            adata.obs['reference'] = 'reference'
+            query.obs['reference'] = 'query'
             adata_both = ad.concat([adata, query])
 
             if subset_umap is not None:
@@ -192,12 +195,13 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
                 idx = random.sample(list(adata_both.obs_names), subset_umap)
                 adata_both = adata_both[idx].copy()
 
-            sc.pp.neighbors(adata_both, use_rep='latent')
-            sc.tl.umap(adata_both)
+            if "X_umap" not in adata_both.obsm.keys():
+                sc.pp.neighbors(adata_both, use_rep="latent")
+                sc.tl.umap(adata_both)
 
             sc.pl.umap(
                 adata_both,
-                color=umap_colors+["cell_attn"],
+                color=umap_colors+["cell_attn", "reference"],
                 ncols=1,
                 show=False,
             )

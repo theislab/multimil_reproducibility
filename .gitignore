@@ -1,5 +1,6 @@
 *.pyc
 logs/
+scvi_log/
 __pycache__/
 **/data/
 **/.snakemake

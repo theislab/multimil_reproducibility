@@ -1,0 +1,2 @@
+	lr	rna_indices_end	categorical_covariate_keys	class_loss_coef	seed	batch_size	train_max_epochs	train_save_checkpoint_every_n_epochs	subset_umap	umap_colors
+0	1e-5	30	['id', 'assay_type_differentiation']	1.0	0	256	4	2	20000	['assay_type_differentiation', 'annot_level_1', 'annot_level_2', 'annot_level_3', 'annot_level_4', 'id']

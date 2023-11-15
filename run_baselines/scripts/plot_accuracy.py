@@ -10,8 +10,8 @@ for i, task in enumerate(np.unique(df['task'])):
     runs = {}
     yerr = {}
     df_task = df[df['task'] == task]
-    for method in np.unique(df['Unnamed: 1']):
-        runs[method] = eval(df_task.loc[df['Unnamed: 1'] == method, 'accuracies'][0])
+    for method in np.unique(df_task['Unnamed: 1']):
+        runs[method] = eval(df_task.loc[df_task['Unnamed: 1'] == method, 'accuracies'][0])
         yerr[method] = np.array(runs[method]).std()
     
     df_tmp = df_task[['Unnamed: 1', 'accuracy']]

@@ -62,9 +62,10 @@ def multi_acc(y_pred, y_test):
     
     return acc
 
-def run_pb_nn(adata, sample_key, condition_key, n_splits, params, hash, **kwargs):
+def run_pb_nn(adata, sample_key, condition_key, n_splits, params, hash, method, task, **kwargs):
 
     adata_ = dc.get_pseudobulk(adata, sample_col=sample_key, groups_col=None, min_prop=-1, min_smpls=0, min_cells=0, min_counts=0, skip_checks=True)
+    rename_dict = {name: number for number, name in enumerate(np.unique(adata_.obs[condition_key]))}
 
     if params['norm'] is True:
         sc.pp.normalize_total(adata_, target_sum=1e4)
@@ -89,15 +90,14 @@ def run_pb_nn(adata, sample_key, condition_key, n_splits, params, hash, **kwargs
         val = list(df[df[f'split{i}'] == 'val'][sample_key])
         # train data
         x = pd.DataFrame(adata_[adata_.obs_names.isin(train)].X).to_numpy()
-        num_of_classes = len(adata_.obs[condition_key].cat.categories)
-        y = adata_[adata_.obs_names.isin(train)].obs[condition_key].cat.rename_categories(list(range(num_of_classes)))
+        y = adata_[adata_.obs_names.isin(train)].obs[condition_key].cat.rename_categories(rename_dict)
         y = y.to_numpy()
         print("Train shapes:")
         print(f"x.shape = {x.shape}")
         print(f"y.shape = {y.shape}")
         # val data, later this is called test data because the val data is subset of train
         x_val = pd.DataFrame(adata_[adata_.obs_names.isin(val)].X).to_numpy()
-        y_val = adata_[adata_.obs_names.isin(val)].obs[condition_key].cat.rename_categories(list(range(num_of_classes)))
+        y_val = adata_[adata_.obs_names.isin(val)].obs[condition_key].cat.rename_categories(rename_dict)
         y_val = y_val.to_numpy()
         print("Val shapes:")
         print(f"x_val.shape = {x_val.shape}")
@@ -198,7 +198,7 @@ def run_pb_nn(adata, sample_key, condition_key, n_splits, params, hash, **kwargs
         train_val_loss_df = pd.DataFrame.from_dict(loss_stats).reset_index().melt(id_vars=['index']).rename(columns={"index":"epochs"})
         # Plot the dataframes
         _, axes = plt.subplots(nrows=1, ncols=2, figsize=(20,7))
-        fig_path = f'data/reports/{hash}/figures/'
+        fig_path = f'data/reports/{task}/{method}/{hash}/figures/'
         os.makedirs(fig_path, exist_ok = True)
         sns.lineplot(data=train_val_acc_df, x = "epochs", y="value", hue="variable",  ax=axes[0]).set_title('Train-Val Accuracy/Epoch')
         sns.lineplot(data=train_val_loss_df, x = "epochs", y="value", hue="variable", ax=axes[1]).set_title('Train-Val Loss/Epoch').get_figure().savefig(fig_path + f'plot_loss_split_{i}.png')

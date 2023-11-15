@@ -64,10 +64,10 @@ def multi_acc(y_pred, y_test):
     
     return acc
 
-def run_gex_nn(adata, sample_key, condition_key, n_splits, params, hash, **kwargs):
+def run_gex_nn(adata, sample_key, condition_key, n_splits, params, hash, method, task, **kwargs):
 
     adata.obs[condition_key] = adata.obs[condition_key].astype('category')
-    rename_dict = {name: number for number, name in enumerate(sorted(list(adata.obs[condition_key].cat.categories)))}
+    rename_dict = {name: number for number, name in enumerate(np.unique(adata.obs[condition_key]))}
     
     if params['norm'] is True:
         sc.pp.normalize_total(adata, target_sum=1e4)
@@ -95,7 +95,7 @@ def run_gex_nn(adata, sample_key, condition_key, n_splits, params, hash, **kwarg
             x = pd.DataFrame(adata[adata.obs[sample_key].isin(train)].X).to_numpy()
         
         
-        y = adata[adata.obs[sample_key].isin(train)].obs[condition_key].cat.rename_categories(list(range(num_classes)))
+        y = adata[adata.obs[sample_key].isin(train)].obs[condition_key].cat.rename_categories(rename_dict)
         y = y.to_numpy()
         print(f'Train shape = ({x.shape}, {y.shape}).')
 
@@ -103,7 +103,7 @@ def run_gex_nn(adata, sample_key, condition_key, n_splits, params, hash, **kwarg
             x_test = pd.DataFrame(adata[adata.obs[sample_key].isin(test)].X.A).to_numpy()
         else:
             x_test = pd.DataFrame(adata[adata.obs[sample_key].isin(test)].X).to_numpy()
-        y_test = adata[adata.obs[sample_key].isin(test)].obs[condition_key].cat.rename_categories(list(range(num_classes)))
+        y_test = adata[adata.obs[sample_key].isin(test)].obs[condition_key].cat.rename_categories(rename_dict)
         y_test = y_test.to_numpy()
         print(f'Val shape = ({x_test.shape}, {y_test.shape}).')
 
@@ -195,7 +195,7 @@ def run_gex_nn(adata, sample_key, condition_key, n_splits, params, hash, **kwarg
         # Plot the dataframes
         _, axes = plt.subplots(nrows=1, ncols=2, figsize=(20,7))
 
-        fig_path = f'data/reports/{hash}/figures/'
+        fig_path = f'data/reports/{task}/{method}/{hash}/figures/'
         os.makedirs(fig_path, exist_ok = True)
         sns.lineplot(data=train_val_acc_df, x = "epochs", y="value", hue="variable",  ax=axes[0]).set_title('Train-Val Accuracy/Epoch')
         sns.lineplot(data=train_val_loss_df, x = "epochs", y="value", hue="variable", ax=axes[1]).set_title('Train-Val Loss/Epoch').get_figure().savefig(fig_path + f'plot_loss_split_{i}.png')

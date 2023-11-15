@@ -8,6 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 def run_pb_rf(adata, sample_key, condition_key, n_splits, params, **kwargs):
     adata_ = dc.get_pseudobulk(adata, sample_col=sample_key, groups_col=None, min_prop=-1, min_smpls=0, min_cells=0, min_counts=0, skip_checks=True)
+    rename_dict = {name: number for number, name in enumerate(np.unique(adata_.obs[condition_key]))}
 
     if params['norm'] is True:
         sc.pp.normalize_total(adata_, target_sum=1e4)
@@ -25,15 +26,14 @@ def run_pb_rf(adata, sample_key, condition_key, n_splits, params, **kwargs):
         val = list(df[df[f'split{i}'] == 'val'][sample_key])
         # train data
         x = pd.DataFrame(adata_[adata_.obs_names.isin(train)].X).to_numpy()
-        num_of_classes = len(adata_.obs[condition_key].cat.categories)
-        y = adata_[adata_.obs_names.isin(train)].obs[condition_key].cat.rename_categories(list(range(num_of_classes)))
+        y = adata_[adata_.obs_names.isin(train)].obs[condition_key].cat.rename_categories(rename_dict)
         y = y.to_numpy()
         print("Train shapes:")
         print(f"x.shape = {x.shape}")
         print(f"y.shape = {y.shape}")
         # val data
         x_val = pd.DataFrame(adata_[adata_.obs_names.isin(val)].X).to_numpy()
-        y_val = adata_[adata_.obs_names.isin(val)].obs[condition_key].cat.rename_categories(list(range(num_of_classes)))
+        y_val = adata_[adata_.obs_names.isin(val)].obs[condition_key].cat.rename_categories(rename_dict)
         y_val = y_val.to_numpy()
         print("Val shapes:")
         print(f"x_val.shape = {x_val.shape}")

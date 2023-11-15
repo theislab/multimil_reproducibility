@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestClassifier
 def run_gex_rf(adata, condition_key, n_splits, params, **kwargs):
 
     adata.obs[condition_key] = adata.obs[condition_key].astype('category')
-    rename_dict = {name: number for number, name in enumerate(sorted(list(adata.obs[condition_key].cat.categories)))}
+    rename_dict = {name: number for number, name in enumerate(np.unique(adata.obs[condition_key]))}
     
     if params['norm'] is True:
         sc.pp.normalize_total(adata, target_sum=1e4)
@@ -27,7 +27,6 @@ def run_gex_rf(adata, condition_key, n_splits, params, **kwargs):
             x = pd.DataFrame(adata[adata.obs[f'split{i}'] == 'train'].X.A).to_numpy()
         else:
             x = pd.DataFrame(adata[adata.obs[f'split{i}'] == 'train'].X).to_numpy()
-        num_of_classes = len(adata.obs[condition_key].cat.categories)
         y = adata[adata.obs[f'split{i}'] == 'train'].obs[condition_key].cat.rename_categories(rename_dict)
         y = y.to_numpy()
         print("Train shapes:")

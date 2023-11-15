@@ -31,7 +31,7 @@ def get_existing_checkpoints(rootdir):
 
     return checkpoints
 
-def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash, **kwargs):
+def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash, task, **kwargs):
 
     print('============ Multigrate training ============')
     torch.set_float32_matmul_precision('medium')
@@ -108,7 +108,7 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
         ###### TRAIN CLASSIFIER #######
         ###############################
 
-        path_to_train_checkpoints = f'data/multigrate_mil/{hash}/{i}/checkpoints/'
+        path_to_train_checkpoints = f'data/multigrate_mil/{task}/{hash}/{i}/checkpoints/'
         dirpath=Path(path_to_train_checkpoints)
         if dirpath.exists():
             shutil.rmtree(dirpath)
@@ -127,7 +127,7 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
         print('Starting inference...')
         mil.get_model_output(batch_size=batch_size)
 
-        mil.save(f'data/multigrate_mil/{hash}/{i}/model/', overwrite=True)
+        mil.save(f'data/multigrate_mil/{task}/{hash}/{i}/model/', overwrite=True)
 
         adata.write(path_to_train_checkpoints + 'train_anndata.h5ad')
 
@@ -147,10 +147,10 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
             show=False,
         )
 
-        plt.savefig(f'data/multigrate_mil/{hash}/{i}/train_umap.png', bbox_inches="tight")
+        plt.savefig(f'data/multigrate_mil/{task}/{hash}/{i}/train_umap.png', bbox_inches="tight")
         plt.close()
 
-        mil.plot_losses(save=f'data/multigrate_mil/{hash}/{i}/train_losses.png')
+        mil.plot_losses(save=f'data/multigrate_mil/{task}/{hash}/{i}/train_losses.png')
 
         checkpoints  = get_existing_checkpoints(path_to_train_checkpoints)
 

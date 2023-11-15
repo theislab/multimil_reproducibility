@@ -30,13 +30,14 @@ params = snakemake.params.params
 method_params = ast.literal_eval(params['params']) # this is dict
 input1 = params['input1']
 input2 = params['input2']
-method = params['method']
 label_key = params['label_key']
 batch_key = params['batch_key']
 condition_key = params['condition_key']
 sample_key = params['sample_key']
 n_splits = params['n_splits']
 h = params['hash']
+method = params['method']
+task = params['task']
 output_file = snakemake.output.tsv
 
 method_mode = METHOD_MAP[method]['mode']
@@ -54,6 +55,8 @@ if method_mode == 'rna' or method_mode == 'embed':
         output_file=output_file,
         params=method_params,
         hash=h,
+        method=method,
+        task=task,
     )
 elif method_mode == 'paired':
     adata1 = sc.read_h5ad(input1)
@@ -71,9 +74,11 @@ elif method_mode == 'paired':
         output_file=output_file,
         params=method_params,
         hash=h,
+        method=method,
+        task=task,
     )
 
 df['hash'] = h
 df['method_params'] = params['params']
-df['task'] = params['task']
+df['task'] = task
 df.to_csv(output_file, sep='\t')

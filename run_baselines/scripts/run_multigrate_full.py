@@ -15,6 +15,9 @@ import torch
 import scvi
 from sklearn.metrics import classification_report
 
+import warnings
+warnings.filterwarnings('ignore')
+
 def get_existing_checkpoints(rootdir):
 
     checkpoints = []
@@ -26,7 +29,7 @@ def get_existing_checkpoints(rootdir):
 
     return checkpoints
 
-def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, hash, **kwargs):
+def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, hash, task, **kwargs):
 
     print('============ Multigrate training ============')
 
@@ -120,7 +123,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
             **model_params,
         )
 
-        path_to_train_checkpoints = f'data/multigrate/{hash}/{i}/checkpoints/'
+        path_to_train_checkpoints = f'data/multigrate/{task}/{hash}/{i}/checkpoints/'
         dirpath=Path(path_to_train_checkpoints)
         if dirpath.exists():
             shutil.rmtree(dirpath)
@@ -139,7 +142,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
         print('Starting inference...')
         mil.get_model_output(batch_size=batch_size)
 
-        mil.save(f'data/multigrate/{hash}/{i}/model/', overwrite=True)
+        mil.save(f'data/multigrate/{task}/{hash}/{i}/model/', overwrite=True)
 
         if subset_umap is not None:
             print(f'Subsetting to {subset_umap}...')
@@ -155,13 +158,12 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
             ncols=1,
             show=False,
         )
-        #print(f'Saving train umap as {output_files[i-2]}...')
 
-        plt.savefig(f'data/multigrate/{hash}/{i}/train_umap.png', bbox_inches="tight")
+        plt.savefig(f'data/multigrate/{task}/{hash}/{i}/train_umap.png', bbox_inches="tight")
         plt.close()
 
         #print('Saving train losses...')
-        mil.plot_losses(save=f'data/multigrate/{hash}/{i}/train_losses.png')
+        mil.plot_losses(save=f'data/multigrate/{task}/{hash}/{i}/train_losses.png')
 
         checkpoints  = get_existing_checkpoints(path_to_train_checkpoints)
 
@@ -196,7 +198,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
 
             df['split'] = i
             df['method'] = 'multigrate'
-            df['epoch'] = ckpt.split('-')[1].split('=')[-1]
+            df['epoch'] = ckpt.split('-')[0].split('=')[-1]
             df['query_epoch'] = 0
 
             dfs.append(df)
@@ -205,7 +207,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
             ###### FINETUNE #######
             #######################
 
-            path_to_query_checkpoints = f'data/multigrate/{hash}/{i}/query_checkpoints/{ckpt}/'
+            path_to_query_checkpoints = f'data/multigrate/{task}/{hash}/{i}/query_checkpoints/{ckpt}/'
             dirpath=Path(path_to_query_checkpoints)
             if dirpath.exists():
                 shutil.rmtree(dirpath)
@@ -252,6 +254,9 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
                 df.to_csv(path_to_query_checkpoints + f'{query_ckpt}.csv')
 
                 new_model.get_model_output(adata, batch_size=batch_size)
+
+                adata.obs['reference'] = 'reference'
+                query.obs['reference'] = 'query'
                 adata_both = ad.concat([adata, query])
 
                 if subset_umap is not None:
@@ -264,7 +269,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
 
                 sc.pl.umap(
                     adata_both,
-                    color=umap_colors+["cell_attn"],
+                    color=umap_colors+["cell_attn", "reference"],
                     ncols=1,
                     show=False,
                 )
@@ -273,7 +278,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
 
                 df['split'] = i
                 df['method'] = 'multigrate'
-                df['epoch'] = ckpt.split('-')[1].split('=')[-1]
+                df['epoch'] = ckpt.split('-')[0].split('=')[-1]
                 df['query_epoch'] = query_ckpt.split('-')[0].split('=')[-1]
                 dfs.append(df)
 

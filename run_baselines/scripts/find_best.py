@@ -20,7 +20,6 @@ for task in config['TASKS']:
         best_hash = None
         best_accuracies = None
 
-        # multigrate
         for h in np.unique(df_method['hash']):
             df_tmp = df_method[df_method['hash'] == h]
             # for multigrate need to check if all epochs and query_epochs are present and group by those
@@ -47,7 +46,7 @@ for task in config['TASKS']:
                     if len(np.unique(df_tmp_epoch['split'])) != n_splits:
                         continue
                     for query_epoch in np.unique(df_tmp_epoch['query_epoch']):
-                        df_tmp_q_epoch = df_tmp_epoch[df_tmp_epoch['epoch'] == query_epoch]
+                        df_tmp_q_epoch = df_tmp_epoch[df_tmp_epoch['query_epoch'] == query_epoch]
                         if len(np.unique(df_tmp_q_epoch['split'])) != n_splits:
                             continue
                         accuracies = []

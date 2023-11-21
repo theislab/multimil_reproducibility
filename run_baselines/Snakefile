@@ -45,7 +45,6 @@ rule merge:
         input_files = [input] if isinstance(input, str) else input
         dfs = [pd.read_table(file) for file in input_files if os.path.exists(file)]
         metrics_df = pd.concat(dfs)
-        print(metrics_df)
         metrics_df.to_csv(output.tsv, sep='\t', index=False)
 
 rule find_best_per_task:
@@ -68,7 +67,20 @@ rule plot_accuracy:
     script:
         'scripts/plot_accuracy.py'
 
+rule save_anndata:
+    input:
+        tsv='data/reports/best.tsv'
+    output:
+        txt='data/reports/best_anndata.txt'
+    conda:
+	    'envs/multigrate_pipeline.yaml'
+    params:
+        config=config
+    script:
+        'scripts/save_anndata.py'
+
 rule all:
     input:
-        expand('data/reports/{task}_accuracy.png', task=tasks)
+        expand('data/reports/{task}_accuracy.png', task=tasks),
+        'data/reports/best_anndata.txt'
     default_target: True

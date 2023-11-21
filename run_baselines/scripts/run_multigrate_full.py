@@ -1,3 +1,6 @@
+import time
+start_time = time.time()
+
 import scanpy as sc
 import pandas as pd
 import multigrate as mtg
@@ -14,20 +17,13 @@ import random
 import torch
 import scvi
 from sklearn.metrics import classification_report
+from utils import get_existing_checkpoints
 
 import warnings
 warnings.filterwarnings('ignore')
 
-def get_existing_checkpoints(rootdir):
 
-    checkpoints = []
-
-    for root, _, files in os.walk(rootdir):
-        for filename in files:
-            if filename.endswith('.ckpt'):
-                checkpoints.append(filename.strip('.ckpt'))
-
-    return checkpoints
+print('--- %s seconds ---' % (time.time()-start_time))
 
 def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, hash, task, **kwargs):
 
@@ -79,7 +75,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
 
         if adata2 is None:
             rna = adata1
-
+            losses = ['nb']
             print('Organizing multiome anndatas...')
             adata = mtg.data.organize_multiome_anndatas(
                 adatas = [[rna]],
@@ -89,9 +85,10 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
             del rna
         else:
             rna = adata1
+            losses = ['nb', 'mse']
             print('Organizing multiome anndatas...')
             adata = mtg.data.organize_multiome_anndatas(
-                adatas = [[rna, adata2]],
+                adatas = [[rna], [adata2]],
                 #layers = layers,
                 )
             
@@ -113,9 +110,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
         mil = mtm.model.MultiVAE_MIL(
             adata,
             patient_label=donor,
-            losses=[
-                "nb",
-            ],
+            losses=losses,
             loss_coefs={
                 'kl': kl,
             },

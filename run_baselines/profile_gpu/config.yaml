@@ -15,7 +15,7 @@ default-resources:
   - partition=gpu_p
   - gpu=1
   - qos=gpu_normal
-  - mem_mb=32000
+  - mem_mb=90000
   - disk_mb=32000
 
 jobs: 10

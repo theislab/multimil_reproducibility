@@ -17,19 +17,13 @@ import random
 import torch
 import scvi
 from sklearn.metrics import classification_report
+from utils import get_existing_checkpoints
+
+import warnings
+warnings.filterwarnings('ignore')
+
 
 print('--- %s seconds ---' % (time.time()-start_time))
-
-def get_existing_checkpoints(rootdir):
-
-    checkpoints = []
-
-    for root, _, files in os.walk(rootdir):
-        for filename in files:
-            if filename.endswith('.ckpt'):
-                checkpoints.append(filename.strip('.ckpt'))
-
-    return checkpoints
 
 def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash, task, **kwargs):
 
@@ -55,7 +49,6 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
         "save_checkpoint_every_n_epochs": params['train_save_checkpoint_every_n_epochs'],
     }
 
-    # layers = params['layers']
     # train params
     lr = params['lr']
     batch_size = params['batch_size']
@@ -129,8 +122,6 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
 
         mil.save(f'data/multigrate_mil/{task}/{hash}/{i}/model/', overwrite=True)
 
-        adata.write(path_to_train_checkpoints + 'train_anndata.h5ad')
-
         if subset_umap is not None:
             print(f'Subsetting to {subset_umap}...')
             idx = random.sample(list(adata.obs_names), subset_umap)
@@ -183,8 +174,6 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
             df['epoch'] = ckpt.split('-')[0].split('=')[-1]
             
             dfs.append(df)
-
-            query.write(path_to_train_checkpoints + f'{ckpt}_query_anndata.h5ad')
 
             adata.obs['reference'] = 'reference'
             query.obs['reference'] = 'query'

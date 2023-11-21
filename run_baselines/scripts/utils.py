@@ -1,6 +1,7 @@
 import pandas as pd
 import yaml
 import hashlib
+import os
 
 # from https://github.com/HCA-integration/hca_integration_toolbox/blob/main/workflow/utils/misc.py#L129
 def create_hash(string: str, digest_size: int = 5):
@@ -35,4 +36,15 @@ def create_tasks_df(config, save=None):
     if save is not None:
         tasks_df.to_csv(save, sep='\t')
     return tasks_df
+
+def get_existing_checkpoints(rootdir):
+
+    checkpoints = []
+
+    for _, _, files in os.walk(rootdir):
+        for filename in files:
+            if filename.endswith('.ckpt'):
+                checkpoints.append(filename.strip('.ckpt'))
+
+    return checkpoints
                 

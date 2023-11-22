@@ -1,0 +1,244 @@
+﻿GENE PRODUCT DB	GENE PRODUCT ID	SYMBOL	QUALIFIER	GO TERM	GO NAME	ECO ID	GO EVIDENCE CODE	REFERENCE	WITH/FROM	TAXON ID	ASSIGNED BY	ANNOTATION EXTENSION	GO ASPECT
+UniProtKB	A0A024QZE1	IRF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	A0A024RCA2	IRF7	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	A0A087WWA0	IRF5	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	A0A0G2USB5	IRF5	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	A0A0G2UUJ1	IRF5	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	A0A1B1RS94	IRF1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	A0A1P8DYP2	A0A1P8DYP2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	A0A2R8YHF3	IRF6	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	A0A3B3ISC0	IRF7	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	A0A3B3ISS4	IRF7	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	A7MCY6	TBKBP1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:21931631		9606	ComplexPortal		P
+UniProtKB	A9LSF4	A9LSF4	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	A9LSF6	A9LSF6	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	B1AJU4	IRF6	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	B2R762	B2R762	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	B2R8V7	B2R8V7	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	B4DI86	B4DI86	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	B4DLN8	B4DLN8	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	B7Z1M2	B7Z1M2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	C9J7M2	IRF5	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	C9J9C5	IRF1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	C9JAU6	IRF5	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	C9JD95	IRF1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	C9JQL5	C9JQL5	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1913391|PANTHER:PTN000360680	9606	GO_Central		P
+UniProtKB	C9JYP7	IRF5	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	D6R9N5	IRF2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	D6RB08	IRF2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	E2GIM9	IRF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	E9PIA7	IRF7	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	E9PR03	IRF7	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	F2Z3D5	IRF4	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	G0Z349	IRF6	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	H0Y3Z8	H0Y3Z8	enables	GO:0004905	type I interferon receptor activity	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1098243|PANTHER:PTN000466380|UniProtKB:P48551	9606	GO_Central		F
+UniProtKB	H0Y3Z8	H0Y3Z8	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000318	IBA	PMID:21873635	PANTHER:PTN000466380|UniProtKB:P48551	9606	GO_Central		P
+UniProtKB	H0YMB6	IRF9	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	H0YNP4	IRF9	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	H3BQH6	IRF8	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	H3BT31	IRF8	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	H3BVC2	IRF8	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	H7C3V1	H7C3V1	enables	GO:0004905	type I interferon receptor activity	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1098243|PANTHER:PTN000466380|UniProtKB:P48551	9606	GO_Central		F
+UniProtKB	H7C3V1	H7C3V1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000318	IBA	PMID:21873635	PANTHER:PTN000466380|UniProtKB:P48551	9606	GO_Central		P
+UniProtKB	K4DIA5	IRF2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	M0QYX3	IRF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	M0QZB7	IRF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	M0QZB8	IRF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	M0R007	IRF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	M0R205	IRF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	M0R3C2	IRF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	M0R3E9	IRF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	M9RSF4	IRF7	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	O95992	CH25H	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:33239446		9606	UniProt		P
+UniProtKB	P00973-1	OAS1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000315	IMP	PMID:28640813		9606	ARUK-UCL		P
+UniProtKB	P01562	IFNA1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P01563	IFNA2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P01566	IFNA10	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P01567	IFNA7	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P01568	IFNA21	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P01569	IFNA5	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P01570	IFNA14	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P01571	IFNA17	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P01574	IFNB1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000314	IDA	PMID:18035482		9606	BHF-UCL		P
+UniProtKB	P01574	IFNB1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P05000	IFNW1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P05013	IFNA6	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P05014	IFNA4	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P05015	IFNA16	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P05161	ISG15	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:22859821		9606	UniProt		P
+UniProtKB	P09914	IFIT1	involved_in	GO:0071357	cellular response to type I interferon	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR024121	9606	InterPro		P
+UniProtKB	P09914	IFIT1	involved_in	GO:0071357	cellular response to type I interferon	ECO:0000314	IDA	PMID:19008854		9606	BHF-UCL		P
+UniProtKB	P13164	IFITM1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1913391|PANTHER:PTN000360680	9606	GO_Central		P
+UniProtKB	P17181	IFNAR1	enables	GO:0004905	type I interferon receptor activity	ECO:0000318	IBA	PMID:21873635	MGI:MGI:107658|PANTHER:PTN007681384|UniProtKB:P17181	9606	GO_Central		F
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000318	IBA	PMID:21873635	MGI:MGI:107658|PANTHER:PTN007681384|UniProtKB:P17181	9606	GO_Central		P
+UniProtKB	P17181	IFNAR1	enables	GO:0004905	type I interferon receptor activity	ECO:0000314	IDA	PMID:7665574		9606	UniProt		F
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000314	IDA	PMID:7665574		9606	UniProt		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17181	IFNAR1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P17405	SMPD1	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:20807762		9606	UniProt		P
+UniProtKB	P20591	MX1	involved_in	GO:0034340	response to type I interferon	ECO:0000304	TAS	PMID:21859714		9606	UniProt		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000304	TAS	Reactome:R-HSA-909733		9606	Reactome		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23458	JAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P23497	SP100	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:15247905		9606	BHF-UCL		P
+UniProtKB	P23497	SP100	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:9230084		9606	BHF-UCL		P
+UniProtKB	P23497	SP100	involved_in	GO:0034340	response to type I interferon	ECO:0000315	IMP	PMID:8810287		9606	BHF-UCL		P
+UniProtKB	P23497	SP100	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000305	IC	PMID:8810287	GO:0034340	9606	BHF-UCL		P
+UniProtKB	P23497-1	SP100	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:16873258		9606	BHF-UCL		P
+UniProtKB	P23497-2	SP100	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:16873258		9606	BHF-UCL		P
+UniProtKB	P23497-3	SP100	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:16873258		9606	BHF-UCL		P
+UniProtKB	P23497-4	SP100	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:16873258		9606	BHF-UCL		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000304	TAS	Reactome:R-HSA-909733		9606	Reactome		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29597	TYK2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P29728	OAS2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:E9Q9A9	9606	UniProt		P
+UniProtKB	P29728	OAS2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:E9Q9A9|ensembl:ENSMUSP00000080209	9606	Ensembl		P
+UniProtKB	P32881	IFNA8	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P34897	SHMT2	involved_in	GO:0034340	response to type I interferon	ECO:0000318	IBA	PMID:21873635	PANTHER:PTN000188076|UniProtKB:P34897	9606	GO_Central		P
+UniProtKB	P34897	SHMT2	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:24075985		9606	UniProt		P
+UniProtKB	P40305	IFI27	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000315	IMP	PMID:27777077		9606	UniProt		P
+UniProtKB	P42224	STAT1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000318	IBA	PMID:21873635	MGI:MGI:103063|PANTHER:PTN002623830|UniProtKB:P42224	9606	GO_Central		P
+UniProtKB	P42224	STAT1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:P42225	9606	UniProt		P
+UniProtKB	P42224	STAT1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000314	IDA	PMID:23386060		9606	UniProt		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000318	IBA	PMID:21873635	PANTHER:PTN000466380|UniProtKB:P48551	9606	GO_Central		P
+UniProtKB	P48551	IFNAR2	enables	GO:0004905	type I interferon receptor activity	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1098243|PANTHER:PTN000466380|UniProtKB:P48551	9606	GO_Central		F
+UniProtKB	P48551	IFNAR2	enables	GO:0004905	type I interferon receptor activity	ECO:0000314	IDA	PMID:7759950		9606	UniProt		F
+UniProtKB	P48551	IFNAR2	enables	GO:0004905	type I interferon receptor activity	ECO:0000314	IDA	PMID:7665574		9606	UniProt		F
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000314	IDA	PMID:7665574		9606	UniProt		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000315	IMP	PMID:26424569		9606	UniProt		P
+UniProtKB	P48551	IFNAR2	enables	GO:0004905	type I interferon receptor activity	ECO:0000304	TAS	PMID:8798579		9606	PINC		F
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P48551	IFNAR2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	P51617	IRAK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000315	IMP	PMID:23633945		9606	BHF-UCL		P
+UniProtKB	P52630	STAT2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000318	IBA	PMID:21873635	MGI:MGI:103039|PANTHER:PTN002623821|UniProtKB:P52630	9606	GO_Central		P
+UniProtKB	P52630	STAT2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000315	IMP	PMID:23391734		9606	UniProt		P
+UniProtKB	P52630	STAT2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000315	IMP	PMID:32092142		9606	UniProt		P
+UniProtKB	P52630	STAT2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000315	IMP	PMID:31836668		9606	UniProt		P
+UniProtKB	Q01628	IFITM3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1913391|PANTHER:PTN000360680	9606	GO_Central		P
+UniProtKB	Q01629	IFITM2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000318	IBA	PMID:21873635	MGI:MGI:1913391|PANTHER:PTN000360680	9606	GO_Central		P
+UniProtKB	Q13114	TRAF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:25847972		9606	ComplexPortal		P
+UniProtKB	Q14164	IKBKE	involved_in	GO:0034340	response to type I interferon	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q9R0T8|ensembl:ENSMUSP00000054126	9606	Ensembl		P
+UniProtKB	Q14164	IKBKE	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:21931631		9606	ComplexPortal		P
+UniProtKB	Q14164	IKBKE	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:21931631		9606	ComplexPortal		P
+UniProtKB	Q14164	IKBKE	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:17142768		9606	ComplexPortal		P
+UniProtKB	Q14653	IRF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P70671|ensembl:ENSMUSP00000003284	9606	Ensembl		P
+UniProtKB	Q5FBX3	IRF1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	Q5T764	IFIT1B	involved_in	GO:0071357	cellular response to type I interferon	ECO:0000256	IEA	GO_REF:0000002	InterPro:IPR024121	9606	InterPro		P
+UniProtKB	Q64GA8	IRF5	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	Q6FHN8	IRF1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	Q7Z434	MAVS	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:25847972		9606	ComplexPortal		P
+UniProtKB	Q86WN2	IFNE	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	Q92844	TANK	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:21931631		9606	ComplexPortal		P
+UniProtKB	Q92985	IRF7	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:P70434|ensembl:ENSMUSP00000026571	9606	Ensembl		P
+UniProtKB	Q96GL3	IRF3	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	Q99419	Q99419	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	Q99836	MYD88	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000315	IMP	PMID:23633945		9606	BHF-UCL		P
+UniProtKB	Q9BRZ2	TRIM56	involved_in	GO:0034340	response to type I interferon	ECO:0000250	ISS	GO_REF:0000024	UniProtKB:Q80VI1	9606	UniProt		P
+UniProtKB	Q9BYW2	SETD2	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:28753426		9606	UniProt		P
+UniProtKB	Q9H6S1	AZI2	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:17142768		9606	ComplexPortal		P
+UniProtKB	Q9HB64	Q9HB64	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	Q9NSU2	TREX1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q91XB0|ensembl:ENSMUSP00000050971	9606	Ensembl		P
+UniProtKB	Q9NSU2	TREX1	involved_in	GO:0071357	cellular response to type I interferon	ECO:0000265	IEA	GO_REF:0000107	UniProtKB:Q91XB0|ensembl:ENSMUSP00000050971	9606	Ensembl		P
+UniProtKB	Q9NUL5	SHFL	involved_in	GO:0034340	response to type I interferon	ECO:0000314	IDA	PMID:26735137		9606	UniProt		P
+UniProtKB	Q9P0W0	IFNK	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+UniProtKB	Q9UHD2	TBK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:21931631		9606	ComplexPortal		P
+UniProtKB	Q9UHD2	TBK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:21931631		9606	ComplexPortal		P
+UniProtKB	Q9UHD2	TBK1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:17142768		9606	ComplexPortal		P
+UniProtKB	R4GNI0	IRF1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	V9P8K4	IRF1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	V9P921	IRF1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	X5CHT4	IRF-1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	X5CN11	IRF-1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+UniProtKB	X5D3F6	IRF1	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0007669	IEA	GO_REF:0000117	ARBA:ARBA00024754	9606	UniProt		P
+ComplexPortal	CPX-5995	a2-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-5995	a2-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-5996	a1-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-5996	a1-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-5997	a7-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-5997	a7-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-5998	a4-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-5998	a4-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-5999	a5-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-5999	a5-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6000	a6-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-6000	a6-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6001	a8-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-6001	a8-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6002	a10-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-6002	a10-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6003	a14-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-6003	a14-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6004	a16-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-6004	a16-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6005	a17-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-6005	a17-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6006	a21-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-6006	a21-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6007	b1-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-6007	b1-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6008	e-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-6008	e-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6009	k-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-6009	k-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6010	w1-ifnar_human	enables	GO:0004905	type I interferon receptor activity	ECO:0005547		PMID:30936491		9606	ComplexPortal		F
+ComplexPortal	CPX-6010	w1-ifnar_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:30936491		9606	ComplexPortal		P
+ComplexPortal	CPX-6037	mavs-traf3_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:25847972		9606	ComplexPortal		P
+ComplexPortal	CPX-6038	tbk1-ikke-nap1_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:17142768		9606	ComplexPortal		P
+ComplexPortal	CPX-6089	tbk1-ikke-tank_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:21931631		9606	ComplexPortal		P
+ComplexPortal	CPX-6090	tbk1-ikke-sintbad_human	involved_in	GO:0060337	type I interferon signaling pathway	ECO:0005547		PMID:21931631		9606	ComplexPortal		P

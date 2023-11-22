@@ -4,18 +4,18 @@ import numpy as np
 
 
 input_file = snakemake.input.tsv
-df = pd.read_csv(input_file, sep='\t', index_col=0)
+df = pd.read_csv(input_file, sep='\t', index_col=None)
 
 for i, task in enumerate(np.unique(df['task'])):
     runs = {}
     yerr = {}
     df_task = df[df['task'] == task]
-    for method in np.unique(df_task['Unnamed: 1']):
-        runs[method] = eval(df_task.loc[df_task['Unnamed: 1'] == method, 'accuracies'][0])
+    for method in np.unique(df_task['method']):
+        runs[method] = eval(df_task.loc[df_task['method'] == method, 'accuracies'].values[0])
         yerr[method] = np.array(runs[method]).std()
     
-    df_tmp = df_task[['Unnamed: 1', 'accuracy']]
-    df_tmp.index = df_tmp['Unnamed: 1']
+    df_tmp = df_task[['method', 'accuracy']]
+    df_tmp.index = df_tmp['method']
     df_tmp = df_tmp[['accuracy']].sort_values('accuracy', ascending=False)
     df_tmp = df_tmp.T
     

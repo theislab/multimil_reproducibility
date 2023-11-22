@@ -83,10 +83,11 @@ for task in config['TASKS']:
             'best_epoch': best_epoch,
             'best_query_epoch': best_query_epoch,
             'accuracies': best_accuracies,
+            'method': method,
         }
     best_df = pd.DataFrame.from_dict(best_methods_per_task).T
     best_df['task'] = task
     best_methods[task] = best_df
 
 best_all = pd.concat(best_methods)
-best_all.to_csv(snakemake.output.tsv, sep='\t')
+best_all.to_csv(snakemake.output.tsv, sep='\t', index=False)

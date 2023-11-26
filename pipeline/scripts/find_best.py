@@ -25,6 +25,8 @@ for task in config['TASKS']:
             # for multigrate need to check if all epochs and query_epochs are present and group by those
             # check only if all splits are present
             if method == 'multigrate_mil':
+                if df_tmp.isnull().values.any():
+                    continue
                 for epoch in np.unique(df_tmp['epoch']):
                     df_tmp_epoch = df_tmp[df_tmp['epoch'] == epoch]
                     if len(np.unique(df_tmp_epoch['split'])) != n_splits:
@@ -41,6 +43,8 @@ for task in config['TASKS']:
                             best_query_epoch = np.nan
                             best_accuracies = accuracies
             elif method == 'multigrate':
+                if df_tmp.isnull().values.any():
+                    continue
                 for epoch in np.unique(df_tmp['epoch']):
                     df_tmp_epoch = df_tmp[df_tmp['epoch'] == epoch]
                     if len(np.unique(df_tmp_epoch['split'])) != n_splits:
@@ -76,15 +80,16 @@ for task in config['TASKS']:
                     best_query_epoch = np.nan
                     best_accuracies = accuracies
 
-        best_methods_per_task[method] = {
-            'hash': best_hash,
-            'accuracy': best_accuracy,
-            'best_params': best_params,
-            'best_epoch': best_epoch,
-            'best_query_epoch': best_query_epoch,
-            'accuracies': best_accuracies,
-            'method': method,
-        }
+        if best_hash is not None: # this can happen if e.g. all multigrate jobs failed because of a too high lr
+            best_methods_per_task[method] = {
+                'hash': best_hash,
+                'accuracy': best_accuracy,
+                'best_params': best_params,
+                'best_epoch': best_epoch,
+                'best_query_epoch': best_query_epoch,
+                'accuracies': best_accuracies,
+                'method': method,
+            }
     best_df = pd.DataFrame.from_dict(best_methods_per_task).T
     best_df['task'] = task
     best_methods[task] = best_df

@@ -27,6 +27,12 @@ df = pd.read_csv(input_file, sep='\t', index_col=None)
 task = snakemake.wildcards.task
 method = snakemake.wildcards.method
 df_best = df[(df['task'] == task) & (df['method'] == method)]
+
+if len(df_best) == 0:
+    with open(output_file, 'w') as f:
+        f.write(f'No anndatas to save for {method} for {task}!')
+    exit(0)
+
 assert(len(df_best) == 1)
 
 input1 = config['TASKS'][task]['input1']

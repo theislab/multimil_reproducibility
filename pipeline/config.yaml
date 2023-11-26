@@ -60,21 +60,21 @@ TASKS:
   #     pb_nn: params/hlca_healthy_ipf_embed_balanced/pb_nn.tsv
   #     gex_nn: params/hlca_healthy_ipf_embed_balanced/gex_nn.tsv
   #     gex_rf: params/hlca_healthy_ipf_embed_balanced/gex_rf.tsv
-  # 'organoid_atlas_subset':
-  #   input1: data/pp/organoid_atlas_subset.h5ad
-  #   input2: null
-  #   label_key: annot_level_2
-  #   batch_key: null
-  #   condition_key: assay_type_differentiation
-  #   sample_key: id
-  #   n_splits: 5
-  #   methods:
-  #     # multigrate_mil: params/organoid_atlas_subset/multigrate_mil_test.tsv
-  #     multigrate_mil: params/organoid_atlas_subset/multigrate_mil.tsv
-  #     pb_rf: params/organoid_atlas_subset/pb_rf.tsv
-  #     pb_nn: params/organoid_atlas_subset/pb_nn.tsv
-  #     gex_nn: params/organoid_atlas_subset/gex_nn.tsv
-  #     gex_rf: params/organoid_atlas_subset/gex_rf.tsv
+  'organoid_atlas_subset':
+    input1: data/pp/organoid_atlas_subset.h5ad
+    input2: null
+    label_key: annot_level_2
+    batch_key: null
+    condition_key: assay_type_differentiation
+    sample_key: id
+    n_splits: 5
+    methods:
+      # multigrate_mil: params/organoid_atlas_subset/multigrate_mil_test.tsv
+      multigrate_mil: params/organoid_atlas_subset/multigrate_mil.tsv
+      pb_rf: params/organoid_atlas_subset/pb_rf.tsv
+      pb_nn: params/organoid_atlas_subset/pb_nn.tsv
+      gex_nn: params/organoid_atlas_subset/gex_nn.tsv
+      gex_rf: params/organoid_atlas_subset/gex_rf.tsv
   # 'hlca_healthy_ipf':
   #   input1: data/pp/hlca_healthy_ipf.h5ad
   #   input2: null
@@ -99,8 +99,8 @@ TASKS:
     sample_key: patient_id
     n_splits: 5
     methods:
-      multigrate: params/pbmc_healthy_covid/multigrate_test.tsv
-      # multigrate: params/pbmc_healthy_covid/multigrate.tsv
+      # multigrate: params/pbmc_healthy_covid/multigrate_test.tsv
+      multigrate: params/pbmc_healthy_covid/multigrate.tsv
       pb_rf: params/pbmc_healthy_covid/pb_rf.tsv
       pb_nn: params/pbmc_healthy_covid/pb_nn.tsv
       gex_nn: params/pbmc_healthy_covid/gex_nn.tsv

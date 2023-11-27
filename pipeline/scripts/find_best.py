@@ -25,7 +25,7 @@ for task in config['TASKS']:
             # for multigrate need to check if all epochs and query_epochs are present and group by those
             # check only if all splits are present
             if method == 'multigrate_mil':
-                if df_tmp.isnull().values.any():
+                if df_tmp.drop(['epoch', 'query_epoch'], axis=1).isnull().values.any():
                     continue
                 for epoch in np.unique(df_tmp['epoch']):
                     df_tmp_epoch = df_tmp[df_tmp['epoch'] == epoch]

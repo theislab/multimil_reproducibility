@@ -30,21 +30,21 @@ TASKS:
   #     pb_nn: params/hlca_small_embed/pb_nn.tsv
   #     gex_nn: params/hlca_small_embed/gex_nn.tsv
   #     gex_rf: params/hlca_small_embed/gex_rf.tsv
-  # 'hlca_embed_regions':
-  #   input1: data/pp/hlca_embed_regions.h5ad
-  #   input2: null
-  #   label_key: transf_ann_level_3_label
-  #   batch_key: study
-  #   condition_key: region
-  #   sample_key: sample
-  #   n_splits: 5
-  #   methods:
-  #     # multigrate_mil: params/hlca_embed_regions/multigrate_mil_test.tsv
-  #     multigrate_mil: params/hlca_embed_regions/multigrate_mil.tsv
-  #     pb_rf: params/hlca_embed_regions/pb_rf.tsv
-  #     pb_nn: params/hlca_embed_regions/pb_nn.tsv
-  #     gex_nn: params/hlca_embed_regions/gex_nn.tsv
-  #     gex_rf: params/hlca_embed_regions/gex_rf.tsv
+  'hlca_embed_regions':
+    input1: data/pp/hlca_embed_regions.h5ad
+    input2: null
+    label_key: transf_ann_level_3_label
+    batch_key: study
+    condition_key: region
+    sample_key: sample
+    n_splits: 5
+    methods:
+      # multigrate_mil: params/hlca_embed_regions/multigrate_mil_test.tsv
+      multigrate_mil: params/hlca_embed_regions/multigrate_mil.tsv
+      pb_rf: params/hlca_embed_regions/pb_rf.tsv
+      pb_nn: params/hlca_embed_regions/pb_nn.tsv
+      gex_nn: params/hlca_embed_regions/gex_nn.tsv
+      gex_rf: params/hlca_embed_regions/gex_rf.tsv
   # 'hlca_healthy_ipf_embed_balanced':
   #   input1: data/pp/hlca_healthy_ipf_embed_balanced.h5ad
   #   input2: null
@@ -105,3 +105,18 @@ TASKS:
       pb_nn: params/pbmc_healthy_covid/pb_nn.tsv
       gex_nn: params/pbmc_healthy_covid/gex_nn.tsv
       gex_rf: params/pbmc_healthy_covid/gex_rf.tsv
+  'hlca_healthy_ipf_balanced':
+    input1: data/pp/hlca_healthy_ipf_balanced.h5ad
+    input2: null
+    label_key: transf_ann_level_3_label
+    batch_key: study
+    condition_key: lung_condition_coarse
+    sample_key: sample
+    n_splits: 5
+    methods:
+      # multigrate_mil: params/hlca_healthy_ipf_balanced/multigrate_test.tsv
+      multigrate_mil: params/hlca_healthy_ipf_balanced/multigrate.tsv
+      pb_rf: params/hlca_healthy_ipf_balanced/pb_rf.tsv
+      pb_nn: params/hlca_healthy_ipf_balanced/pb_nn.tsv
+      gex_nn: params/hlca_healthy_ipf_balanced/gex_nn.tsv
+      gex_rf: params/hlca_healthy_ipf_balanced/gex_rf.tsv

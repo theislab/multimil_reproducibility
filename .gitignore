@@ -1,4 +1,9 @@
 *.pyc
+*.csv
+*.tsv
+*.pdf
+*.png
+*.pt
 logs/
 scvi_log/
 __pycache__/

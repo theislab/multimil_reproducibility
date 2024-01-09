@@ -18,7 +18,7 @@ default-resources:
   - mem_mb=160000
   - disk_mb=32000
 
-jobs: 9
+jobs: 20
 keep-going: True
 keep-incomplete: True
 printshellcmds: True

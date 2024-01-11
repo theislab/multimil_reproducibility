@@ -150,8 +150,53 @@ TASKS:
       pb_nn: params/pbmc_healthy_covid_3cond_balanced/pb_nn.tsv
       gex_nn: params/pbmc_healthy_covid_3cond_balanced/gex_nn.tsv
       gex_rf: params/pbmc_healthy_covid_3cond_balanced/gex_rf.tsv
-  'pbmc_healthy_covid_multigrate_embed':
-    input1: data/pp/pbmc_healthy_covid_multigrate_embed.h5ad
+  # 'pbmc_healthy_covid_multigrate_embed':
+  #   input1: data/pp/pbmc_healthy_covid_multigrate_embed.h5ad
+  #   input2: null
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status_on_day_collection_summary
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     # multigrate_mil: params/pbmc_healthy_covid_multigrate_embed/multigrate_mil_test.tsv
+  #     multigrate_mil: params/pbmc_healthy_covid_multigrate_embed/multigrate_mil.tsv
+  #     pb_rf: params/pbmc_healthy_covid_multigrate_embed/pb_rf.tsv
+  #     pb_nn: params/pbmc_healthy_covid_multigrate_embed/pb_nn.tsv
+  #     gex_nn: params/pbmc_healthy_covid_multigrate_embed/gex_nn.tsv
+  #     gex_rf: params/pbmc_healthy_covid_multigrate_embed/gex_rf.tsv
+  # 'pbmc_healthy_covid_3cond_balanced_embed':
+  #   input1: data/pp/pbmc_healthy_covid_3cond_balanced_multigrate.h5ad
+  #   input2: null
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status_on_day_collection_summary
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     # multigrate_mil: params/pbmc_healthy_covid_3cond_balanced_embed/multigrate_mil_test.tsv
+  #     multigrate_mil: params/pbmc_healthy_covid_3cond_balanced_embed/multigrate_mil.tsv
+  #     pb_rf: params/pbmc_healthy_covid_3cond_balanced_embed/pb_rf.tsv
+  #     pb_nn: params/pbmc_healthy_covid_3cond_balanced_embed/pb_nn.tsv
+  #     gex_nn: params/pbmc_healthy_covid_3cond_balanced_embed/gex_nn.tsv
+  #     gex_rf: params/pbmc_healthy_covid_3cond_balanced_embed/gex_rf.tsv
+  # 'pbmc_healthy_covid_3cond_balanced_embed3_clean':
+  #   input1: data/pp/pbmc_healthy_covid_3cond_balanced_multigrate3_clean.h5ad
+  #   input2: null
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status_on_day_collection_summary
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     # multigrate_mil: params/pbmc_healthy_covid_3cond_balanced_embed/multigrate_mil_test.tsv
+  #     multigrate_mil: params/pbmc_healthy_covid_3cond_balanced_embed/multigrate_mil.tsv
+  #     pb_rf: params/pbmc_healthy_covid_3cond_balanced_embed/pb_rf.tsv
+  #     pb_nn: params/pbmc_healthy_covid_3cond_balanced_embed/pb_nn.tsv
+  #     gex_nn: params/pbmc_healthy_covid_3cond_balanced_embed/gex_nn.tsv
+  #     gex_rf: params/pbmc_healthy_covid_3cond_balanced_embed/gex_rf.tsv
+  'mtg3_clean_mild_severe_embed_balanced':
+    input1: data/pp/mtg3_clean_mild_severe_embed_balanced.h5ad
     input2: null
     label_key: initial_clustering
     batch_key: Site
@@ -159,14 +204,14 @@ TASKS:
     sample_key: patient_id
     n_splits: 5
     methods:
-      # multigrate_mil: params/pbmc_healthy_covid_multigrate_embed/multigrate_mil_test.tsv
-      multigrate_mil: params/pbmc_healthy_covid_multigrate_embed/multigrate_mil.tsv
-      pb_rf: params/pbmc_healthy_covid_multigrate_embed/pb_rf.tsv
-      pb_nn: params/pbmc_healthy_covid_multigrate_embed/pb_nn.tsv
-      gex_nn: params/pbmc_healthy_covid_multigrate_embed/gex_nn.tsv
-      gex_rf: params/pbmc_healthy_covid_multigrate_embed/gex_rf.tsv
-  'pbmc_healthy_covid_3cond_balanced_embed':
-    input1: data/pp/pbmc_healthy_covid_3cond_balanced_multigrate.h5ad
+      # multigrate_mil: params/pbmc_healthy_covid_3cond_balanced_embed/multigrate_mil_test.tsv
+      multigrate_mil: params/pbmc_healthy_covid_3cond_balanced_embed/multigrate_mil.tsv
+      pb_rf: params/pbmc_healthy_covid_3cond_balanced_embed/pb_rf.tsv
+      pb_nn: params/pbmc_healthy_covid_3cond_balanced_embed/pb_nn.tsv
+      gex_nn: params/pbmc_healthy_covid_3cond_balanced_embed/gex_nn.tsv
+      gex_rf: params/pbmc_healthy_covid_3cond_balanced_embed/gex_rf.tsv
+  'mtg3_clean_healthy_covid_embed':
+    input1: data/pp/mtg3_clean_healthy_covid_embed.h5ad
     input2: null
     label_key: initial_clustering
     batch_key: Site

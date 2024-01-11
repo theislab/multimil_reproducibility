@@ -21,7 +21,7 @@ fit_model <- function(adata_){
     study <- colData(adata_)$study
     # create a design matrix: here we have multiple donors so also consider that in the design matrix
     design <- model.matrix(~ 0 + condition + study)
-    # design <- design[, colnames(design) != "replicatenewcastle59"]
+    # design <- design[, colnames(design) != "replicateMH9179823"]
     print(design)
     # estimate dispersion
     y <- estimateDisp(y, design = design)

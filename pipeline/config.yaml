@@ -225,3 +225,17 @@ TASKS:
       pb_nn: params/pbmc_healthy_covid_3cond_balanced_embed/pb_nn.tsv
       gex_nn: params/pbmc_healthy_covid_3cond_balanced_embed/gex_nn.tsv
       gex_rf: params/pbmc_healthy_covid_3cond_balanced_embed/gex_rf.tsv
+  'scvi_healthy_covid':
+    input1: data/pp/scvi_pbmc_healthy_covid.h5ad
+    input2: null
+    label_key: initial_clustering
+    batch_key: Site
+    condition_key: Status_on_day_collection_summary
+    sample_key: patient_id
+    n_splits: 5
+    methods:
+      multigrate_mil: params/pbmc_healthy_covid_scvi/multigrate_mil.tsv
+      pb_rf: params/pbmc_healthy_covid_scvi/pb_rf.tsv
+      pb_nn: params/pbmc_healthy_covid_scvi/pb_nn.tsv
+      gex_nn: params/pbmc_healthy_covid_scvi/gex_nn.tsv
+      gex_rf: params/pbmc_healthy_covid_scvi/gex_rf.tsv

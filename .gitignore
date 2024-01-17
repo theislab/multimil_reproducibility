@@ -4,6 +4,7 @@
 *.pdf
 *.png
 *.pt
+*.ckpt
 logs/
 scvi_log/
 __pycache__/

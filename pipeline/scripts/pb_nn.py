@@ -63,7 +63,7 @@ def multi_acc(y_pred, y_test):
     return acc
 
 def run_pb_nn(adata, sample_key, condition_key, n_splits, params, hash, method, task, **kwargs):
-
+    adata.obs[sample_key] = adata.obs[sample_key].astype(str)
     adata_ = dc.get_pseudobulk(adata, sample_col=sample_key, groups_col=None, min_prop=-1, min_smpls=0, min_cells=0, min_counts=0, skip_checks=True)
     rename_dict = {name: number for number, name in enumerate(np.unique(adata_.obs[condition_key]))}
 

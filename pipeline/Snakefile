@@ -10,7 +10,7 @@ hashes = np.unique(tasks_df['hash'])
 matched_methods = [tasks_df.loc[tasks_df['hash'] == h, 'method'].values[0] for h in hashes]
 matched_tasks = [tasks_df.loc[tasks_df['hash'] == h, 'task'].values[0] for h in hashes]
 tasks = np.unique(tasks_df['task'])
-multigrate_tasks_df = tasks_df.loc[(tasks_df['method'] == 'multigrate') | (tasks_df['method'] == 'multigrate_mil'), :]
+multigrate_tasks_df = tasks_df.loc[(tasks_df['method'] == 'multigrate') | (tasks_df['method'] == 'multigrate_mil') | (tasks_df['method'] == 'multigrate_mil_reg'), :]
 multigrate_tasks_df = multigrate_tasks_df[['method', 'task']].drop_duplicates()
 
 rule run_method:

@@ -23,6 +23,7 @@ METHOD_MAP = dict(
     gex_nn=dict(function=run_gex_nn, mode='rna'),
     multigrate=dict(function=run_multigrate, mode='paired'),
     multigrate_mil=dict(function=run_multigrate_mil, mode='embed'),
+    multigrate_mil_reg=dict(function=run_multigrate_mil, mode='embed'),
 )
 
 params = snakemake.params.params
@@ -33,6 +34,7 @@ input2 = params['input2']
 label_key = params['label_key']
 batch_key = params['batch_key']
 condition_key = params['condition_key']
+condition_regression_key = params.get('condition_regression_key', None)
 sample_key = params['sample_key']
 n_splits = params['n_splits']
 h = params['hash']
@@ -42,6 +44,10 @@ output_file = snakemake.output.tsv
 
 method_mode = METHOD_MAP[method]['mode']
 method_function = METHOD_MAP[method]['function']
+
+regression = False
+if method == 'multigrate_mil_reg':
+    regression = True
 
 if method_mode == 'rna' or method_mode == 'embed':
     adata = sc.read_h5ad(input1)
@@ -57,6 +63,8 @@ if method_mode == 'rna' or method_mode == 'embed':
         hash=h,
         method=method,
         task=task,
+        regression=regression,
+        condition_regression_key=condition_regression_key,
     )
 elif method_mode == 'paired':
     adata1 = sc.read_h5ad(input1)
@@ -76,6 +84,7 @@ elif method_mode == 'paired':
         hash=h,
         method=method,
         task=task,
+        regression=regression,
     )
 
 df['hash'] = h

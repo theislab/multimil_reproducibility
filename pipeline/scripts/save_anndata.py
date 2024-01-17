@@ -181,8 +181,12 @@ if method == 'multigrate':
     adata1.obs['cell_attn'] = np.mean([adata1.obs[f'cell_attn_{i}'] for i in range(n_splits)], axis=0)
     adata1.write(f'data/multigrate/{task}/{h}_adata_both.h5ad')
 
-elif method == 'multigrate_mil':
-    print(f'Multigrate mil with hash = {h}...')    
+elif 'multigrate_mil' in method:
+    print(f'{method} with hash = {h}...')    
+    
+    regression = False
+    if 'reg' in method:
+        regression = True
     
     adata1 = sc.read_h5ad(input1)
 
@@ -190,10 +194,14 @@ elif method == 'multigrate_mil':
         "rna_indices_end": params['rna_indices_end'],
         "categorical_covariate_keys": params['categorical_covariate_keys'].strip('][').replace('\'', '').replace('\"', '').split(', '),
     }
+
     model_params = {
-        "class_loss_coef": params['class_loss_coef'],
         "z_dim": adata1.X.shape[1],
     }
+    if regression is True:
+        model_params["regression_loss_coef"] = params['regression_loss_coef']
+    else:
+        model_params["class_loss_coef"] = params['class_loss_coef']
 
     lr = params['lr']
     batch_size = params['batch_size']
@@ -226,16 +234,26 @@ elif method == 'multigrate_mil':
         )
 
         print('Initializing the model...')
-        mil = mtm.model.MILClassifier(
-            adata, 
-            classification=[
-                condition
-            ],
-            patient_label=donor,
-            **model_params,
-        )
+        if regression is True:
+            mil = mtm.model.MILClassifier(
+                adata, 
+                ordinal_regression=[
+                    condition
+                ],
+                patient_label=donor,
+                **model_params,
+            )
+        else:
+            mil = mtm.model.MILClassifier(
+                adata, 
+                classification=[
+                    condition
+                ],
+                patient_label=donor,
+                **model_params,
+            )
 
-        path_to_train_checkpoints = f'data/multigrate_mil/{task}/{h}/{i}/checkpoints/'
+        path_to_train_checkpoints = f'data/{method}/{task}/{h}/{i}/checkpoints/'
         train_checkpoints = get_existing_checkpoints(path_to_train_checkpoints)
         best_ckpt = None
         for ckpt in train_checkpoints:
@@ -273,7 +291,7 @@ elif method == 'multigrate_mil':
         adata1.obs[f'cell_attn_{i}'] = adata_both.obs['cell_attn']
     
     adata1.obs['cell_attn'] = np.mean([adata1.obs[f'cell_attn_{i}'] for i in range(n_splits)], axis=0)
-    adata1.write(f'data/multigrate_mil/{task}/{h}_adata_both.h5ad')
+    adata1.write(f'data/{method}/{task}/{h}_adata_both.h5ad')
 else:
     raise ValueError(f'Unknown method: {method}')
 

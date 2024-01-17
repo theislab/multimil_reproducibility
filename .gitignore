@@ -8,6 +8,7 @@
 logs/
 scvi_log/
 __pycache__/
+**/checkpoints/
 **/data/
 **/.snakemake
 **/.DS_Store

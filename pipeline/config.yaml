@@ -248,11 +248,19 @@ TASKS:
     sample_key: patient_id
     n_splits: 5
     methods:
-      # multigrate_mil_reg: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_reg.tsv
-      # multigrate_mil: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil.tsv
-      multigrate_mil_reg: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_reg_test.tsv
-      multigrate_mil: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_test.tsv
+      multigrate_mil_reg: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_reg.tsv
+      multigrate_mil: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil.tsv
+      # multigrate_mil_reg: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_reg_test.tsv
+      # multigrate_mil: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_test.tsv
       pb_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/pb_rf.tsv
       pb_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/pb_nn.tsv
       gex_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/gex_nn.tsv
       gex_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/gex_rf.tsv
+      # gex_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/gex_mr.tsv
+      pb_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/pb_mr.tsv
+      ct_pb_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/ct_pb_rf.tsv
+      ct_pb_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/ct_pb_nn.tsv
+      ct_pb_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/ct_pb_mr.tsv
+      freq_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/freq_mr.tsv
+      freq_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/freq_rf.tsv
+      freq_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/freq_nn.tsv

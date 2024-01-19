@@ -11,6 +11,14 @@ from pb_rf import run_pb_rf
 from gex_rf import run_gex_rf
 from pb_nn import run_pb_nn
 from gex_nn import run_gex_nn
+from pb_mr import run_pb_mr
+from gex_mr import run_gex_mr
+from ct_pb_nn import run_ct_pb_nn
+from ct_pb_rf import run_ct_pb_rf
+from ct_pb_mr import run_ct_pb_mr
+from freq_mr import run_freq_mr
+from freq_rf import run_freq_rf
+from freq_nn import run_freq_nn
 from run_multigrate_full import run_multigrate
 from run_multigrate_mil import run_multigrate_mil
 
@@ -21,6 +29,14 @@ METHOD_MAP = dict(
     gex_rf=dict(function=run_gex_rf, mode='rna'),
     pb_nn=dict(function=run_pb_nn, mode='rna'),
     gex_nn=dict(function=run_gex_nn, mode='rna'),
+    pb_mr=dict(function=run_pb_mr, mode='rna'),
+    gex_mr=dict(function=run_gex_mr, mode='rna'),
+    ct_pb_nn=dict(function=run_ct_pb_nn, mode='rna'),
+    ct_pb_rf=dict(function=run_ct_pb_rf, mode='rna'),
+    ct_pb_mr=dict(function=run_ct_pb_mr, mode='rna'),
+    freq_mr=dict(function=run_freq_mr, mode='rna'),
+    freq_rf=dict(function=run_freq_rf, mode='rna'),
+    freq_nn=dict(function=run_freq_nn, mode='rna'),
     multigrate=dict(function=run_multigrate, mode='paired'),
     multigrate_mil=dict(function=run_multigrate_mil, mode='embed'),
     multigrate_mil_reg=dict(function=run_multigrate_mil, mode='embed'),

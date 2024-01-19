@@ -45,7 +45,7 @@ def run_gex_rf(adata, condition_key, n_splits, params, **kwargs):
         # fit
         X = x
         Y = y
-        clf = RandomForestClassifier(n_estimators=5)
+        clf = RandomForestClassifier()
         clf.fit(X, Y)
         print(f'Train accuracy = {np.sum(clf.predict(X) == Y)/len(Y)}.')
         y_pred = clf.predict(x_val)

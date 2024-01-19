@@ -51,9 +51,6 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
     json_config['regression'] = regression
     json_config['adata'] = str(adata1)
 
-    with open(f'data/{method}/{task}/{hash}/config.json', 'w') as f:
-        json.dump(json_config, f)
-
     setup_params = {
         "rna_indices_end": params['rna_indices_end'],
         "categorical_covariate_keys": params['categorical_covariate_keys'].strip('][').replace('\'', '').replace('\"', '').split(', '),
@@ -233,6 +230,9 @@ def run_multigrate_mil(adata1, sample_key, condition_key, n_splits, params, hash
             )
             plt.savefig(path_to_train_checkpoints + f'{ckpt}_umap.png', bbox_inches="tight")
             plt.close()
+
+    with open(f'data/{method}/{task}/{hash}/config.json', 'w') as f:
+        json.dump(json_config, f)
 
     df = pd.concat(dfs)
     return df

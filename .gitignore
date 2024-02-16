@@ -5,6 +5,7 @@
 *.png
 *.pt
 *.ckpt
+*.svg
 logs/
 scvi_log/
 __pycache__/

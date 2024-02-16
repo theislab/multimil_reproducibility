@@ -38,6 +38,7 @@ METHOD_MAP = dict(
     freq_rf=dict(function=run_freq_rf, mode='rna'),
     freq_nn=dict(function=run_freq_nn, mode='rna'),
     multigrate=dict(function=run_multigrate, mode='paired'),
+    multigrate_reg=dict(function=run_multigrate, mode='paired'),
     multigrate_mil=dict(function=run_multigrate_mil, mode='embed'),
     multigrate_mil_reg=dict(function=run_multigrate_mil, mode='embed'),
 )
@@ -62,7 +63,7 @@ method_mode = METHOD_MAP[method]['mode']
 method_function = METHOD_MAP[method]['function']
 
 regression = False
-if method == 'multigrate_mil_reg':
+if (method == 'multigrate_mil_reg') or (method == 'multigrate_reg'):
     regression = True
 
 if method_mode == 'rna' or method_mode == 'embed':
@@ -101,6 +102,7 @@ elif method_mode == 'paired':
         method=method,
         task=task,
         regression=regression,
+        condition_regression_key=condition_regression_key,
     )
 
 df['hash'] = h

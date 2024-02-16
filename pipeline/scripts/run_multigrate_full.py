@@ -25,15 +25,33 @@ warnings.filterwarnings('ignore')
 
 print('--- %s seconds ---' % (time.time()-start_time))
 
-def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, hash, task, **kwargs):
+def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, hash, task, regression, **kwargs):
 
     print('============ Multigrate training ============')
 
     torch.set_float32_matmul_precision('medium')
 
+    json_config = {}
+
+    if regression is True:
+        method = 'multigrate_reg'
+    else:
+        method = 'multigrate'
+
     donor = sample_key
     condition = condition_key
     n_splits = n_splits
+
+    json_config['method'] = method
+    json_config['donor'] = donor
+    json_config['condition'] = condition
+    json_config['n_splits'] = n_splits
+    json_config['params'] = params
+    json_config['hash'] = hash
+    json_config['task'] = task
+    json_config['regression'] = regression
+    json_config['adata1'] = str(adata1)
+    json_config['adata2'] = str(adata2)
 
     setup_params = {
         "rna_indices_end": params['rna_indices_end'],
@@ -42,9 +60,14 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
     model_params = {
         "z_dim": params['z_dim'],
         "attn_dim": params['attn_dim'],
-        "class_loss_coef": params['class_loss_coef'],
+        # "class_loss_coef": params['class_loss_coef'],
         "cond_dim": params['cond_dim'],
     }
+    if regression is True:
+        model_params["regression_loss_coef"] = params['regression_loss_coef']
+    else:
+        model_params["class_loss_coef"] = params['class_loss_coef']
+
     subset_umap = params['subset_umap']
     umap_colors = params['umap_colors'].strip('][').replace('\'', '').replace('\"', '').split(', ')
     train_params = {
@@ -107,18 +130,30 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
         )
 
         print('Initializing the model...')
-        mil = mtm.model.MultiVAE_MIL(
-            adata,
-            patient_label=donor,
-            losses=losses,
-            loss_coefs={
-                'kl': kl,
-            },
-            classification=[condition],
-            **model_params,
-        )
+        if regression is True:
+            mil = mtm.model.MultiVAE_MIL(
+                adata,
+                patient_label=donor,
+                losses=losses,
+                loss_coefs={
+                    'kl': kl,
+                },
+                ordinal_regression=[condition],
+                **model_params,
+            )
+        else:
+            mil = mtm.model.MultiVAE_MIL(
+                adata,
+                patient_label=donor,
+                losses=losses,
+                loss_coefs={
+                    'kl': kl,
+                },
+                classification=[condition],
+                **model_params,
+            )
 
-        path_to_train_checkpoints = f'data/multigrate/{task}/{hash}/{i}/checkpoints/'
+        path_to_train_checkpoints = f'data/{method}/{task}/{hash}/{i}/checkpoints/'
         dirpath=Path(path_to_train_checkpoints)
         if dirpath.exists():
             shutil.rmtree(dirpath)
@@ -137,7 +172,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
             print("nan's in training, aborting...")
             df = {}
             df['split'] = i
-            df['method'] = 'multigrate'
+            df['method'] = method
             df = pd.DataFrame.from_dict(df, orient='index').T
             dfs.append(df)
             break
@@ -147,7 +182,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
         print('Starting inference...')
         mil.get_model_output(batch_size=batch_size)
 
-        mil.save(f'data/multigrate/{task}/{hash}/{i}/model/', overwrite=True)
+        mil.save(f'data/{method}/{task}/{hash}/{i}/model/', overwrite=True)
 
         if subset_umap is not None:
             print(f'Subsetting to {subset_umap}...')
@@ -164,11 +199,11 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
             show=False,
         )
 
-        plt.savefig(f'data/multigrate/{task}/{hash}/{i}/train_umap.png', bbox_inches="tight")
+        plt.savefig(f'data/{method}/{task}/{hash}/{i}/train_umap.png', bbox_inches="tight")
         plt.close()
 
         #print('Saving train losses...')
-        mil.plot_losses(save=f'data/multigrate/{task}/{hash}/{i}/train_losses.png')
+        mil.plot_losses(save=f'data/{method}/{task}/{hash}/{i}/train_losses.png')
 
         checkpoints  = get_existing_checkpoints(path_to_train_checkpoints)
 
@@ -202,7 +237,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
             df.to_csv(path_to_train_checkpoints + f'{ckpt}.csv')
 
             df['split'] = i
-            df['method'] = 'multigrate'
+            df['method'] = method
             df['epoch'] = ckpt.split('-')[0].split('=')[-1]
             df['query_epoch'] = 0
 
@@ -212,7 +247,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
             ###### FINETUNE #######
             #######################
 
-            path_to_query_checkpoints = f'data/multigrate/{task}/{hash}/{i}/query_checkpoints/{ckpt}/'
+            path_to_query_checkpoints = f'data/{method}/{task}/{hash}/{i}/query_checkpoints/{ckpt}/'
             dirpath=Path(path_to_query_checkpoints)
             if dirpath.exists():
                 shutil.rmtree(dirpath)
@@ -282,7 +317,7 @@ def run_multigrate(adata1, adata2, sample_key, condition_key, n_splits, params, 
                 plt.close()
 
                 df['split'] = i
-                df['method'] = 'multigrate'
+                df['method'] = method
                 df['epoch'] = ckpt.split('-')[0].split('=')[-1]
                 df['query_epoch'] = query_ckpt.split('-')[0].split('=')[-1]
                 dfs.append(df)

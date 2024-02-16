@@ -68,9 +68,22 @@ class Multiclass:
         P = softmax(Z, axis=1)
         return np.argmax(P, axis=1)
 
-def create_frequency_dataset(adata, celltype, donor, condition, standartize, rename_dict):
+def create_frequency_dataset(adata, celltype, donor, condition, standartize, rename_dict, ct_to_keep):
+    missing_ct = list(set(ct_to_keep) - set(adata.obs[celltype]))
     df = adata.obs[[celltype, donor]].groupby([celltype, donor]).size().reset_index(name='count')
-    # df = df[df[celltype] != 'Unknown']
+
+    unique_samples = np.unique(adata.obs[donor])
+    missing_df = {celltype: [], donor: [], 'count': []}
+    for ct in missing_ct:
+        for sample in unique_samples:
+            missing_df[celltype].append(ct)
+            missing_df[donor].append(sample)
+            missing_df['count'].append(0)
+    missing_df = dict(missing_df)
+    missing_df = pd.DataFrame(missing_df)
+
+    df = pd.concat([df, missing_df])
+    df = df.reset_index()
     
     X = []
     y = []
@@ -84,8 +97,8 @@ def create_frequency_dataset(adata, celltype, donor, condition, standartize, ren
     X = np.array(X)
     y = np.array(y)
 
-    # drop donors with less than 10 cells in total
-    idx = np.argwhere(np.all(X[..., :] <= 10, axis=0))
+    # drop donors with less than 100 cells in total
+    idx = np.argwhere(np.sum(X, axis=1) <= 100)
     X = np.delete(X, idx, axis=0)
     y = np.delete(y, idx)
     
@@ -106,6 +119,7 @@ def run_freq_mr(adata, sample_key, condition_key, n_splits, params, label_key, m
     adata.obs[sample_key] = adata.obs[sample_key].astype(str)
 
     rename_dict = {name: number for number, name in enumerate(np.unique(adata.obs[condition_key]))}
+    ct_to_keep = list(np.unique(adata.obs[label_key]))
     standartize = params['norm']
 
     val_accuracies = []
@@ -122,7 +136,8 @@ def run_freq_mr(adata, sample_key, condition_key, n_splits, params, label_key, m
             donor=sample_key,
             condition=condition_key,
             standartize=standartize,
-            rename_dict=rename_dict
+            rename_dict=rename_dict,
+            ct_to_keep=ct_to_keep,
         )
         print("Train shapes:")
         print(f"x.shape = {x.shape}")
@@ -134,7 +149,8 @@ def run_freq_mr(adata, sample_key, condition_key, n_splits, params, label_key, m
             donor=sample_key,
             condition=condition_key,
             standartize=standartize,
-            rename_dict=rename_dict
+            rename_dict=rename_dict,
+            ct_to_keep=ct_to_keep,
         )
         print("Val shapes:")
         print(f"x_val.shape = {x_val.shape}")

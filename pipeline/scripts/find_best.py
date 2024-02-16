@@ -46,7 +46,7 @@ for task in config['TASKS']:
                             best_epoch = epoch
                             best_query_epoch = np.nan
                             best_accuracies = accuracies
-            elif method == 'multigrate':
+            elif method == 'multigrate' or method == 'multigrate_reg':
                 if df_tmp.isnull().values.any():
                     continue
                 for epoch in np.unique(df_tmp['epoch']):

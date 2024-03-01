@@ -5,6 +5,7 @@ import multigrate as mtg
 import multimil as mtm
 from pathlib import Path
 import ast
+import os.path
 
 import scanpy as sc
 import pandas as pd
@@ -53,6 +54,13 @@ query_epoch = row['best_query_epoch']
 params = ast.literal_eval(row['best_params'])
 
 print(f'Processing {task} and {method}...')
+
+path = f'data/{method}/{task}/{h}_adata_both.h5ad'
+if os.path.isfile(path):
+    print('AnnData already exists. Exiting...')
+    with open(output_file, 'w') as f:
+        f.write(f'Saved anndata for {method} for {task}!')
+    exit(0)
 
 if method == 'multigrate':
     print(f'Multigrate with hash = {h}...')

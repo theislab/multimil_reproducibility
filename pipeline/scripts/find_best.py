@@ -38,14 +38,14 @@ for task in config['TASKS']:
                     accuracies = []
                     for i in range(n_splits):
                         accuracies.append(df_tmp_epoch[df_tmp_epoch['split'] == i]['f1-score']['accuracy'])
-                        accuracy = np.mean(accuracies)
-                        if accuracy > best_accuracy:
-                            best_accuracy = accuracy
-                            best_hash = h
-                            best_params = df_tmp_epoch['method_params'].iloc[0]
-                            best_epoch = epoch
-                            best_query_epoch = np.nan
-                            best_accuracies = accuracies
+                    accuracy = np.mean(accuracies)
+                    if accuracy > best_accuracy:
+                        best_accuracy = accuracy
+                        best_hash = h
+                        best_params = df_tmp_epoch['method_params'].iloc[0]
+                        best_epoch = epoch
+                        best_query_epoch = np.nan
+                        best_accuracies = accuracies
             elif method == 'multigrate' or method == 'multigrate_reg':
                 if df_tmp.isnull().values.any():
                     continue
@@ -97,6 +97,7 @@ for task in config['TASKS']:
     best_df = pd.DataFrame.from_dict(best_methods_per_task).T
     best_df['task'] = task
     best_methods[task] = best_df
+    best_df.to_csv(f'data/reports/{task}/best.csv', sep='\t', index=False)
 
 best_all = pd.concat(best_methods)
 best_all.to_csv(snakemake.output.tsv, sep='\t', index=False)

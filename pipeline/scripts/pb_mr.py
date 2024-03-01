@@ -6,7 +6,7 @@ import numpy as np
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import OneHotEncoder
 from scipy.special import softmax
-onehot_encoder = OneHotEncoder(sparse=False)
+onehot_encoder = OneHotEncoder(sparse_output=False)
 from scipy.special import logsumexp
 
 

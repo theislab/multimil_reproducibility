@@ -529,3 +529,67 @@ TASKS:
       freq_mr: params/pbmc_mtg_final/freq_mr.tsv
       freq_rf: params/pbmc_mtg_final/freq_rf.tsv
       freq_nn: params/pbmc_mtg_final/freq_nn.tsv
+  'pbmc_mtg_final1_binary_balanced':
+    input1: data/pp/mtg_final1_binary_balanced.h5ad
+    input2: null
+    label_key: initial_clustering
+    batch_key: Site
+    condition_key: Status
+    sample_key: patient_id
+    n_splits: 5
+    methods:
+      multigrate_mil: params/pbmc_binary/multigrate_mil.tsv
+      pb_rf: params/pbmc_binary/pb_rf.tsv
+      pb_nn: params/pbmc_binary/pb_nn.tsv
+      gex_nn: params/pbmc_binary/gex_nn.tsv
+      gex_rf: params/pbmc_binary/gex_rf.tsv
+      pb_mr: params/pbmc_binary/pb_mr.tsv
+      ct_pb_rf: params/pbmc_binary/ct_pb_rf.tsv
+      ct_pb_nn: params/pbmc_binary/ct_pb_nn.tsv
+      ct_pb_mr: params/pbmc_binary/ct_pb_mr.tsv
+      freq_mr: params/pbmc_binary/freq_mr.tsv
+      freq_rf: params/pbmc_binary/freq_rf.tsv
+      freq_nn: params/pbmc_binary/freq_nn.tsv
+  'totalvi_pbmc_embed_binary_balanced':
+    input1: data/pp/totalvi_pbmc_embed_binary_balanced.h5ad
+    input2: null
+    label_key: initial_clustering
+    batch_key: Site
+    condition_key: Status
+    sample_key: patient_id
+    n_splits: 5
+    methods:
+      multigrate_mil: params/pbmc_binary/multigrate_mil.tsv
+      pb_rf: params/pbmc_binary/pb_rf.tsv
+      pb_nn: params/pbmc_binary/pb_nn.tsv
+      pb_mr: params/pbmc_binary/pb_mr.tsv
+      gex_nn: params/pbmc_binary/gex_nn.tsv
+      gex_rf: params/pbmc_binary/gex_rf.tsv
+      ct_pb_rf: params/pbmc_binary/ct_pb_rf.tsv
+      ct_pb_nn: params/pbmc_binary/ct_pb_nn.tsv
+      ct_pb_mr: params/pbmc_binary/ct_pb_mr.tsv
+      freq_mr: params/pbmc_binary/freq_mr.tsv
+      freq_rf: params/pbmc_binary/freq_rf.tsv
+      freq_nn: params/pbmc_binary/freq_nn.tsv
+  'pbmc_3_cond_balanced_end2end':
+    input1: data/pp/pbmc_3_cond_balanced_rna.h5ad
+    input2: data/pp/pbmc_3_cond_balanced_adt.h5ad
+    label_key: initial_clustering
+    batch_key: Site
+    condition_key: Status_on_day_collection_summary
+    sample_key: patient_id
+    n_splits: 5
+    methods:
+      multigrate_reg: params/pbmc_3_cond_balanced_end2end/multigrate_reg.tsv
+      multigrate: params/pbmc_3_cond_balanced_end2end/multigrate.tsv
+      pb_rf: params/pbmc_3_cond_balanced_end2end/pb_rf.tsv
+      pb_nn: params/pbmc_3_cond_balanced_end2end/pb_nn.tsv
+      gex_nn: params/pbmc_3_cond_balanced_end2end/gex_nn.tsv
+      gex_rf: params/pbmc_3_cond_balanced_end2end/gex_rf.tsv
+      # pb_mr: params/pbmc_3_cond_balanced_end2end/pb_mr.tsv
+      ct_pb_rf: params/pbmc_3_cond_balanced_end2end/ct_pb_rf.tsv
+      ct_pb_nn: params/pbmc_3_cond_balanced_end2end/ct_pb_nn.tsv
+      ct_pb_mr: params/pbmc_3_cond_balanced_end2end/ct_pb_mr.tsv
+      freq_mr: params/pbmc_3_cond_balanced_end2end/freq_mr.tsv
+      freq_rf: params/pbmc_3_cond_balanced_end2end/freq_rf.tsv
+      freq_nn: params/pbmc_3_cond_balanced_end2end/freq_nn.tsv

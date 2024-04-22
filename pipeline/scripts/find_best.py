@@ -60,14 +60,14 @@ for task in config['TASKS']:
                         accuracies = []
                         for i in range(n_splits):
                             accuracies.append(df_tmp_q_epoch[df_tmp_q_epoch['split'] == i]['f1-score']['accuracy'])
-                            accuracy = np.mean(accuracies)
-                            if accuracy > best_accuracy:
-                                best_accuracy = accuracy
-                                best_hash = h
-                                best_params = df_tmp_q_epoch['method_params'].iloc[0]
-                                best_epoch = epoch
-                                best_query_epoch = query_epoch
-                                best_accuracies = accuracies
+                        accuracy = np.mean(accuracies)
+                        if accuracy > best_accuracy:
+                            best_accuracy = accuracy
+                            best_hash = h
+                            best_params = df_tmp_q_epoch['method_params'].iloc[0]
+                            best_epoch = epoch
+                            best_query_epoch = query_epoch
+                            best_accuracies = accuracies
 
             else:
                 if len(np.unique(df_tmp['split'])) != n_splits:

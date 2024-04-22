@@ -104,8 +104,30 @@ obj.adt <- RunUMAP(obj.adt, reduction = "apca",verbose = TRUE, dims = 1:30)
 p12 <- DimPlot(obj.adt, group.by = "celltype", label = TRUE) + NoLegend() + ggtitle("ADT")
 p10 + p12
 
+saveRDS(obj.rna.ext2, file = "objrnaext2.rds")
 saveRDS(obj.adt, file = "objadt.rds")
 
+# save as .csv to then read in with python to work with scanpy objects
+bridge_ref <- readRDS("bridge_ref.rds")
+objatac <- readRDS("objatac.rds")
+objadt <- readRDS("objadt.rds")
+obj.rna.ext <- readRDS("objrnaext.rds")
+obj.rna.ext2 <- readRDS("objrnaext2.rds")
+
+write.table(bridge_ref@reductions[["pca"]]@cell.embeddings, file="ref_pca.csv", sep = ';')
+write.table(objatac@reductions[["ref.Bridge.reduc"]]@cell.embeddings, file="atac_ref_pca.csv", sep = ';')
+write.table(objadt@reductions[["ref.Bridge.reduc"]]@cell.embeddings, file="adt_ref_pca.csv", sep = ';')
+
+write.table(bridge_ref@reductions[["umap"]]@cell.embeddings, file="ref_umap.csv", sep = ';')
+write.table(objatac@reductions[["ref.umap"]]@cell.embeddings, file="atac_ref_umap.csv", sep = ';')
+write.table(objadt@reductions[["ref.umap"]]@cell.embeddings, file="adt_ref_umap.csv", sep = ';')
+
+write.table(bridge_ref@meta.data, file='ref_meta.csv', sep = ';')
+write.table(objatac@meta.data, file='atac_meta.csv', sep = ';')
+write.table(objadt@meta.data, file='adt_meta.csv', sep = ';')
+
+write.table(obj.rna.ext@assays[["Bridge"]]@data, file='objrnaext_bridge.csv', sep=';')
+write.table(obj.rna.ext2@assays[["Bridge"]]@data, file='objrnaext_bridge2.csv', sep=';')
 
 
 

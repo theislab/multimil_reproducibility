@@ -46,23 +46,24 @@ def train(seed=None, split=None, run=None, config_name=None, **config):
     setup_params = config["model"]["setup_params"]
     model_params = config["model"]["model_params"]
     # adjust depths of everything
-    #n_mods = len(model_params["modality_lengths"])
-    #depth = model_params.pop('depth')
-    #model_params["n_layers_encoders"] = [depth] * n_mods
-    #model_params["n_layers_decoders"] = [depth] * n_mods
+    n_mods = len(model_params["modality_lengths"])
+    depth = model_params.pop('depth')
+    model_params["n_layers_encoders"] = [depth] * n_mods
+    model_params["n_layers_decoders"] = [depth] * n_mods
 
     # create huge name
     name = ""
     if config_name is not None:
         name += config_name.split('/')[-1].split('.')[0]
-    #name += f"-depth{depth}"
+    name += f"-depth{depth}"
 
-    #if (mmd := model_params.get('mmd', None)) is not None:
-    #    name += f'-{mmd}'
+    if model_params.get('mmd', None) is not None:
+       mmd = model_params.get('mmd')
+       name += f'-{mmd}'
     
-    #if train_params["batch_size"] != 256:
-    #    name += f"-bs{train_params['batch_size']}"
-    #name += f"-lr{train_params['lr']}"
+    if train_params["batch_size"] != 256:
+       name += f"-bs{train_params['batch_size']}"
+    name += f"-lr{train_params['lr']}"
 
     #if model_params.get("condition_decoders", True) is False:
     #    name += '-noconddec'

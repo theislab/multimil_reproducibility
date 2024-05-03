@@ -593,3 +593,24 @@ TASKS:
       freq_mr: params/pbmc_3_cond_balanced_end2end/freq_mr.tsv
       freq_rf: params/pbmc_3_cond_balanced_end2end/freq_rf.tsv
       freq_nn: params/pbmc_3_cond_balanced_end2end/freq_nn.tsv
+  'diabetes':
+    input1: data/pp/diabetes_full.h5ad
+    input2: null
+    label_key: Cell Type
+    batch_key: null
+    condition_key: Diabetes Status
+    sample_key: Library
+    n_splits: 5
+    methods:
+      multigrate_mil: params/diabetes/multigrate_mil.tsv
+      pb_rf: params/diabetes/pb_rf.tsv
+      pb_nn: params/diabetes/pb_nn.tsv
+      # pb_mr: params/diabetes/pb_mr.tsv
+      gex_nn: params/diabetes/gex_nn.tsv
+      gex_rf: params/diabetes/gex_rf.tsv
+      ct_pb_rf: params/diabetes/ct_pb_rf.tsv
+      ct_pb_nn: params/diabetes/ct_pb_nn.tsv
+      ct_pb_mr: params/diabetes/ct_pb_mr.tsv
+      freq_mr: params/diabetes/freq_mr.tsv
+      freq_rf: params/diabetes/freq_rf.tsv
+      freq_nn: params/diabetes/freq_nn.tsv

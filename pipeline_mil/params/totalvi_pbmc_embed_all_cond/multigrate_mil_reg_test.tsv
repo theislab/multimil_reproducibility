@@ -1,0 +1,2 @@
+	lr	rna_indices_end	categorical_covariate_keys	regression_loss_coef	seed	batch_size	train_max_epochs	train_save_checkpoint_every_n_epochs	subset_umap	umap_colors
+0	1e-5	20	['patient_id', 'Status_on_day_collection_summary']	3.0	0	256	4	2	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']

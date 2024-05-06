@@ -1,0 +1,11 @@
+	lr	rna_indices_end	categorical_covariate_keys	regression_loss_coef	seed	batch_size	train_max_epochs	train_save_checkpoint_every_n_epochs	subset_umap	umap_colors
+0	1e-4	20	['patient_id', 'Status_on_day_collection_summary']	1.0	0	256	100	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']
+0	1e-3	20	['patient_id', 'Status_on_day_collection_summary']	1.0	0	256	100	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']
+0	1e-4	20	['patient_id', 'Status_on_day_collection_summary']	0.1	0	256	100	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']
+0	1e-3	20	['patient_id', 'Status_on_day_collection_summary']	0.1	0	256	100	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']
+0	1e-4	20	['patient_id', 'Status_on_day_collection_summary']	0.01	0	256	100	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']
+0	1e-3	20	['patient_id', 'Status_on_day_collection_summary']	0.01	0	256	100	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']
+0	1e-4	20	['patient_id', 'Status_on_day_collection_summary']	0.001	0	256	100	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']
+0	1e-3	20	['patient_id', 'Status_on_day_collection_summary']	0.001	0	256	100	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']
+0	1e-4	20	['patient_id', 'Status_on_day_collection_summary']	10.0	0	256	100	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']
+0	1e-3	20	['patient_id', 'Status_on_day_collection_summary']	10.0	0	256	100	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']

@@ -1,6 +1,5 @@
 *.pyc
 *.csv
-*.tsv
 *.pdf
 *.png
 *.pt
@@ -15,3 +14,4 @@ __pycache__/
 **/.DS_Store
 **/.ipynb_checkpoints
 *.out
+

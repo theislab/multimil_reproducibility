@@ -1,0 +1,11 @@
+name: multigrate_snakemake
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      # - scvi-tools<=0.20.3
+      - -e /lustre/groups/ml01/workspace/anastasia.litinetskaya/code/multigrate
+      - -e /lustre/groups/ml01/workspace/anastasia.litinetskaya/code/multimil

@@ -1,0 +1,78 @@
+{
+    "model": {
+        "organize_params": {
+            "adatas": [
+                [
+                    "/lustre/groups/ml01/workspace/anastasia.litinetskaya/data/hao-2020/expressions_hvg.h5ad"
+                ],
+                [
+                    "/lustre/groups/ml01/workspace/anastasia.litinetskaya/data/hao-2020/protein.h5ad"
+                ]
+            ],
+            "groups": [
+                [
+                    0
+                ],
+                [
+                    0
+                ]
+            ],
+            "layers": [
+                [
+                    "count"
+                ],
+                [
+                    null
+                ]
+            ],
+            "modality_lengths": [
+                4000,
+                228
+            ]
+        },
+        "setup_params": {
+            "rna_indices_end": 4000,
+            "categorical_covariate_keys": [
+                "Batch"
+            ]
+        },
+        "model_params": {
+            "modality_lengths": [
+                4000,
+                228
+            ],
+            "losses": [
+                "nb",
+                "mse"
+            ],
+            "z_dim": 16,
+            "cond_dim": 16,
+            "dropout": 0.2,
+            "depth": 2,
+            "add_shared_decoder": false,
+            "loss_coefs": {
+                "kl": 1e-5,
+                "integ": 0
+            }
+        },
+        "train": {
+            "max_epochs": 200,
+            "batch_size": 256,
+            "lr": 1e-3
+        }
+    },
+    "experiment": {
+        "query": false,
+        "metrics": true,
+        "batch_key": "Batch",
+        "label_key": "celltype.l2",
+        "output_dir": "/lustre/groups/ml01/workspace/anastasia.litinetskaya/experiments/integration/hao/",
+        "umap_colors": [
+            "Batch",
+            "celltype.l1",
+            "celltype.l2",
+            "celltype.l3"
+        ],
+        "save_anndatas": true
+    }
+}

@@ -1,4 +1,0 @@
-	kl	lr	rna_indices_end	categorical_covariate_keys	z_dim	attn_dim	class_loss_coef	cond_dim	seed	batch_size	train_max_epochs	train_save_checkpoint_every_n_epochs	query_max_epochs	query_save_checkpoint_every_n_epochs	subset_umap	umap_colors
-2	1e-5	1e-4	2000	['patient_id', 'Site', 'Status_on_day_collection_summary']	16	16	1.0	16	0	256	200	50	60	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']
-3	1e-4	1e-4	2000	['patient_id', 'Site', 'Status_on_day_collection_summary']	16	16	1.0	16	0	256	200	50	60	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']
-2	1e-5	1e-4	2000	['patient_id', 'Site', 'Status_on_day_collection_summary']	16	16	0.1	16	0	256	200	50	60	20	20000	['Status_on_day_collection_summary', 'Site', 'full_clustering', 'initial_clustering']

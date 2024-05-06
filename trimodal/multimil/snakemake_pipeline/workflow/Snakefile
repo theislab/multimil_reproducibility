@@ -1,0 +1,39 @@
+
+from snakemake.utils import Paramspace
+import pandas as pd
+
+paramspace = Paramspace(pd.read_csv("data/params.tsv", sep="\t", index_col=0), filename_params="*")
+paramspace_pattern = paramspace.wildcard_pattern
+
+configfile: "config.json"
+
+rule all:
+    input:
+        expand("data/multigrate/{params}/{split}/train_umap.png", params=paramspace.instance_patterns, split=list(range(config["n_splits"])))
+    output:
+        "data/logs/all_train.txt"
+    shell:
+        "echo 'All training done!' > {output[0]}"
+
+rule run_pipeline:
+    input:
+        "data/pp/rna_multiome.h5ad",
+        "data/pp/rna_cite.h5ad",
+        "data/pp/atac_multiome.h5ad",
+        "data/pp/adt_cite.h5ad",
+        "data/pp/rna_multiome_query.h5ad",
+        "data/pp/rna_cite_query.h5ad",
+        "data/pp/atac_multiome_query.h5ad",
+        "data/pp/adt_cite_query.h5ad"
+    output:
+        expand("data/multigrate/{pattern}/{split}/train_umap.png", pattern=paramspace_pattern, split=list(range(config["n_splits"]))),
+        expand("data/multigrate/{pattern}/{split}/losses.png", pattern=paramspace_pattern, split=list(range(config["n_splits"]))),
+        expand("data/multigrate/{pattern}/{split}/query_ref_umap.png", pattern=paramspace_pattern, split=list(range(config["n_splits"])))
+    params:
+        model_params=paramspace.instance,
+        paramspace_pattern=paramspace_pattern,
+        **config
+    conda:
+        "envs/multigrate.yaml"
+    script:
+        "scripts/full.py"

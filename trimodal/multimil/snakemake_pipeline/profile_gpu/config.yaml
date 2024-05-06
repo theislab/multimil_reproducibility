@@ -1,0 +1,31 @@
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --partition={resources.partition}
+    --gres=gpu:{resources.gpu}
+    --mem={resources.mem_mb}
+    --qos={resources.qos}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/%j-{rule}-{wildcards}.out
+    --error=logs/{rule}/%j-{rule}-{wildcards}.err
+    --nice=10000
+    --parsable
+default-resources:
+  - partition=gpu_p
+  - gpu=1
+  - qos=gpu
+  - mem_mb=90000
+  - disk_mb=32000
+
+jobs: 20
+keep-going: True
+printshellcmds: True
+scheduler: greedy
+use-conda: True
+# cluster-cancel: scancel
+show-failed-logs: True
+# configfile: config.json
+printshellcmds: True
+latency-wait: 90
+# verbose: True
+# cluster-status: workflow/scripts/status.py

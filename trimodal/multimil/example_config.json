@@ -1,0 +1,80 @@
+{
+    "model": {
+        "organize_params": {
+            "adatas": [
+                [
+                    "/lustre/groups/ml01/projects/2022_multigrate_anastasia.litinetskaya/trimodal/data/trimodal/rna_cite_hvg.h5ad",
+                    "/lustre/groups/ml01/projects/2022_multigrate_anastasia.litinetskaya/trimodal/data/trimodal/rna_multiome_hvg.h5ad"
+                ],
+                [
+                    null,
+                    "/lustre/groups/ml01/projects/2022_multigrate_anastasia.litinetskaya/trimodal/data/trimodal/atac_hvf.h5ad"
+                ],
+                [
+                    "/lustre/groups/ml01/projects/2022_multigrate_anastasia.litinetskaya/trimodal/data/trimodal/adt.h5ad",
+                    null
+                ]
+            ],
+            "layers": [
+                [
+                    "counts",
+                    "counts"
+                ],
+                [
+                    null,
+                    "log-norm"
+                ],
+                [
+                    "clr",
+                    null
+                ]
+            ]
+        },
+        "setup_params": {
+            "rna_indices_end": 4000,
+            "categorical_covariate_keys": [
+                "Samplename",
+                "Modality"
+            ]
+        },
+        "model_params": {
+            "losses": [
+                "nb",
+                "mse",
+                "mse"
+            ],
+            "integrate_on": "Modality",
+            "mmd": "marginal",
+            "loss_coefs": {
+                "kl": 1e-5,
+                "integ": 1000
+            }
+        },
+        "train": {
+            "max_epochs": 2,
+            "batch_size": 256
+        },
+        "query_train": {
+            "max_epochs": 2,
+            "batch_size": 256
+        }
+    },
+    "experiment": {
+        "query": true,
+        "metrics_train": false,
+        "metrics_query_reference": true,
+        "metrics_separate_queries": true,
+        "batch_key": "Samplename",
+        "label_key": "l2_cell_type",
+        "output_dir": "/lustre/groups/ml01/workspace/anastasia.litinetskaya/experiments/integration/trimodal/vary_integration_coefficient/",
+        "umap_colors": [
+            "l1_cell_type",
+            "l2_cell_type",
+            "Modality",
+            "Samplename",
+            "Site",
+            "cell_type"
+        ],
+        "save_anndatas": true
+    }
+}

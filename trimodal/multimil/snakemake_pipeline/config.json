@@ -1,0 +1,33 @@
+{
+    "n_splits": 1,
+    "donor": "Samplename",    
+    "organize_params": {
+      "layers": [
+        ["counts", "counts"], 
+        [null, "log-norm"], 
+        [null, null]
+      ]
+    },
+    "setup_params": {
+        "rna_indices_end": 4000,
+        "categorical_covariate_keys": [
+            "Modality",
+            "Samplename"
+      ]
+    },
+    "train_params": {
+      "max_epochs": 200,
+      "save_checkpoint_every_n_epochs": 200
+    },
+    "query_train_params": {
+      "max_epochs": 200,
+      "save_checkpoint_every_n_epochs": 200
+    },
+    "subset_umap": -1,
+    "umap_colors": [
+      "l1_cell_type",
+      "l2_cell_type",
+      "Modality",
+      "Samplename"
+    ]
+}

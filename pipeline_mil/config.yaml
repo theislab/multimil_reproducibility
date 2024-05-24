@@ -242,52 +242,30 @@ TASKS:
 
 
 ##### final #####
-  'pbmc_healthy_covid_3cond_end2end_ord_reg':
-    input1: data/pp/pbmc_healthy_covid_3_cond_reg_end2end_rna.h5ad
-    input2: data/pp/pbmc_healthy_covid_3_cond_reg_end2end_adt.h5ad
-    label_key: initial_clustering
-    batch_key: Site
-    condition_key: Status_on_day_collection_summary
-    sample_key: patient_id
-    n_splits: 5
-    methods:
-      multigrate_reg: params/pbmc_healthy_covid_3cond_end2end_ord_reg/multigrate_reg.tsv
-      multigrate: params/pbmc_healthy_covid_3cond_end2end_ord_reg/multigrate.tsv
-      pb_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg/pb_rf.tsv
-      pb_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg/pb_nn.tsv
-      gex_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg/gex_nn.tsv
-      gex_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg/gex_rf.tsv
-      pb_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg/pb_mr.tsv
-      ct_pb_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg/ct_pb_rf.tsv
-      ct_pb_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg/ct_pb_nn.tsv
-      ct_pb_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg/ct_pb_mr.tsv
-      freq_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg/freq_mr.tsv
-      freq_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg/freq_rf.tsv
-      freq_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg/freq_nn.tsv
-  'pbmc_healthy_covid_3cond_end2end_ord_reg_rna':
-    input1: data/pp/pbmc_healthy_covid_3_cond_reg_end2end_rna.h5ad
-    input2: null
-    label_key: initial_clustering
-    batch_key: Site
-    condition_key: Status_on_day_collection_summary
-    sample_key: patient_id
-    n_splits: 5
-    methods:
-      multigrate_reg: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/multigrate_reg.tsv
-      multigrate: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/multigrate.tsv
-      pb_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/pb_rf.tsv
-      pb_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/pb_nn.tsv
-      gex_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/gex_nn.tsv
-      gex_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/gex_rf.tsv
-      pb_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/pb_mr.tsv
-      ct_pb_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/ct_pb_rf.tsv
-      ct_pb_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/ct_pb_nn.tsv
-      ct_pb_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/ct_pb_mr.tsv
-      freq_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/freq_mr.tsv
-      freq_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/freq_rf.tsv
-      freq_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/freq_nn.tsv
-  # 'pbmc_healthy_covid_3cond_mtg_embed_ord_reg':
-  #   input1: data/pp/mtg3_clean_healthy_covid_3_cond_embed_reg.h5ad
+  # 'pbmc_healthy_covid_3cond_end2end_ord_reg':
+  #   input1: data/pp/pbmc_healthy_covid_3_cond_reg_end2end_rna.h5ad
+  #   input2: data/pp/pbmc_healthy_covid_3_cond_reg_end2end_adt.h5ad
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status_on_day_collection_summary
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_reg: params/pbmc_healthy_covid_3cond_end2end_ord_reg/multigrate_reg.tsv
+  #     multigrate: params/pbmc_healthy_covid_3cond_end2end_ord_reg/multigrate.tsv
+  #     pb_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg/pb_rf.tsv
+  #     pb_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg/pb_nn.tsv
+  #     gex_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg/gex_nn.tsv
+  #     gex_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg/gex_rf.tsv
+  #     pb_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg/pb_mr.tsv
+  #     ct_pb_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg/ct_pb_rf.tsv
+  #     ct_pb_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg/ct_pb_nn.tsv
+  #     ct_pb_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg/ct_pb_mr.tsv
+  #     freq_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg/freq_mr.tsv
+  #     freq_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg/freq_rf.tsv
+  #     freq_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg/freq_nn.tsv
+  # 'pbmc_healthy_covid_3cond_end2end_ord_reg_rna':
+  #   input1: data/pp/pbmc_healthy_covid_3_cond_reg_end2end_rna.h5ad
   #   input2: null
   #   label_key: initial_clustering
   #   batch_key: Site
@@ -295,322 +273,365 @@ TASKS:
   #   sample_key: patient_id
   #   n_splits: 5
   #   methods:
-  #     multigrate_mil_reg: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_reg.tsv
-  #     multigrate_mil: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil.tsv
-  #     # multigrate_mil_reg: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_reg_test.tsv
-  #     # multigrate_mil: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_test.tsv
-  #     pb_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/pb_rf.tsv
-  #     pb_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/pb_nn.tsv
-  #     gex_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/gex_nn.tsv
-  #     gex_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/gex_rf.tsv
-  #     # gex_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/gex_mr.tsv
-  #     pb_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/pb_mr.tsv
-  #     ct_pb_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/ct_pb_rf.tsv
-  #     ct_pb_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/ct_pb_nn.tsv
-  #     ct_pb_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/ct_pb_mr.tsv
-  #     freq_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/freq_mr.tsv
-  #     freq_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/freq_rf.tsv
-  #     freq_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/freq_nn.tsv
-  'hlca_healthy_ipf_embed_balanced_final':
-    input1: data/pp/hlca_healthy_ipf_embed_balanced_final.h5ad
-    input2: null
-    label_key: ann_level_3_label_final
-    batch_key: study
-    condition_key: lung_condition_coarse
-    sample_key: sample
-    n_splits: 5
-    methods:
-      # multigrate_mil: params/hlca_healthy_ipf_embed_balanced_final/multigrate_mil_test.tsv
-      multigrate_mil: params/hlca_healthy_ipf_embed_balanced_final/multigrate_mil.tsv
-      pb_rf: params/hlca_healthy_ipf_embed_balanced_final/pb_rf.tsv
-      pb_nn: params/hlca_healthy_ipf_embed_balanced_final/pb_nn.tsv
-      gex_nn: params/hlca_healthy_ipf_embed_balanced_final/gex_nn.tsv
-      gex_rf: params/hlca_healthy_ipf_embed_balanced_final/gex_rf.tsv
-      pb_mr: params/hlca_healthy_ipf_embed_balanced_final/pb_mr.tsv
-      ct_pb_rf: params/hlca_healthy_ipf_embed_balanced_final/ct_pb_rf.tsv
-      ct_pb_nn: params/hlca_healthy_ipf_embed_balanced_final/ct_pb_nn.tsv
-      ct_pb_mr: params/hlca_healthy_ipf_embed_balanced_final/ct_pb_mr.tsv
-      freq_mr: params/hlca_healthy_ipf_embed_balanced_final/freq_mr.tsv
-      freq_rf: params/hlca_healthy_ipf_embed_balanced_final/freq_rf.tsv
-      freq_nn: params/hlca_healthy_ipf_embed_balanced_final/freq_nn.tsv
-  'totalvi_pbmc_embed_all_cond': #yes
-    input1: data/pp/totalvi_pbmc_embed_all_cond.h5ad
-    input2: null
-    label_key: initial_clustering
-    batch_key: Site
-    condition_key: Status_on_day_collection_summary
-    sample_key: patient_id
-    n_splits: 5
-    methods:
-      multigrate_mil: params/totalvi_pbmc_embed_all_cond/multigrate_mil.tsv
-      multigrate_mil_reg: params/totalvi_pbmc_embed_all_cond/multigrate_mil_reg.tsv
-      pb_rf: params/totalvi_pbmc_embed_all_cond/pb_rf.tsv
-      pb_nn: params/totalvi_pbmc_embed_all_cond/pb_nn.tsv
-      pb_mr: params/totalvi_pbmc_embed_all_cond/pb_mr.tsv
-      gex_nn: params/totalvi_pbmc_embed_all_cond/gex_nn.tsv
-      gex_rf: params/totalvi_pbmc_embed_all_cond/gex_rf.tsv
-      ct_pb_rf: params/totalvi_pbmc_embed_all_cond/ct_pb_rf.tsv
-      ct_pb_nn: params/totalvi_pbmc_embed_all_cond/ct_pb_nn.tsv
-      ct_pb_mr: params/totalvi_pbmc_embed_all_cond/ct_pb_mr.tsv
-      freq_mr: params/totalvi_pbmc_embed_all_cond/freq_mr.tsv
-      freq_rf: params/totalvi_pbmc_embed_all_cond/freq_rf.tsv
-      freq_nn: params/totalvi_pbmc_embed_all_cond/freq_nn.tsv
-  'totalvi_pbmc_embed_3_cond':
-    input1: data/pp/totalvi_pbmc_embed_3_cond.h5ad
-    input2: null
-    label_key: initial_clustering
-    batch_key: Site
-    condition_key: Status_on_day_collection_summary
-    sample_key: patient_id
-    n_splits: 5
-    methods:
-      multigrate_mil: params/totalvi_pbmc_embed_3_cond/multigrate_mil.tsv
-      multigrate_mil_reg: params/totalvi_pbmc_embed_3_cond/multigrate_mil_reg.tsv
-      pb_rf: params/totalvi_pbmc_embed_3_cond/pb_rf.tsv
-      pb_nn: params/totalvi_pbmc_embed_3_cond/pb_nn.tsv
-      pb_mr: params/totalvi_pbmc_embed_3_cond/pb_mr.tsv
-      gex_nn: params/totalvi_pbmc_embed_3_cond/gex_nn.tsv
-      gex_rf: params/totalvi_pbmc_embed_3_cond/gex_rf.tsv
-      ct_pb_rf: params/totalvi_pbmc_embed_3_cond/ct_pb_rf.tsv
-      ct_pb_nn: params/totalvi_pbmc_embed_3_cond/ct_pb_nn.tsv
-      ct_pb_mr: params/totalvi_pbmc_embed_3_cond/ct_pb_mr.tsv
-      freq_mr: params/totalvi_pbmc_embed_3_cond/freq_mr.tsv
-      freq_rf: params/totalvi_pbmc_embed_3_cond/freq_rf.tsv
-      freq_nn: params/totalvi_pbmc_embed_3_cond/freq_nn.tsv
-  'totalvi_pbmc_embed_3_cond_balanced': #yes
-    input1: data/pp/totalvi_pbmc_embed_3cond_balanced.h5ad
-    input2: null
-    label_key: initial_clustering
-    batch_key: Site
-    condition_key: Status_on_day_collection_summary
-    sample_key: patient_id
-    n_splits: 5
-    methods:
-      multigrate_mil: params/totalvi_pbmc_embed_3_cond_balanced/multigrate_mil.tsv
-      multigrate_mil_reg: params/totalvi_pbmc_embed_3_cond_balanced/multigrate_mil_reg.tsv
-      pb_rf: params/totalvi_pbmc_embed_3_cond_balanced/pb_rf.tsv
-      pb_nn: params/totalvi_pbmc_embed_3_cond_balanced/pb_nn.tsv
-      # pb_mr: params/totalvi_pbmc_embed_3_cond_balanced/pb_mr.tsv
-      gex_nn: params/totalvi_pbmc_embed_3_cond_balanced/gex_nn.tsv
-      gex_rf: params/totalvi_pbmc_embed_3_cond_balanced/gex_rf.tsv
-      ct_pb_rf: params/totalvi_pbmc_embed_3_cond_balanced/ct_pb_rf.tsv
-      ct_pb_nn: params/totalvi_pbmc_embed_3_cond_balanced/ct_pb_nn.tsv
-      ct_pb_mr: params/totalvi_pbmc_embed_3_cond_balanced/ct_pb_mr.tsv
-      freq_mr: params/totalvi_pbmc_embed_3_cond_balanced/freq_mr.tsv
-      freq_rf: params/totalvi_pbmc_embed_3_cond_balanced/freq_rf.tsv
-      freq_nn: params/totalvi_pbmc_embed_3_cond_balanced/freq_nn.tsv
-  'totalvi_pbmc_embed_3_cond_balanced_strat':
-    input1: data/pp/totalvi_pbmc_embed_3cond_balanced_strat.h5ad
-    input2: null
-    label_key: initial_clustering
-    batch_key: Site
-    condition_key: Status_on_day_collection_summary
-    sample_key: patient_id
-    n_splits: 5
-    methods:
-      # multigrate_mil: params/totalvi_pbmc_embed_3_cond_balanced_strat/multigrate_mil.tsv
-      multigrate_mil_reg: params/totalvi_pbmc_embed_3_cond_balanced_strat/multigrate_mil_reg.tsv
-      # pb_rf: params/totalvi_pbmc_embed_3_cond_balanced_strat/pb_rf.tsv
-      # pb_nn: params/totalvi_pbmc_embed_3_cond_balanced_strat/pb_nn.tsv
-      # pb_mr: params/totalvi_pbmc_embed_3_cond_balanced_strat/pb_mr.tsv
-      # gex_nn: params/totalvi_pbmc_embed_3_cond_balanced_strat/gex_nn.tsv
-      # gex_rf: params/totalvi_pbmc_embed_3_cond_balanced_strat/gex_rf.tsv
-      # ct_pb_rf: params/totalvi_pbmc_embed_3_cond_balanced_strat/ct_pb_rf.tsv
-      # ct_pb_nn: params/totalvi_pbmc_embed_3_cond_balanced_strat/ct_pb_nn.tsv
-      # ct_pb_mr: params/totalvi_pbmc_embed_3_cond_balanced_strat/ct_pb_mr.tsv
-      # freq_mr: params/totalvi_pbmc_embed_3_cond_balanced_strat/freq_mr.tsv
-      # freq_rf: params/totalvi_pbmc_embed_3_cond_balanced_strat/freq_rf.tsv
-      # freq_nn: params/totalvi_pbmc_embed_3_cond_balanced_strat/freq_nn.tsv
+  #     multigrate_reg: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/multigrate_reg.tsv
+  #     multigrate: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/multigrate.tsv
+  #     pb_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/pb_rf.tsv
+  #     pb_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/pb_nn.tsv
+  #     gex_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/gex_nn.tsv
+  #     gex_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/gex_rf.tsv
+  #     pb_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/pb_mr.tsv
+  #     ct_pb_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/ct_pb_rf.tsv
+  #     ct_pb_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/ct_pb_nn.tsv
+  #     ct_pb_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/ct_pb_mr.tsv
+  #     freq_mr: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/freq_mr.tsv
+  #     freq_rf: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/freq_rf.tsv
+  #     freq_nn: params/pbmc_healthy_covid_3cond_end2end_ord_reg_rna/freq_nn.tsv
+  # # 'pbmc_healthy_covid_3cond_mtg_embed_ord_reg':
+  # #   input1: data/pp/mtg3_clean_healthy_covid_3_cond_embed_reg.h5ad
+  # #   input2: null
+  # #   label_key: initial_clustering
+  # #   batch_key: Site
+  # #   condition_key: Status_on_day_collection_summary
+  # #   sample_key: patient_id
+  # #   n_splits: 5
+  # #   methods:
+  # #     multigrate_mil_reg: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_reg.tsv
+  # #     multigrate_mil: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil.tsv
+  # #     # multigrate_mil_reg: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_reg_test.tsv
+  # #     # multigrate_mil: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/multigrate_mil_test.tsv
+  # #     pb_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/pb_rf.tsv
+  # #     pb_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/pb_nn.tsv
+  # #     gex_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/gex_nn.tsv
+  # #     gex_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/gex_rf.tsv
+  # #     # gex_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/gex_mr.tsv
+  # #     pb_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/pb_mr.tsv
+  # #     ct_pb_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/ct_pb_rf.tsv
+  # #     ct_pb_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/ct_pb_nn.tsv
+  # #     ct_pb_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/ct_pb_mr.tsv
+  # #     freq_mr: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/freq_mr.tsv
+  # #     freq_rf: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/freq_rf.tsv
+  # #     freq_nn: params/pbmc_healthy_covid_3cond_mtg_embed_ord_reg/freq_nn.tsv
+  # 'hlca_healthy_ipf_embed_balanced_final':
+  #   input1: data/pp/hlca_healthy_ipf_embed_balanced_final.h5ad
+  #   input2: null
+  #   label_key: ann_level_3_label_final
+  #   batch_key: study
+  #   condition_key: lung_condition_coarse
+  #   sample_key: sample
+  #   n_splits: 5
+  #   methods:
+  #     # multigrate_mil: params/hlca_healthy_ipf_embed_balanced_final/multigrate_mil_test.tsv
+  #     multigrate_mil: params/hlca_healthy_ipf_embed_balanced_final/multigrate_mil.tsv
+  #     pb_rf: params/hlca_healthy_ipf_embed_balanced_final/pb_rf.tsv
+  #     pb_nn: params/hlca_healthy_ipf_embed_balanced_final/pb_nn.tsv
+  #     gex_nn: params/hlca_healthy_ipf_embed_balanced_final/gex_nn.tsv
+  #     gex_rf: params/hlca_healthy_ipf_embed_balanced_final/gex_rf.tsv
+  #     pb_mr: params/hlca_healthy_ipf_embed_balanced_final/pb_mr.tsv
+  #     ct_pb_rf: params/hlca_healthy_ipf_embed_balanced_final/ct_pb_rf.tsv
+  #     ct_pb_nn: params/hlca_healthy_ipf_embed_balanced_final/ct_pb_nn.tsv
+  #     ct_pb_mr: params/hlca_healthy_ipf_embed_balanced_final/ct_pb_mr.tsv
+  #     freq_mr: params/hlca_healthy_ipf_embed_balanced_final/freq_mr.tsv
+  #     freq_rf: params/hlca_healthy_ipf_embed_balanced_final/freq_rf.tsv
+  #     freq_nn: params/hlca_healthy_ipf_embed_balanced_final/freq_nn.tsv
+  # 'totalvi_pbmc_embed_all_cond': #yes
+  #   input1: data/pp/totalvi_pbmc_embed_all_cond.h5ad
+  #   input2: null
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status_on_day_collection_summary
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_mil: params/totalvi_pbmc_embed_all_cond/multigrate_mil.tsv
+  #     multigrate_mil_reg: params/totalvi_pbmc_embed_all_cond/multigrate_mil_reg.tsv
+  #     pb_rf: params/totalvi_pbmc_embed_all_cond/pb_rf.tsv
+  #     pb_nn: params/totalvi_pbmc_embed_all_cond/pb_nn.tsv
+  #     pb_mr: params/totalvi_pbmc_embed_all_cond/pb_mr.tsv
+  #     gex_nn: params/totalvi_pbmc_embed_all_cond/gex_nn.tsv
+  #     gex_rf: params/totalvi_pbmc_embed_all_cond/gex_rf.tsv
+  #     ct_pb_rf: params/totalvi_pbmc_embed_all_cond/ct_pb_rf.tsv
+  #     ct_pb_nn: params/totalvi_pbmc_embed_all_cond/ct_pb_nn.tsv
+  #     ct_pb_mr: params/totalvi_pbmc_embed_all_cond/ct_pb_mr.tsv
+  #     freq_mr: params/totalvi_pbmc_embed_all_cond/freq_mr.tsv
+  #     freq_rf: params/totalvi_pbmc_embed_all_cond/freq_rf.tsv
+  #     freq_nn: params/totalvi_pbmc_embed_all_cond/freq_nn.tsv
+  # 'totalvi_pbmc_embed_3_cond':
+  #   input1: data/pp/totalvi_pbmc_embed_3_cond.h5ad
+  #   input2: null
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status_on_day_collection_summary
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_mil: params/totalvi_pbmc_embed_3_cond/multigrate_mil.tsv
+  #     multigrate_mil_reg: params/totalvi_pbmc_embed_3_cond/multigrate_mil_reg.tsv
+  #     pb_rf: params/totalvi_pbmc_embed_3_cond/pb_rf.tsv
+  #     pb_nn: params/totalvi_pbmc_embed_3_cond/pb_nn.tsv
+  #     pb_mr: params/totalvi_pbmc_embed_3_cond/pb_mr.tsv
+  #     gex_nn: params/totalvi_pbmc_embed_3_cond/gex_nn.tsv
+  #     gex_rf: params/totalvi_pbmc_embed_3_cond/gex_rf.tsv
+  #     ct_pb_rf: params/totalvi_pbmc_embed_3_cond/ct_pb_rf.tsv
+  #     ct_pb_nn: params/totalvi_pbmc_embed_3_cond/ct_pb_nn.tsv
+  #     ct_pb_mr: params/totalvi_pbmc_embed_3_cond/ct_pb_mr.tsv
+  #     freq_mr: params/totalvi_pbmc_embed_3_cond/freq_mr.tsv
+  #     freq_rf: params/totalvi_pbmc_embed_3_cond/freq_rf.tsv
+  #     freq_nn: params/totalvi_pbmc_embed_3_cond/freq_nn.tsv
+  # 'totalvi_pbmc_embed_3_cond_balanced': #yes
+  #   input1: data/pp/totalvi_pbmc_embed_3cond_balanced.h5ad
+  #   input2: null
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status_on_day_collection_summary
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_mil: params/totalvi_pbmc_embed_3_cond_balanced/multigrate_mil.tsv
+  #     multigrate_mil_reg: params/totalvi_pbmc_embed_3_cond_balanced/multigrate_mil_reg.tsv
+  #     pb_rf: params/totalvi_pbmc_embed_3_cond_balanced/pb_rf.tsv
+  #     pb_nn: params/totalvi_pbmc_embed_3_cond_balanced/pb_nn.tsv
+  #     # pb_mr: params/totalvi_pbmc_embed_3_cond_balanced/pb_mr.tsv
+  #     gex_nn: params/totalvi_pbmc_embed_3_cond_balanced/gex_nn.tsv
+  #     gex_rf: params/totalvi_pbmc_embed_3_cond_balanced/gex_rf.tsv
+  #     ct_pb_rf: params/totalvi_pbmc_embed_3_cond_balanced/ct_pb_rf.tsv
+  #     ct_pb_nn: params/totalvi_pbmc_embed_3_cond_balanced/ct_pb_nn.tsv
+  #     ct_pb_mr: params/totalvi_pbmc_embed_3_cond_balanced/ct_pb_mr.tsv
+  #     freq_mr: params/totalvi_pbmc_embed_3_cond_balanced/freq_mr.tsv
+  #     freq_rf: params/totalvi_pbmc_embed_3_cond_balanced/freq_rf.tsv
+  #     freq_nn: params/totalvi_pbmc_embed_3_cond_balanced/freq_nn.tsv
+  # 'totalvi_pbmc_embed_3_cond_balanced_strat':
+  #   input1: data/pp/totalvi_pbmc_embed_3cond_balanced_strat.h5ad
+  #   input2: null
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status_on_day_collection_summary
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     # multigrate_mil: params/totalvi_pbmc_embed_3_cond_balanced_strat/multigrate_mil.tsv
+  #     multigrate_mil_reg: params/totalvi_pbmc_embed_3_cond_balanced_strat/multigrate_mil_reg.tsv
+  #     # pb_rf: params/totalvi_pbmc_embed_3_cond_balanced_strat/pb_rf.tsv
+  #     # pb_nn: params/totalvi_pbmc_embed_3_cond_balanced_strat/pb_nn.tsv
+  #     # pb_mr: params/totalvi_pbmc_embed_3_cond_balanced_strat/pb_mr.tsv
+  #     # gex_nn: params/totalvi_pbmc_embed_3_cond_balanced_strat/gex_nn.tsv
+  #     # gex_rf: params/totalvi_pbmc_embed_3_cond_balanced_strat/gex_rf.tsv
+  #     # ct_pb_rf: params/totalvi_pbmc_embed_3_cond_balanced_strat/ct_pb_rf.tsv
+  #     # ct_pb_nn: params/totalvi_pbmc_embed_3_cond_balanced_strat/ct_pb_nn.tsv
+  #     # ct_pb_mr: params/totalvi_pbmc_embed_3_cond_balanced_strat/ct_pb_mr.tsv
+  #     # freq_mr: params/totalvi_pbmc_embed_3_cond_balanced_strat/freq_mr.tsv
+  #     # freq_rf: params/totalvi_pbmc_embed_3_cond_balanced_strat/freq_rf.tsv
+  #     # freq_nn: params/totalvi_pbmc_embed_3_cond_balanced_strat/freq_nn.tsv
     
-  'heart_failure':
-    input1: data/pp/heart_failure_full.h5ad
+  # 'heart_failure':
+  #   input1: data/pp/heart_failure_full.h5ad
+  #   input2: null
+  #   label_key: CellTypist
+  #   batch_key: null
+  #   condition_key: classification_HF
+  #   sample_key: sample
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_mil: params/heart_failure/multigrate_mil.tsv
+  #     pb_rf: params/heart_failure/pb_rf.tsv
+  #     pb_nn: params/heart_failure/pb_nn.tsv
+  #     gex_nn: params/heart_failure/gex_nn.tsv
+  #     gex_rf: params/heart_failure/gex_rf.tsv
+  #     pb_mr: params/heart_failure/pb_mr.tsv
+  #     ct_pb_rf: params/heart_failure/ct_pb_rf.tsv
+  #     ct_pb_nn: params/heart_failure/ct_pb_nn.tsv
+  #     ct_pb_mr: params/heart_failure/ct_pb_mr.tsv
+  #     freq_mr: params/heart_failure/freq_mr.tsv
+  #     freq_rf: params/heart_failure/freq_rf.tsv
+  #     freq_nn: params/heart_failure/freq_nn.tsv
+  # 'pbmc_mtg_final1':
+  #   input1: data/pp/mtg_final1.h5ad
+  #   input2: null
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status_on_day_collection_summary
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_mil: params/pbmc_mtg_final/multigrate_mil.tsv
+  #     multigrate_mil_reg: params/pbmc_mtg_final/multigrate_mil_reg.tsv
+  #     pb_rf: params/pbmc_mtg_final/pb_rf.tsv
+  #     pb_nn: params/pbmc_mtg_final/pb_nn.tsv
+  #     gex_nn: params/pbmc_mtg_final/gex_nn.tsv
+  #     gex_rf: params/pbmc_mtg_final/gex_rf.tsv
+  #     # pb_mr: params/pbmc_mtg_final/pb_mr.tsv
+  #     ct_pb_rf: params/pbmc_mtg_final/ct_pb_rf.tsv
+  #     ct_pb_nn: params/pbmc_mtg_final/ct_pb_nn.tsv
+  #     ct_pb_mr: params/pbmc_mtg_final/ct_pb_mr.tsv
+  #     freq_mr: params/pbmc_mtg_final/freq_mr.tsv
+  #     freq_rf: params/pbmc_mtg_final/freq_rf.tsv
+  #     freq_nn: params/pbmc_mtg_final/freq_nn.tsv
+  # 'heart_failure_balanced_label_transfer':
+  #   input1: data/pp/heart_failure_balanced.h5ad
+  #   input2: null
+  #   label_key: Citeseq_LabelTransfer
+  #   batch_key: null
+  #   condition_key: classification_HF
+  #   sample_key: sample
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_mil: params/heart_failure/multigrate_mil.tsv
+  #     pb_rf: params/heart_failure/pb_rf.tsv
+  #     pb_nn: params/heart_failure/pb_nn.tsv
+  #     gex_nn: params/heart_failure/gex_nn.tsv
+  #     gex_rf: params/heart_failure/gex_rf.tsv
+  #     pb_mr: params/heart_failure/pb_mr.tsv
+  #     ct_pb_rf: params/heart_failure/ct_pb_rf.tsv
+  #     ct_pb_nn: params/heart_failure/ct_pb_nn.tsv
+  #     ct_pb_mr: params/heart_failure/ct_pb_mr.tsv
+  #     freq_mr: params/heart_failure/freq_mr.tsv
+  #     freq_rf: params/heart_failure/freq_rf.tsv
+  #     freq_nn: params/heart_failure/freq_nn.tsv
+  # 'heart_failure_label_transfer':
+  #   input1: data/pp/heart_failure_full.h5ad
+  #   input2: null
+  #   label_key: Citeseq_LabelTransfer
+  #   batch_key: null
+  #   condition_key: classification_HF
+  #   sample_key: sample
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_mil: params/heart_failure/multigrate_mil.tsv
+  #     pb_rf: params/heart_failure/pb_rf.tsv
+  #     pb_nn: params/heart_failure/pb_nn.tsv
+  #     gex_nn: params/heart_failure/gex_nn.tsv
+  #     gex_rf: params/heart_failure/gex_rf.tsv
+  #     pb_mr: params/heart_failure/pb_mr.tsv
+  #     ct_pb_rf: params/heart_failure/ct_pb_rf.tsv
+  #     ct_pb_nn: params/heart_failure/ct_pb_nn.tsv
+  #     ct_pb_mr: params/heart_failure/ct_pb_mr.tsv
+  #     freq_mr: params/heart_failure/freq_mr.tsv
+  #     freq_rf: params/heart_failure/freq_rf.tsv
+  #     freq_nn: params/heart_failure/freq_nn.tsv
+  # 'pbmc_mtg_final1_full_covid':
+  #   input1: data/pp/mtg_final1_full_covid.h5ad
+  #   input2: null
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status_on_day_collection_summary
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_mil: params/pbmc_mtg_final/multigrate_mil.tsv
+  #     multigrate_mil_reg: params/pbmc_mtg_final/multigrate_mil_reg.tsv
+  #     pb_rf: params/pbmc_mtg_final/pb_rf.tsv
+  #     pb_nn: params/pbmc_mtg_final/pb_nn.tsv
+  #     gex_nn: params/pbmc_mtg_final/gex_nn.tsv
+  #     gex_rf: params/pbmc_mtg_final/gex_rf.tsv
+  #     # pb_mr: params/pbmc_mtg_final/pb_mr.tsv
+  #     ct_pb_rf: params/pbmc_mtg_final/ct_pb_rf.tsv
+  #     ct_pb_nn: params/pbmc_mtg_final/ct_pb_nn.tsv
+  #     ct_pb_mr: params/pbmc_mtg_final/ct_pb_mr.tsv
+  #     freq_mr: params/pbmc_mtg_final/freq_mr.tsv
+  #     freq_rf: params/pbmc_mtg_final/freq_rf.tsv
+  #     freq_nn: params/pbmc_mtg_final/freq_nn.tsv
+  # 'pbmc_mtg_final1_binary_balanced':
+  #   input1: data/pp/mtg_final1_binary_balanced.h5ad
+  #   input2: null
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_mil: params/pbmc_binary/multigrate_mil.tsv
+  #     pb_rf: params/pbmc_binary/pb_rf.tsv
+  #     pb_nn: params/pbmc_binary/pb_nn.tsv
+  #     gex_nn: params/pbmc_binary/gex_nn.tsv
+  #     gex_rf: params/pbmc_binary/gex_rf.tsv
+  #     pb_mr: params/pbmc_binary/pb_mr.tsv
+  #     ct_pb_rf: params/pbmc_binary/ct_pb_rf.tsv
+  #     ct_pb_nn: params/pbmc_binary/ct_pb_nn.tsv
+  #     ct_pb_mr: params/pbmc_binary/ct_pb_mr.tsv
+  #     freq_mr: params/pbmc_binary/freq_mr.tsv
+  #     freq_rf: params/pbmc_binary/freq_rf.tsv
+  #     freq_nn: params/pbmc_binary/freq_nn.tsv
+  # 'totalvi_pbmc_embed_binary_balanced': #yes
+  #   input1: data/pp/totalvi_pbmc_embed_binary_balanced.h5ad
+  #   input2: null
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_mil: params/pbmc_binary/multigrate_mil.tsv
+  #     pb_rf: params/pbmc_binary/pb_rf.tsv
+  #     pb_nn: params/pbmc_binary/pb_nn.tsv
+  #     pb_mr: params/pbmc_binary/pb_mr.tsv
+  #     gex_nn: params/pbmc_binary/gex_nn.tsv
+  #     gex_rf: params/pbmc_binary/gex_rf.tsv
+  #     ct_pb_rf: params/pbmc_binary/ct_pb_rf.tsv
+  #     ct_pb_nn: params/pbmc_binary/ct_pb_nn.tsv
+  #     ct_pb_mr: params/pbmc_binary/ct_pb_mr.tsv
+  #     freq_mr: params/pbmc_binary/freq_mr.tsv
+  #     freq_rf: params/pbmc_binary/freq_rf.tsv
+  #     freq_nn: params/pbmc_binary/freq_nn.tsv
+  # 'pbmc_3_cond_balanced_end2end': #yes
+  #   input1: data/pp/pbmc_3_cond_balanced_rna.h5ad
+  #   input2: data/pp/pbmc_3_cond_balanced_adt.h5ad
+  #   label_key: initial_clustering
+  #   batch_key: Site
+  #   condition_key: Status_on_day_collection_summary
+  #   sample_key: patient_id
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_reg: params/pbmc_3_cond_balanced_end2end/multigrate_reg.tsv
+  #     multigrate: params/pbmc_3_cond_balanced_end2end/multigrate.tsv
+  #     pb_rf: params/pbmc_3_cond_balanced_end2end/pb_rf.tsv
+  #     pb_nn: params/pbmc_3_cond_balanced_end2end/pb_nn.tsv
+  #     gex_nn: params/pbmc_3_cond_balanced_end2end/gex_nn.tsv
+  #     gex_rf: params/pbmc_3_cond_balanced_end2end/gex_rf.tsv
+  #     # pb_mr: params/pbmc_3_cond_balanced_end2end/pb_mr.tsv
+  #     ct_pb_rf: params/pbmc_3_cond_balanced_end2end/ct_pb_rf.tsv
+  #     ct_pb_nn: params/pbmc_3_cond_balanced_end2end/ct_pb_nn.tsv
+  #     ct_pb_mr: params/pbmc_3_cond_balanced_end2end/ct_pb_mr.tsv
+  #     freq_mr: params/pbmc_3_cond_balanced_end2end/freq_mr.tsv
+  #     freq_rf: params/pbmc_3_cond_balanced_end2end/freq_rf.tsv
+  #     freq_nn: params/pbmc_3_cond_balanced_end2end/freq_nn.tsv
+  # 'diabetes':
+  #   input1: data/pp/diabetes_full.h5ad
+  #   input2: null
+  #   label_key: Cell Type
+  #   batch_key: null
+  #   condition_key: Diabetes Status
+  #   sample_key: Library
+  #   n_splits: 5
+  #   methods:
+  #     multigrate_mil: params/diabetes/multigrate_mil.tsv
+  #     pb_rf: params/diabetes/pb_rf.tsv
+  #     pb_nn: params/diabetes/pb_nn.tsv
+  #     # pb_mr: params/diabetes/pb_mr.tsv
+  #     gex_nn: params/diabetes/gex_nn.tsv
+  #     gex_rf: params/diabetes/gex_rf.tsv
+  #     ct_pb_rf: params/diabetes/ct_pb_rf.tsv
+  #     ct_pb_nn: params/diabetes/ct_pb_nn.tsv
+  #     ct_pb_mr: params/diabetes/ct_pb_mr.tsv
+  #     freq_mr: params/diabetes/freq_mr.tsv
+  #     freq_rf: params/diabetes/freq_rf.tsv
+  #     freq_nn: params/diabetes/freq_nn.tsv
+  'scpoli_covid_lupus_healthy_balanced':
+    input1: data/pp/scpoli_covid_lupus_healthy_balanced.h5ad
     input2: null
-    label_key: CellTypist
+    label_key: cell_type
     batch_key: null
-    condition_key: classification_HF
-    sample_key: sample
+    condition_key: disease
+    sample_key: sample_ID_lataq
     n_splits: 5
     methods:
-      multigrate_mil: params/heart_failure/multigrate_mil.tsv
-      pb_rf: params/heart_failure/pb_rf.tsv
-      pb_nn: params/heart_failure/pb_nn.tsv
-      gex_nn: params/heart_failure/gex_nn.tsv
-      gex_rf: params/heart_failure/gex_rf.tsv
-      pb_mr: params/heart_failure/pb_mr.tsv
-      ct_pb_rf: params/heart_failure/ct_pb_rf.tsv
-      ct_pb_nn: params/heart_failure/ct_pb_nn.tsv
-      ct_pb_mr: params/heart_failure/ct_pb_mr.tsv
-      freq_mr: params/heart_failure/freq_mr.tsv
-      freq_rf: params/heart_failure/freq_rf.tsv
-      freq_nn: params/heart_failure/freq_nn.tsv
-  'pbmc_mtg_final1':
-    input1: data/pp/mtg_final1.h5ad
-    input2: null
-    label_key: initial_clustering
-    batch_key: Site
-    condition_key: Status_on_day_collection_summary
-    sample_key: patient_id
-    n_splits: 5
-    methods:
-      multigrate_mil: params/pbmc_mtg_final/multigrate_mil.tsv
-      multigrate_mil_reg: params/pbmc_mtg_final/multigrate_mil_reg.tsv
-      pb_rf: params/pbmc_mtg_final/pb_rf.tsv
-      pb_nn: params/pbmc_mtg_final/pb_nn.tsv
-      gex_nn: params/pbmc_mtg_final/gex_nn.tsv
-      gex_rf: params/pbmc_mtg_final/gex_rf.tsv
-      # pb_mr: params/pbmc_mtg_final/pb_mr.tsv
-      ct_pb_rf: params/pbmc_mtg_final/ct_pb_rf.tsv
-      ct_pb_nn: params/pbmc_mtg_final/ct_pb_nn.tsv
-      ct_pb_mr: params/pbmc_mtg_final/ct_pb_mr.tsv
-      freq_mr: params/pbmc_mtg_final/freq_mr.tsv
-      freq_rf: params/pbmc_mtg_final/freq_rf.tsv
-      freq_nn: params/pbmc_mtg_final/freq_nn.tsv
-  'heart_failure_balanced_label_transfer':
-    input1: data/pp/heart_failure_balanced.h5ad
-    input2: null
-    label_key: Citeseq_LabelTransfer
-    batch_key: null
-    condition_key: classification_HF
-    sample_key: sample
-    n_splits: 5
-    methods:
-      multigrate_mil: params/heart_failure/multigrate_mil.tsv
-      pb_rf: params/heart_failure/pb_rf.tsv
-      pb_nn: params/heart_failure/pb_nn.tsv
-      gex_nn: params/heart_failure/gex_nn.tsv
-      gex_rf: params/heart_failure/gex_rf.tsv
-      pb_mr: params/heart_failure/pb_mr.tsv
-      ct_pb_rf: params/heart_failure/ct_pb_rf.tsv
-      ct_pb_nn: params/heart_failure/ct_pb_nn.tsv
-      ct_pb_mr: params/heart_failure/ct_pb_mr.tsv
-      freq_mr: params/heart_failure/freq_mr.tsv
-      freq_rf: params/heart_failure/freq_rf.tsv
-      freq_nn: params/heart_failure/freq_nn.tsv
-  'heart_failure_label_transfer':
-    input1: data/pp/heart_failure_full.h5ad
-    input2: null
-    label_key: Citeseq_LabelTransfer
-    batch_key: null
-    condition_key: classification_HF
-    sample_key: sample
-    n_splits: 5
-    methods:
-      multigrate_mil: params/heart_failure/multigrate_mil.tsv
-      pb_rf: params/heart_failure/pb_rf.tsv
-      pb_nn: params/heart_failure/pb_nn.tsv
-      gex_nn: params/heart_failure/gex_nn.tsv
-      gex_rf: params/heart_failure/gex_rf.tsv
-      pb_mr: params/heart_failure/pb_mr.tsv
-      ct_pb_rf: params/heart_failure/ct_pb_rf.tsv
-      ct_pb_nn: params/heart_failure/ct_pb_nn.tsv
-      ct_pb_mr: params/heart_failure/ct_pb_mr.tsv
-      freq_mr: params/heart_failure/freq_mr.tsv
-      freq_rf: params/heart_failure/freq_rf.tsv
-      freq_nn: params/heart_failure/freq_nn.tsv
-  'pbmc_mtg_final1_full_covid':
-    input1: data/pp/mtg_final1_full_covid.h5ad
-    input2: null
-    label_key: initial_clustering
-    batch_key: Site
-    condition_key: Status_on_day_collection_summary
-    sample_key: patient_id
-    n_splits: 5
-    methods:
-      multigrate_mil: params/pbmc_mtg_final/multigrate_mil.tsv
-      multigrate_mil_reg: params/pbmc_mtg_final/multigrate_mil_reg.tsv
-      pb_rf: params/pbmc_mtg_final/pb_rf.tsv
-      pb_nn: params/pbmc_mtg_final/pb_nn.tsv
-      gex_nn: params/pbmc_mtg_final/gex_nn.tsv
-      gex_rf: params/pbmc_mtg_final/gex_rf.tsv
-      # pb_mr: params/pbmc_mtg_final/pb_mr.tsv
-      ct_pb_rf: params/pbmc_mtg_final/ct_pb_rf.tsv
-      ct_pb_nn: params/pbmc_mtg_final/ct_pb_nn.tsv
-      ct_pb_mr: params/pbmc_mtg_final/ct_pb_mr.tsv
-      freq_mr: params/pbmc_mtg_final/freq_mr.tsv
-      freq_rf: params/pbmc_mtg_final/freq_rf.tsv
-      freq_nn: params/pbmc_mtg_final/freq_nn.tsv
-  'pbmc_mtg_final1_binary_balanced':
-    input1: data/pp/mtg_final1_binary_balanced.h5ad
-    input2: null
-    label_key: initial_clustering
-    batch_key: Site
-    condition_key: Status
-    sample_key: patient_id
-    n_splits: 5
-    methods:
-      multigrate_mil: params/pbmc_binary/multigrate_mil.tsv
-      pb_rf: params/pbmc_binary/pb_rf.tsv
-      pb_nn: params/pbmc_binary/pb_nn.tsv
-      gex_nn: params/pbmc_binary/gex_nn.tsv
-      gex_rf: params/pbmc_binary/gex_rf.tsv
-      pb_mr: params/pbmc_binary/pb_mr.tsv
-      ct_pb_rf: params/pbmc_binary/ct_pb_rf.tsv
-      ct_pb_nn: params/pbmc_binary/ct_pb_nn.tsv
-      ct_pb_mr: params/pbmc_binary/ct_pb_mr.tsv
-      freq_mr: params/pbmc_binary/freq_mr.tsv
-      freq_rf: params/pbmc_binary/freq_rf.tsv
-      freq_nn: params/pbmc_binary/freq_nn.tsv
-  'totalvi_pbmc_embed_binary_balanced': #yes
-    input1: data/pp/totalvi_pbmc_embed_binary_balanced.h5ad
-    input2: null
-    label_key: initial_clustering
-    batch_key: Site
-    condition_key: Status
-    sample_key: patient_id
-    n_splits: 5
-    methods:
-      multigrate_mil: params/pbmc_binary/multigrate_mil.tsv
-      pb_rf: params/pbmc_binary/pb_rf.tsv
-      pb_nn: params/pbmc_binary/pb_nn.tsv
-      pb_mr: params/pbmc_binary/pb_mr.tsv
-      gex_nn: params/pbmc_binary/gex_nn.tsv
-      gex_rf: params/pbmc_binary/gex_rf.tsv
-      ct_pb_rf: params/pbmc_binary/ct_pb_rf.tsv
-      ct_pb_nn: params/pbmc_binary/ct_pb_nn.tsv
-      ct_pb_mr: params/pbmc_binary/ct_pb_mr.tsv
-      freq_mr: params/pbmc_binary/freq_mr.tsv
-      freq_rf: params/pbmc_binary/freq_rf.tsv
-      freq_nn: params/pbmc_binary/freq_nn.tsv
-  'pbmc_3_cond_balanced_end2end': #yes
-    input1: data/pp/pbmc_3_cond_balanced_rna.h5ad
-    input2: data/pp/pbmc_3_cond_balanced_adt.h5ad
-    label_key: initial_clustering
-    batch_key: Site
-    condition_key: Status_on_day_collection_summary
-    sample_key: patient_id
-    n_splits: 5
-    methods:
-      multigrate_reg: params/pbmc_3_cond_balanced_end2end/multigrate_reg.tsv
-      multigrate: params/pbmc_3_cond_balanced_end2end/multigrate.tsv
-      pb_rf: params/pbmc_3_cond_balanced_end2end/pb_rf.tsv
-      pb_nn: params/pbmc_3_cond_balanced_end2end/pb_nn.tsv
-      gex_nn: params/pbmc_3_cond_balanced_end2end/gex_nn.tsv
-      gex_rf: params/pbmc_3_cond_balanced_end2end/gex_rf.tsv
-      # pb_mr: params/pbmc_3_cond_balanced_end2end/pb_mr.tsv
-      ct_pb_rf: params/pbmc_3_cond_balanced_end2end/ct_pb_rf.tsv
-      ct_pb_nn: params/pbmc_3_cond_balanced_end2end/ct_pb_nn.tsv
-      ct_pb_mr: params/pbmc_3_cond_balanced_end2end/ct_pb_mr.tsv
-      freq_mr: params/pbmc_3_cond_balanced_end2end/freq_mr.tsv
-      freq_rf: params/pbmc_3_cond_balanced_end2end/freq_rf.tsv
-      freq_nn: params/pbmc_3_cond_balanced_end2end/freq_nn.tsv
-  'diabetes':
-    input1: data/pp/diabetes_full.h5ad
-    input2: null
-    label_key: Cell Type
-    batch_key: null
-    condition_key: Diabetes Status
-    sample_key: Library
-    n_splits: 5
-    methods:
-      multigrate_mil: params/diabetes/multigrate_mil.tsv
-      pb_rf: params/diabetes/pb_rf.tsv
-      pb_nn: params/diabetes/pb_nn.tsv
-      # pb_mr: params/diabetes/pb_mr.tsv
-      gex_nn: params/diabetes/gex_nn.tsv
-      gex_rf: params/diabetes/gex_rf.tsv
-      ct_pb_rf: params/diabetes/ct_pb_rf.tsv
-      ct_pb_nn: params/diabetes/ct_pb_nn.tsv
-      ct_pb_mr: params/diabetes/ct_pb_mr.tsv
-      freq_mr: params/diabetes/freq_mr.tsv
-      freq_rf: params/diabetes/freq_rf.tsv
-      freq_nn: params/diabetes/freq_nn.tsv
+      multigrate_mil: params/scpoli_covid_lupus_healthy_balanced/multigrate_mil.tsv
+      pb_rf: params/scpoli_covid_lupus_healthy_balanced/pb_rf.tsv
+      pb_nn: params/scpoli_covid_lupus_healthy_balanced/pb_nn.tsv
+      gex_nn: params/scpoli_covid_lupus_healthy_balanced/gex_nn.tsv
+      gex_rf: params/scpoli_covid_lupus_healthy_balanced/gex_rf.tsv
+      pb_mr: params/scpoli_covid_lupus_healthy_balanced/pb_mr.tsv
+      ct_pb_rf: params/scpoli_covid_lupus_healthy_balanced/ct_pb_rf.tsv
+      ct_pb_nn: params/scpoli_covid_lupus_healthy_balanced/ct_pb_nn.tsv
+      ct_pb_mr: params/scpoli_covid_lupus_healthy_balanced/ct_pb_mr.tsv
+      freq_mr: params/scpoli_covid_lupus_healthy_balanced/freq_mr.tsv
+      freq_rf: params/scpoli_covid_lupus_healthy_balanced/freq_rf.tsv
+      freq_nn: params/scpoli_covid_lupus_healthy_balanced/freq_nn.tsv

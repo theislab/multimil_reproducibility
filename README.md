@@ -1,10 +1,7 @@
 # multimil_reproducibility
 
----
-**NOTE**
+This repository has all the notebooks and scripts to reproduce results from
 
-This repository is WIP. Updates coming in the next few weeks.
-
----
-
-See branch `prepare_for_publication` to reproduce results from the paper.
+> **Multimodal Weakly Supervised Learning to Identify Disease-Specific Changes in Single-Cell Atlases**
+>
+> Anastasia Litinetskaya, Maiia Shulman, Soroor Hediyeh-zadeh, Amir Ali Moinfar, Fabiola Curion, Artur Szalata, Alireza Omidi, Mohammad Lotfollahi, and Fabian J. Theis. 2024. bioRxiv. https://doi.org/10.1101/2024.07.29.605625.

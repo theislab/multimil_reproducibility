@@ -60,18 +60,6 @@ rule plot_accuracy:
     script:
         'scripts/plot_accuracy.py'
 
-# rule save_anndata_old:
-#     input:
-#         tsv='data/reports/best.tsv'
-#     output:
-#         txt='data/reports/best_anndata.txt'
-#     conda:
-# 	    'envs/multigrate_pipeline.yaml'
-#     params:
-#         config=config
-#     script:
-#         'scripts/save_anndata.py'
-
 rule save_anndata:
     input:
         tsv='data/reports/best.tsv'
@@ -87,6 +75,5 @@ rule save_anndata:
 rule all:
     input:
         expand('data/reports/{task}_accuracy.png', task=tasks),
-        #'data/reports/best_anndata.txt'
         expand('data/reports/{task}/best_{method}.txt', zip, task=multigrate_tasks_df['task'].values, method = multigrate_tasks_df['method'].values)
     default_target: True

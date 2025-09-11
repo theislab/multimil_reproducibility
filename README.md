@@ -1,7 +1,7 @@
 # multimil_reproducibility
 
-This repository has all the notebooks and scripts to reproduce results from
+This repository has all the notebooks and scripts to reproduce the results from
 
-> **Multimodal Weakly Supervised Learning to Identify Disease-Specific Changes in Single-Cell Atlases**
+> **Weakly supervised learning uncovers phenotypic signatures in single-cell data**
 >
-> Anastasia Litinetskaya, Maiia Shulman, Soroor Hediyeh-zadeh, Amir Ali Moinfar, Fabiola Curion, Artur Szalata, Alireza Omidi, Mohammad Lotfollahi, and Fabian J. Theis. 2024. bioRxiv. https://doi.org/10.1101/2024.07.29.605625.
+> Anastasia Litinetskaya, Soroor Hediyeh-zadeh, Amir Ali Moinfar, Mohammad Lotfollahi, and Fabian J. Theis. 2025. bioRxiv tba.
